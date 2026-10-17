@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge Is the Legacy — M&Q University</title>
+<meta name="description" content="The official mission and legacy of MNQ Scalp Stacks and M&Q University. Knowledge is the legacy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0a1428; --navy2:#0e1b33; --navy3:#132441;
+    --gold:#c9a227; --gold-lt:#e8c15a; --gold-dk:#8f7118;
+    --parch:#ede6d6; --parch-dk:#c9bfa8; --muted:#93a0b8;
+    --line:rgba(201,162,39,.28);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;
+    background:var(--navy); color:var(--parch);
+    line-height:1.75; font-weight:300; font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+  ::selection{background:var(--gold);color:var(--navy)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height:92vh; display:flex; flex-direction:column;
+    justify-content:center; align-items:center; text-align:center;
+    padding:4rem 1.5rem 3rem; position:relative; overflow:hidden;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(201,162,39,.14), transparent 60%),
+      radial-gradient(900px 500px at 50% 110%, rgba(19,36,65,.9), transparent 60%),
+      var(--navy);
+  }
+  .hero::after{
+    content:""; position:absolute; left:50%; bottom:0; transform:translateX(-50%);
+    width:min(720px,86vw); height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  }
+  .eyebrow{
+    font-size:.72rem; letter-spacing:.42em; text-transform:uppercase;
+    color:var(--gold-lt); margin-bottom:1.6rem; font-weight:500;
+  }
+  .hero h1{
+    font-size:clamp(3rem,9vw,6.2rem); font-weight:500; line-height:1.04;
+    color:var(--parch); max-width:16ch; margin-bottom:1.4rem;
+  }
+  .hero h1 em{color:var(--gold-lt); font-style:italic}
+  .hero .sub{
+    font-size:.8rem; letter-spacing:.34em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:2.6rem;
+  }
+  .scroll-hint{
+    font-size:.68rem; letter-spacing:.3em; text-transform:uppercase; color:var(--muted);
+    animation:bob 2.6s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0);opacity:.7}50%{transform:translateY(8px);opacity:1}}
+
+  /* ---------- layout ---------- */
+  .wrap{max-width:780px;margin:0 auto;padding:0 1.5rem}
+  section.block{padding:4.5rem 0}
+  .kicker{
+    font-size:.7rem; letter-spacing:.4em; text-transform:uppercase;
+    color:var(--gold); font-weight:600; margin-bottom:1.2rem;
+  }
+  h2.stitle{
+    font-size:clamp(2rem,5vw,3rem); font-weight:500; line-height:1.15;
+    margin-bottom:1.8rem; color:var(--parch);
+  }
+  h2.stitle em{color:var(--gold-lt);font-style:italic}
+  p{margin-bottom:1.25rem;color:#d8d0bc}
+  p.lead{font-size:1.18rem;color:var(--parch)}
+  .divider{
+    border:0; height:1px; margin:0 auto; width:min(720px,86vw);
+    background:linear-gradient(90deg,transparent,var(--line),transparent);
+  }
+
+  /* ---------- mission ---------- */
+  .creed{
+    border-left:3px solid var(--gold); padding:.4rem 0 .4rem 1.6rem; margin:2.2rem 0;
+  }
+  .creed p{font-size:1.35rem;line-height:1.6;margin:0}
+  .creed strong{color:var(--gold-lt);font-weight:600}
+  .principles{list-style:none;margin:2.4rem 0;display:grid;gap:1rem}
+  .principles li{
+    background:var(--navy2); border:1px solid rgba(201,162,39,.16);
+    border-radius:10px; padding:1.3rem 1.5rem; display:flex; gap:1.2rem; align-items:flex-start;
+  }
+  .principles .n{
+    font-family:'Cormorant Garamond',Georgia,serif; font-size:1.9rem; font-weight:600;
+    color:var(--gold); line-height:1; min-width:2.2rem;
+  }
+  .principles b{display:block;font-weight:600;color:var(--parch);margin-bottom:.2rem;letter-spacing:.02em}
+  .principles span{color:var(--muted);font-size:.95rem}
+  .motto{
+    margin:2.6rem 0; text-align:center; padding:2.4rem 1.5rem;
+    background:radial-gradient(600px 260px at 50% 50%, rgba(201,162,39,.10), transparent 70%);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .motto p{
+    font-family:'Cormorant Garamond',Georgia,serif; font-size:1.5rem; font-style:italic;
+    line-height:1.9; color:var(--parch); margin:0;
+  }
+  .motto p strong{color:var(--gold-lt);font-style:normal}
+
+  /* ---------- legacy ---------- */
+  .welcome-card{
+    background:var(--navy2); border:1px solid rgba(201,162,39,.16);
+    border-radius:14px; padding:2.4rem 2.2rem; margin:2.2rem 0;
+  }
+  .welcome-card .to{
+    font-family:'Cormorant Garamond',Georgia,serif; font-size:1.7rem; font-style:italic;
+    color:var(--gold-lt); margin-bottom:1.2rem;
+  }
+  .phases{display:grid;gap:1rem;margin:2.2rem 0}
+  @media(min-width:640px){.phases{grid-template-columns:1fr 1fr}}
+  .phase{
+    background:var(--navy2); border:1px solid rgba(201,162,39,.16);
+    border-radius:10px; padding:1.4rem 1.5rem;
+  }
+  .phase .pn{
+    font-size:.68rem; letter-spacing:.32em; text-transform:uppercase;
+    color:var(--gold); font-weight:600; margin-bottom:.5rem;
+  }
+  .phase b{display:block;font-size:1.05rem;color:var(--parch);font-weight:600;margin-bottom:.3rem}
+  .phase span{color:var(--muted);font-size:.93rem}
+  blockquote.founder{
+    margin:2.6rem 0; padding:0;
+    font-family:'Cormorant Garamond',Georgia,serif; font-size:1.32rem; line-height:1.8;
+    color:var(--parch);
+  }
+  blockquote.founder p{margin-bottom:1.1rem;color:var(--parch)}
+  blockquote.founder .sig{
+    margin-top:1.6rem; font-family:'Inter',sans-serif; font-size:.85rem;
+    letter-spacing:.14em; color:var(--muted); font-style:normal;
+  }
+  blockquote.founder .sig strong{color:var(--gold-lt);font-weight:600}
+  .pledge{
+    text-align:center; padding:3rem 1.5rem; margin:2.5rem 0;
+    border:1px solid rgba(201,162,39,.3); border-radius:14px;
+    background:linear-gradient(180deg, rgba(201,162,39,.07), transparent 55%), var(--navy2);
+  }
+  .pledge h3{
+    font-size:.72rem; letter-spacing:.4em; text-transform:uppercase;
+    color:var(--gold); font-weight:600; margin-bottom:1.6rem;
+  }
+  .pledge p{
+    font-family:'Cormorant Garamond',Georgia,serif; font-size:1.32rem; font-style:italic;
+    line-height:2; color:var(--parch); margin:0 0 .4rem;
+  }
+  .pledge .amen{
+    margin-top:1.4rem; font-style:normal; font-family:'Inter',sans-serif;
+    font-size:.8rem; letter-spacing:.34em; text-transform:uppercase; color:var(--gold-lt); font-weight:600;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    text-align:center; padding:4rem 1.5rem 3.2rem; color:var(--muted);
+    background:linear-gradient(180deg, transparent, rgba(0,0,0,.35));
+  }
+  footer .ident{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+  footer .final{
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic;
+    font-size:1.25rem; color:var(--parch-dk); max-width:34ch; margin:0 auto 2rem; line-height:1.7;
+  }
+  footer .tiny{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase}
+  footer .tiny b{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="eyebrow">M&amp;Q University · An Educational Initiative of MNQ Scalp Stacks</div>
+  <h1 class="serif">Knowledge Is <em>the Legacy</em></h1>
+  <div class="sub">Education · Discipline · Practice · Community</div>
+  <div class="scroll-hint">Enter ↓</div>
+</header>
+
+<main>
+<!-- ================= MISSION ================= -->
+<section class="block">
+  <div class="wrap">
+    <div class="kicker">Part I — Our Official Mission Statement</div>
+    <h2 class="stitle serif">Our <em>Mission</em></h2>
+    <p class="lead">To make professional-quality futures trading education accessible to anyone willing to learn, practice, and develop discipline.</p>
+    <p>We believe financial education should not be reserved for those who can afford expensive courses or trading systems.</p>
+    <p>Our mission is to give beginners the foundation to understand financial markets, manage risk, recognize opportunities, and make independent decisions.</p>
+    <p>We teach through structured lessons, interactive charts, market simulations, practical exercises, and measurable progress.</p>
+    <div class="creed">
+      <p><strong>We do not promise profits.</strong><br>
+      <strong>We do not sell dreams of overnight wealth.</strong><br>
+      We teach preparation, patience, accountability, and disciplined execution.</p>
+    </div>
+
+    <div class="kicker" style="margin-top:3rem">Our Five Foundational Principles</div>
+    <ol class="principles">
+      <li><span class="n">I</span><div><b>Education Before Execution</b><span>Understand the market before risking capital.</span></div></li>
+      <li><span class="n">II</span><div><b>Discipline Before Profit</b><span>A successful decision is one that follows a sound process — regardless of the outcome of any individual trade.</span></div></li>
+      <li><span class="n">III</span><div><b>Risk Before Reward</b><span>Protecting capital is essential to remaining in the market long enough to learn.</span></div></li>
+      <li><span class="n">IV</span><div><b>Practice Before Performance</b><span>Students demonstrate understanding through simulation, journaling, and review.</span></div></li>
+      <li><span class="n">V</span><div><b>Knowledge Before Ego</b><span>What we learn is meant to be shared, improved, and passed forward.</span></div></li>
+    </ol>
+
+    <div class="motto">
+      <p>We don't chase burning candles.<br>
+      We wait for the retest.<br>
+      We don't gamble on hope.<br>
+      We trade with <strong>discipline</strong>.<br>
+      We don't hide what we've learned.<br>
+      We teach those who come behind us.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= LEGACY ================= -->
+<section class="block">
+  <div class="wrap">
+    <div class="kicker">Part II — The Legacy Page</div>
+    <h2 class="stitle serif">Welcome to <em>M&amp;Q University</em></h2>
+
+    <div class="welcome-card">
+      <div class="to serif">To the student who comes after us —</div>
+      <p>Welcome.</p>
+      <p>Perhaps you've never traded a futures contract. Perhaps you've lost money trying to understand the markets. Perhaps you've watched charts move up and down without knowing why. Or perhaps you're simply curious, and willing to learn something new.</p>
+      <p style="margin-bottom:0">Wherever you're starting from, you belong in a classroom where questions are encouraged and progress comes through practice.</p>
+    </div>
+
+    <div class="kicker" style="margin-top:3rem">How This University Began</div>
+    <p>M&amp;Q University began with one person determined to understand the financial markets.</p>
+    <p>There was no perfect strategy. No guarantee of success. Only questions, charts, mistakes, practice, and the willingness to keep learning.</p>
+    <p>What began as a personal journey gradually became something bigger. A trading dashboard became an educational laboratory. The laboratory became a structured curriculum. And the curriculum became a university built around one belief:</p>
+    <p class="lead serif" style="font-style:italic;color:var(--gold-lt)">Knowledge becomes more valuable when it is shared.</p>
+
+    <div class="kicker" style="margin-top:3rem">What You Will Learn</div>
+    <p>Our educational program follows four phases. Students progress by developing competence — not by chasing profits.</p>
+    <div class="phases">
+      <div class="phase"><div class="pn">Phase I</div><b>Market Foundations</b><span>Understand futures, charts, candles, and market structure.</span></div>
+      <div class="phase"><div class="pn">Phase II</div><b>Technical Analysis</b><span>Learn EMA, VWAP, RSI, volume, and support &amp; resistance.</span></div>
+      <div class="phase"><div class="pn">Phase III</div><b>Strategy &amp; Risk</b><span>Develop entry, exit, position-sizing, and risk-management skills.</span></div>
+      <div class="phase"><div class="pn">Phase IV</div><b>Simulation &amp; Mastery</b><span>Practice, journal, review, and demonstrate consistency.</span></div>
+    </div>
+
+    <div class="kicker" style="margin-top:3rem">A Message From the Founder</div>
+    <blockquote class="founder">
+      <p>I started learning because I wanted to understand something I knew very little about.</p>
+      <p>Along the way, I discovered that learning requires patience, discipline, and the courage to admit when you are wrong.</p>
+      <p>I made mistakes. I asked questions. I kept practicing.</p>
+      <p>Eventually, I realized that the knowledge I was gaining could help someone else. That became the purpose of this university.</p>
+      <p>I don't want this knowledge to stop with me. I want the next student to learn from our experiences, improve upon our work, and pass that knowledge forward.</p>
+      <p>If you become a better student, a more disciplined trader, or a more thoughtful decision-maker because of something you learned here, then this university has fulfilled its purpose.</p>
+      <p><em>Knowledge is the legacy.</em></p>
+      <div class="sig">— <strong>Founder, MNQ Scalp Stacks</strong></div>
+    </blockquote>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================= PLEDGE ================= -->
+<section class="block">
+  <div class="wrap">
+    <div class="kicker" style="text-align:center">Part III — Our University Pledge</div>
+    <h2 class="stitle serif" style="text-align:center">Before You <em>Begin</em></h2>
+    <p style="text-align:center;max-width:60ch;margin:0 auto 1rem">Before beginning their education, every student encounters this pledge:</p>
+    <div class="pledge">
+      <h3>The M&amp;Q University Student Pledge</h3>
+      <p>I commit to learning before risking.<br>
+      I will respect the markets and understand that losses are part of trading.<br>
+      I will practice patience instead of chasing opportunities.<br>
+      I will protect my capital through responsible risk management.<br>
+      I will measure my progress through discipline, preparation, and improvement.<br>
+      I will never confuse luck with skill.<br>
+      And when I gain knowledge, I will remember those who helped me learn.</p>
+      <div class="amen">Knowledge is the legacy</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="ident">M&amp;Q University · An Educational Initiative of MNQ Scalp Stacks</div>
+  <p class="final">"The greatest trade we will ever make is exchanging what we have learned for the opportunity to help someone else succeed."</p>
+  <div class="tiny"><b>Knowledge is the legacy.</b> &nbsp;·&nbsp; Education · Discipline · Practice · Community</div>
+</footer>
+
+</body>
+</html>
