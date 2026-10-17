@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 2: Candlestick Structure &amp; Price Action — M&amp;Q University Phase I</title>
+<meta name="description" content="Phase I Module 2: how to read candlestick charts — bodies, wicks, timeframes, and the honest limits of candle reading. Free education from M&Q University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1428;--navy2:#0E1B33;--gold:#C9A227;--gold-lt:#E8C15A;--parch:#EDE6D6;--muted:#93A0B8;--line:rgba(201,162,39,.28)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--parch);line-height:1.8;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+::selection{background:var(--gold);color:var(--navy)}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.85rem}
+.topnav a{color:var(--gold-lt);text-decoration:none;letter-spacing:.06em}
+.topnav a:hover{color:var(--gold)}
+.topnav .crumb{color:var(--muted)}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+header.hero{padding:4rem 1.5rem 3rem;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(201,162,39,.14),transparent 60%),var(--navy)}
+.kicker{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.4rem}
+header.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:500;line-height:1.12;color:var(--parch);max-width:20ch;margin:0 auto}
+header.hero h1 em{color:var(--gold-lt);font-style:italic}
+section.block{padding:2.6rem 0}
+.block h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--parch);margin-bottom:1.2rem}
+.block h3{font-size:1.35rem;font-weight:600;color:var(--gold-lt);margin:2rem 0 .8rem}
+.block p{margin-bottom:1.1rem;color:#d8d0bc}
+.block ul,.block ol{margin:0 0 1.2rem 1.4rem;color:#d8d0bc}
+.block li{margin-bottom:.55rem}
+.block strong{color:var(--parch);font-weight:600}
+.objbox{background:var(--navy2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:1.6rem;margin:0 0 1rem}
+.objbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem}
+.objbox p{margin:0;color:var(--parch);font-size:1.05rem}
+.exbox{background:var(--navy2);border:1px dashed rgba(201,162,39,.5);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.exbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+.exbox .illus{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1rem}
+.exbox .candlediagram{font-family:ui-monospace,Menlo,Consolas,monospace;background:rgba(0,0,0,.35);border-radius:8px;padding:1.2rem;margin:1rem 0;font-size:.85rem;line-height:1.5;color:var(--parch);white-space:pre}
+.practice{background:rgba(201,162,39,.05);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.practice ol{margin-left:1.3rem}
+.practice li{margin-bottom:.8rem}
+details{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:8px;padding:1rem 1.2rem;margin-bottom:.8rem}
+details summary{cursor:pointer;font-weight:500;color:var(--parch)}
+details summary:hover{color:var(--gold-lt)}
+details p{margin:.8rem 0 0;color:#d8d0bc}
+details p strong{color:var(--gold-lt)}
+.riskbox{border:1px solid rgba(201,162,39,.45);border-radius:12px;padding:1.8rem;margin:2.4rem 0;background:linear-gradient(180deg,rgba(201,162,39,.08),transparent 60%),var(--navy2);text-align:center}
+.riskbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.9rem}
+.riskbox p{margin:0 0 .8rem;color:var(--parch)}
+.riskbox p:last-child{margin:0}
+.modnav{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 1rem;flex-wrap:wrap}
+.modnav a{flex:1;min-width:200px;background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.4rem;text-decoration:none;color:var(--parch)}
+.modnav a:hover{border-color:var(--gold)}
+.modnav .dir{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:.4rem}
+.modnav .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem}
+footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+footer b{color:var(--gold)}
+hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear-gradient(90deg,transparent,var(--line),transparent)}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html">← Phase I Hub</a>
+  <span class="crumb">M&amp;Q University · Phase I</span>
+  <a href="../index.html">University Home →</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Phase I — Market Foundations · Module 2 of 8</div>
+    <h1 class="serif">Candlestick Structure <em>&amp; Price Action</em></h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="block">
+  <div class="objbox">
+    <div class="lbl">Learning Objective</div>
+    <p>By the end of this module, you can read a candlestick chart with confidence: open, high, low, close; body versus wick; what the color tells you; how the timeframe changes the picture; and the basic stories candles tell — momentum, indecision, rejection — without memorizing a single pattern name.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Explanation</h2>
+
+  <h3 class="serif">Candles are footprints</h3>
+  <p>Every candlestick is one complete battle between buyers and sellers, fought over one fixed period of time — one minute, five minutes, one day. The candle does not tell you who will win the next battle. It tells you, honestly and completely, who won <em>this</em> one and how hard they had to fight. A chart is a long trail of these footprints. Your job as a student is to learn to read the trail.</p>
+
+  <h3 class="serif">Anatomy of a candle</h3>
+  <p>Each candle records four prices: the <strong>open</strong> (where the period began), the <strong>high</strong> (the farthest buyers pushed), the <strong>low</strong> (the farthest sellers pushed), and the <strong>close</strong> (where the period ended — the price that mattered most).</p>
+  <ul>
+    <li><strong>The body</strong> stretches from open to close. A long body means one side dominated the period — conviction. A short body means the period ended roughly where it began — a draw.</li>
+    <li><strong>The wicks</strong> (sometimes called shadows) stretch from the body to the high and the low. They show the full journey — every extreme that was visited, even briefly, before the close.</li>
+    <li><strong>The color</strong> tells you the direction: green (or hollow/white on some charts) means the close was above the open — buyers won the period. Red (or filled/black) means the close was below the open — sellers won it.</li>
+  </ul>
+  <div class="exbox" style="border-style:solid">
+    <div class="candlediagram">        │  ← upper wick: buyers pushed this high
+        │
+   ┌─────────┐
+   │         │  ← body: open → close
+   │  GREEN  │     (close above open)
+   │         │
+   └─────────┘
+        │
+        │  ← lower wick: sellers pushed this low</div>
+  </div>
+
+  <h3 class="serif">Reading the story: three basic characters</h3>
+  <p>You do not need fifty pattern names. Nearly every candle you will ever see is telling one of three stories:</p>
+  <ul>
+    <li><strong>Momentum</strong> — a long body with small wicks. One side took control early and never let go. The market moved with purpose this period.</li>
+    <li><strong>Rejection</strong> — a long wick on one side with a small body near the other end. Price traveled far in one direction and was pushed back. Something — buyers, sellers, or both — said "not here."</li>
+    <li><strong>Indecision</strong> — a tiny body with wicks on both sides. Buyers and sellers fought to a standstill. The market is thinking, and thinking markets often move sideways until they decide.</li>
+  </ul>
+  <p>Learn to see these three characters at a glance and you have learned more than most pattern-memorizers ever will.</p>
+
+  <h3 class="serif">Timeframes: same market, different zoom</h3>
+  <p>A 1-minute chart and a 15-minute chart of the same session show the <em>same</em> market — but the 1-minute chart looks frantic and the 15-minute chart looks calm. Neither is lying; they are just different zooms. Beginners should pick <strong>one</strong> timeframe and live with it for weeks until it feels familiar. Switching timeframes every time you get bored is like changing the magnification on a microscope mid-experiment: you stop seeing clearly and start seeing whatever you want to see.</p>
+
+  <h3 class="serif">Context beats shapes — and the honest limit</h3>
+  <p>Here is the most important sentence in this module: <strong>a candle means nothing by itself.</strong> A long green momentum candle in the middle of nowhere is just noise. The same candle bouncing off a well-tested support zone, after a pullback in an uptrend, is a story with context. Always ask <em>"where are we?"</em> before asking <em>"what is this candle?"</em> — near support, after a long run, in the middle of a range?</p>
+  <p>And the honest limit, which this university will never hide from you: candlesticks describe the <strong>past</strong>. They do not predict the future. No candle, and no combination of candles, "works" on its own. They are a language for reading what happened — fluency helps you think clearly, but thinking clearly is not the same as knowing what comes next. <strong>We do not promise profits</strong>, and anyone who sells you a candle pattern as a guarantee is selling you something we will never sell.</p>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Worked Example</h2>
+  <div class="exbox">
+    <div class="lbl">Worked Example — Reading Two Candles</div>
+    <p><strong>Candle A</strong> (5-minute MNQ): open 18,400.00 · high 18,412.50 · low 18,398.25 · close 18,409.00.</p>
+    <p>Read it piece by piece. The body runs from 18,400 to 18,409 — buyers won the period by 9 points. The upper wick is only 3.50 points (18,409 → 18,412.50) and the lower wick is 1.75 points — small wicks, long body, green. <strong>Story: momentum.</strong> Buyers controlled this five minutes and closed near the highs.</p>
+    <p><strong>Candle B</strong> (the very next candle): open 18,409.00 · high 18,410.00 · low 18,396.00 · close 18,398.00.</p>
+    <p>Now sellers won by 11 points, with a long lower wick (18,398 → 18,396 is the close near the low; the body is 11 points red). <strong>Story: momentum again — but for the sellers.</strong></p>
+    <p><strong>The lesson:</strong> two candles, two opposite stories, back to back. One candle is a paragraph, not the whole book. Students who trade every green candle — chasing — get chopped up by the very next red one. <em>We don't chase burning candles.</em> We read the whole page first.</p>
+    <div class="illus">All prices in this example are illustrative teaching numbers, not market data or promises of any outcome.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Practice Exercise</h2>
+  <div class="practice">
+    <ol>
+      <li><strong>Label ten candles.</strong> Open any MNQ chart. For ten consecutive candles, identify the body, the upper wick, the lower wick, and the direction. Say each one out loud: "green, long body, small wicks — momentum for buyers."</li>
+      <li><strong>Find the characters.</strong> Locate one clear rejection candle (long wick, small body) and one clear indecision candle (tiny body, wicks both sides). Write one sentence for each describing what the "story" might have been.</li>
+      <li><strong>Change the zoom.</strong> Look at the same trading session on a 1-minute chart and then a 15-minute chart. Write three sentences about how the market's "personality" seems to change — and remind yourself it is the same market.</li>
+      <li><strong>Do the math.</strong> Pick one 15-minute candle. Compute its full range (high minus low) in points, then convert to MNQ dollars at $2 per point (illustrative). This keeps your Module 1 math sharp.</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Knowledge Check</h2>
+  <details><summary>1. What four prices does every candlestick record, and which matters most?</summary><p><strong>Answer:</strong> Open, high, low, and close. The close matters most because it is the final verdict of the period — where the battle actually ended after all the pushing back and forth shown by the wicks.</p></details>
+  <details><summary>2. What is the difference between a candle's body and its wicks?</summary><p><strong>Answer:</strong> The body spans open to close and shows who won and by how much (conviction). The wicks span the body's ends to the high and low, showing the full journey — extremes that were visited but not held.</p></details>
+  <details><summary>3. What does a very long upper wick with a small body near the low suggest?</summary><p><strong>Answer:</strong> Rejection: buyers pushed price much higher during the period but were pushed back, and sellers closed the period near the lows. It suggests selling pressure overcame buying pressure <em>this period</em> — a description of the past, not a prediction.</p></details>
+  <details><summary>4. Why does the same session look frantic on a 1-minute chart and calm on a 15-minute chart?</summary><p><strong>Answer:</strong> They are different zooms of the same market. The 1-minute chart shows every small skirmish; the 15-minute chart compresses them into fewer, smoother candles. Neither is truer — which is why beginners should master one timeframe before adding others.</p></details>
+  <details><summary>5. A friend says a certain candle pattern "always works." What is the honest answer?</summary><p><strong>Answer:</strong> No candle or pattern always works. Candles describe the past; context (where the candle appears) matters more than shape; and nothing in trading is guaranteed. Anyone promising certainty from a pattern is someone to walk away from.</p></details>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <div class="riskbox">
+    <div class="lbl">Risk Reminder</div>
+    <p>Reading candles well makes you a better <em>observer</em> — not a profitable trader. Observation is a skill; profit is an outcome, and outcomes are never promised.</p>
+    <p><strong>We do not promise profits.</strong> Practice reading charts in simulation, journal what you see, and let fluency grow before you ever consider risking real capital. Patience here is not wasted time — it is the tuition you don't have to pay the market.</p>
+  </div>
+
+  <div class="modnav">
+    <a href="module-1-futures-fundamentals.html"><span class="dir">← Previous</span><span class="t serif">Module 1: Futures Fundamentals</span></a>
+    <a href="module-3-ema.html"><span class="dir">Next →</span><span class="t serif">Module 3: EMA 9, EMA 21 &amp; EMA 200</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <b>M&amp;Q University</b> · Knowledge Is the Legacy<br><br>
+  An educational initiative of MNQ Scalp Stacks · Education · Discipline · Practice · Community
+</footer>
+</body>
+</html>

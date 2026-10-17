@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 8: Simulation Practice &amp; Quizzes — M&amp;Q University Phase I</title>
+<meta name="description" content="Phase I Module 8: structured paper-trading routines, the trade journal template, and a self-grading checklist. Simulation only — no real-money steps. Free education from M&Q University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1428;--navy2:#0E1B33;--gold:#C9A227;--gold-lt:#E8C15A;--parch:#EDE6D6;--muted:#93A0B8;--line:rgba(201,162,39,.28)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--parch);line-height:1.8;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+::selection{background:var(--gold);color:var(--navy)}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.85rem}
+.topnav a{color:var(--gold-lt);text-decoration:none;letter-spacing:.06em}
+.topnav a:hover{color:var(--gold)}
+.topnav .crumb{color:var(--muted)}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+header.hero{padding:4rem 1.5rem 3rem;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(201,162,39,.14),transparent 60%),var(--navy)}
+.kicker{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.4rem}
+header.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:500;line-height:1.12;color:var(--parch);max-width:20ch;margin:0 auto}
+header.hero h1 em{color:var(--gold-lt);font-style:italic}
+section.block{padding:2.6rem 0}
+.block h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--parch);margin-bottom:1.2rem}
+.block h3{font-size:1.35rem;font-weight:600;color:var(--gold-lt);margin:2rem 0 .8rem}
+.block p{margin-bottom:1.1rem;color:#d8d0bc}
+.block ul,.block ol{margin:0 0 1.2rem 1.4rem;color:#d8d0bc}
+.block li{margin-bottom:.55rem}
+.block strong{color:var(--parch);font-weight:600}
+.objbox{background:var(--navy2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:1.6rem;margin:0 0 1rem}
+.objbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem}
+.objbox p{margin:0;color:var(--parch);font-size:1.05rem}
+.exbox{background:var(--navy2);border:1px dashed rgba(201,162,39,.5);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.exbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+.exbox .illus{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1rem}
+.exbox table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.92rem}
+.exbox th,.exbox td{border:1px solid rgba(201,162,39,.25);padding:.6rem .7rem;text-align:left;vertical-align:top}
+.exbox th{color:var(--gold-lt);font-weight:600;background:rgba(201,162,39,.06)}
+.practice{background:rgba(201,162,39,.05);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.practice ol{margin-left:1.3rem}
+.practice li{margin-bottom:.8rem}
+details{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:8px;padding:1rem 1.2rem;margin-bottom:.8rem}
+details summary{cursor:pointer;font-weight:500;color:var(--parch)}
+details summary:hover{color:var(--gold-lt)}
+details p{margin:.8rem 0 0;color:#d8d0bc}
+details p strong{color:var(--gold-lt)}
+.riskbox{border:1px solid rgba(201,162,39,.45);border-radius:12px;padding:1.8rem;margin:2.4rem 0;background:linear-gradient(180deg,rgba(201,162,39,.08),transparent 60%),var(--navy2);text-align:center}
+.riskbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.9rem}
+.riskbox p{margin:0 0 .8rem;color:var(--parch)}
+.riskbox p:last-child{margin:0}
+.checklist{background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.checklist .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1rem}
+.checklist li{list-style:none;margin-bottom:.7rem;padding-left:1.8rem;position:relative}
+.checklist ul{margin:0}
+.checklist li::before{content:"☐";position:absolute;left:0;color:var(--gold-lt)}
+.modnav{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 1rem;flex-wrap:wrap}
+.modnav a{flex:1;min-width:200px;background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.4rem;text-decoration:none;color:var(--parch)}
+.modnav a:hover{border-color:var(--gold)}
+.modnav .dir{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:.4rem}
+.modnav .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem}
+footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+footer b{color:var(--gold)}
+hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear-gradient(90deg,transparent,var(--line),transparent)}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html">← Phase I Hub</a>
+  <span class="crumb">M&amp;Q University · Phase I</span>
+  <a href="../index.html">University Home →</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Phase I — Market Foundations · Module 8 of 8</div>
+    <h1 class="serif">Simulation Practice <em>&amp; Quizzes</em></h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="block">
+  <div class="objbox">
+    <div class="lbl">Learning Objective</div>
+    <p>By the end of this module, you can run a structured paper-trading practice routine, keep a complete trade journal — date, setup, entry, stop, target, outcome, lesson — and self-grade a practice week with a checklist. This module contains <strong>zero real-money steps</strong>: simulation only, from first page to last.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Explanation</h2>
+
+  <h3 class="serif">The laboratory</h3>
+  <p>Everything you learned in Modules 1–7 was theory. <strong>Simulation — paper trading — is where theory becomes skill.</strong> A simulator lets you practice entries, stops, targets, and position sizing with zero dollars at risk. Every mistake costs you nothing but teaches you everything, <em>if</em> you record it honestly. That "if" is the whole module: unstructured practice builds habits, but only <em>structured</em> practice builds skill.</p>
+  <p>Use any free paper-trading simulator or chart replay tool. The platform doesn't matter — the routine does.</p>
+
+  <h3 class="serif">The practice routine</h3>
+  <p>Every practice session follows the same shape. Same shape, every time — routine is what turns repetition into learning:</p>
+  <ol>
+    <li><strong>Set the session.</strong> Pick one market (MNQ), one chart, one timeframe. Decide the day's <em>focus</em> — one skill, e.g., "mark structure before anything else" or "wait for the retest, no chasing."</li>
+    <li><strong>Warm up.</strong> Run your pre-session routine from Module 7: review your rules, set paper risk limits, define your "done" conditions.</li>
+    <li><strong>Paper-trade a fixed number of setups.</strong> Three is plenty. Quality over quantity — the simulator will still be there tomorrow.</li>
+    <li><strong>Journal every setup immediately.</strong> Not later, not "from memory tonight." Immediately, while the reasons are fresh.</li>
+    <li><strong>Stop at "done."</strong> Session ends when your pre-defined conditions are met — setups completed, time elapsed, or paper loss limit reached. Done is done.</li>
+  </ol>
+
+  <h3 class="serif">The journal: where learning compounds</h3>
+  <p>A journal is not a diary of feelings. It is a <strong>dataset about yourself</strong> — and datasets only work when every row has the same columns. Every paper trade gets one row with these seven columns:</p>
+  <ul>
+    <li><strong>Date</strong> — when it happened.</li>
+    <li><strong>Setup</strong> — the name of the idea in your own words ("retest of 18,600 zone," "VWAP cross with RSI stretched").</li>
+    <li><strong>Entry</strong> — the price you entered (paper).</li>
+    <li><strong>Stop</strong> — where the idea was proven wrong (chosen <em>before</em> the entry, per Module 6).</li>
+    <li><strong>Target</strong> — where you planned to exit with a gain.</li>
+    <li><strong>Outcome</strong> — the result in points (and paper dollars if you like the math practice).</li>
+    <li><strong>Lesson</strong> — one sentence. What did this trade teach you? ("Waiting for the retest kept me out of the chop." "I moved my stop — that was quitting the plan.")</li>
+  </ul>
+  <p>Plus one honest yes/no column the pros consider the most important of all: <strong>Followed plan?</strong> After twenty rows, sort by that column. The pattern in <em>your behavior</em> will teach you more than any pattern in the market ever could.</p>
+
+  <h3 class="serif">Review cadence</h3>
+  <ul>
+    <li><strong>End of day — 10 minutes.</strong> Read today's rows. Circle your best decision and your worst impulse. Write tomorrow's single focus.</li>
+    <li><strong>End of week — 30 minutes.</strong> Read the whole week. List your three most repeated behaviors — good <em>and</em> bad. Pick <em>one</em> habit to fix next week. Just one; students who try to fix everything fix nothing.</li>
+  </ul>
+
+  <h3 class="serif">The self-grading checklist</h3>
+  <p>Each week, grade yourself honestly — this is a quiz you cannot cheat, because the only student you're grading is you:</p>
+  <div class="checklist">
+    <div class="lbl">Weekly Self-Grade</div>
+    <ul>
+      <li><strong>Rules followed:</strong> I followed my written plan on every paper trade (count the "No" rows — fewer is better).</li>
+      <li><strong>Risk respected:</strong> every stop was chosen before entry; position sizes matched the formula; no stop was ever moved on hope.</li>
+      <li><strong>Journal complete:</strong> every setup journaled immediately, all seven columns filled, lesson sentence written.</li>
+      <li><strong>Emotions noted:</strong> I wrote down what I felt before/during/after — especially impatience, fear, and overconfidence.</li>
+      <li><strong>Lessons extracted:</strong> my weekly review names one repeated behavior and one habit to fix next week.</li>
+    </ul>
+  </div>
+
+  <h3 class="serif">Graduation: what "done" means</h3>
+  <p>Phase I graduation is not a profit target — <strong>we do not promise profits, and we do not measure students by them.</strong> The standard is <em>consistency of process</em>: <strong>20+ journaled paper trades</strong> with honest "followed plan?" answers, weekly reviews completed, and a checklist you can defend out loud. When your journal shows you follow your rules even on losing days, you have built the foundation everything else stands on.</p>
+  <p>What comes next: Phase II deepens the tools — volume, advanced structure, and the beginnings of strategy thinking. Your job between now and then is practice, journaling, and patience. No real money is discussed, suggested, or needed — not in this module, not in this phase.</p>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Worked Example</h2>
+  <div class="exbox">
+    <div class="lbl">Worked Example — Two Journal Rows</div>
+    <table>
+      <tr><th>Column</th><th>Row 1 — the good process</th><th>Row 2 — the honest failure</th></tr>
+      <tr><td><strong>Date</strong></td><td>2026-10-20</td><td>2026-10-21</td></tr>
+      <tr><td><strong>Setup</strong></td><td>Retest of 18,600 zone</td><td>Breakout chase, no zone marked</td></tr>
+      <tr><td><strong>Entry</strong></td><td>18,602</td><td>18,655</td></tr>
+      <tr><td><strong>Stop</strong></td><td>18,592 (10 pts = $20 paper risk, 1 MNQ)</td><td>18,640 (15 pts — chosen after entry)</td></tr>
+      <tr><td><strong>Target</strong></td><td>18,622</td><td>18,680 ("felt right")</td></tr>
+      <tr><td><strong>Outcome</strong></td><td>+12 pts paper</td><td>−15 pts paper</td></tr>
+      <tr><td><strong>Followed plan?</strong></td><td><strong>Yes</strong></td><td><strong>No</strong> — entered on FOMO, stop placed late</td></tr>
+      <tr><td><strong>Lesson</strong></td><td>"Waiting for the retest kept me out of the chop."</td><td>"The stop is the plan; placing it late is quitting the plan."</td></tr>
+    </table>
+    <p><strong>The lesson:</strong> Row 2's failure is worth more than Row 1's success — because it was <em>written down honestly</em>. A journal that only records wins is a scrapbook. A journal that records the truth is an education. Notice that both rows teach; only the honest one compounds.</p>
+    <div class="illus">All dates, prices, and figures are illustrative teaching numbers from a fictional paper-trading session — not market data or promises of any outcome.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Practice Exercise</h2>
+  <div class="practice">
+    <ol>
+      <li><strong>Build your journal.</strong> On paper or in a spreadsheet, create the seven columns: date, setup, entry, stop, target, outcome, lesson — plus the "followed plan?" yes/no column. This is now your most important trading tool.</li>
+      <li><strong>Paper-trade five sessions.</strong> Maximum three setups per session, journaling each one immediately. No session runs past your pre-defined "done" conditions.</li>
+      <li><strong>Do one weekly review.</strong> Read all five sessions. List your three most repeated behaviors — good and bad. Choose one habit to fix next week.</li>
+      <li><strong>Grade yourself.</strong> Run the weekly self-grading checklist honestly. Write your scores down and keep them — in a month, you'll have a graph of your discipline, which is the only equity curve that matters in Phase I.</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Knowledge Check</h2>
+  <details><summary>1. What are the seven journal columns, and why must every row use the same ones?</summary><p><strong>Answer:</strong> Date, setup, entry, stop, target, outcome, lesson (plus "followed plan?" yes/no). Identical columns turn the journal into a dataset about your behavior — you can only find patterns in your habits if every row is recorded the same way.</p></details>
+  <details><summary>2. Why does simulation come before anything involving real money?</summary><p><strong>Answer:</strong> Because simulation is the laboratory: it lets you test every concept from Modules 1–7 — entries, stops, sizing, discipline — with zero dollars at risk. Mistakes in simulation cost nothing and teach everything; the same mistakes with real capital can end the education permanently. (Our principle: Practice Before Performance.)</p></details>
+  <details><summary>3. What is the review cadence, and what does each review produce?</summary><p><strong>Answer:</strong> 10 minutes at end of day (circle best decision and worst impulse; set tomorrow's focus) and 30 minutes at end of week (list three most repeated behaviors; choose one habit to fix). Reviews convert raw journal rows into actual learning.</p></details>
+  <details><summary>4. What does the weekly self-grading checklist measure?</summary><p><strong>Answer:</strong> Process, not profit: rules followed, risk respected (stops before entries, formula sizing, no moved stops), journal completeness, emotions noted, and lessons extracted. It's a quiz on discipline — the only subject Phase I grades.</p></details>
+  <details><summary>5. What does "graduation" from Phase I mean?</summary><p><strong>Answer:</strong> Consistency of process — 20+ honestly journaled paper trades, completed weekly reviews, and a checklist you can defend — not profit. We do not promise profits and we do not measure students by them; graduation means your journal proves you follow your rules even on losing days.</p></details>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <div class="riskbox">
+    <div class="lbl">Risk Reminder</div>
+    <p>Simulation success predicts nothing about real-money results — emotions change when dollars are real, which is exactly why the journal and the discipline come first.</p>
+    <p><strong>We do not promise profits.</strong> There are no real-money steps in this module, this phase, or this university's foundations. If anyone ever tells you you're "ready" because your simulator looks good, remember: readiness is a process you demonstrate for months, not a feeling you get from a green week.</p>
+  </div>
+
+  <div class="modnav">
+    <a href="module-7-psychology.html"><span class="dir">← Previous</span><span class="t serif">Module 7: Trading Psychology &amp; Discipline</span></a>
+    <a href="index.html"><span class="dir">Next →</span><span class="t serif">Phase I Hub — Review &amp; What's Next</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <b>M&amp;Q University</b> · Knowledge Is the Legacy<br><br>
+  An educational initiative of MNQ Scalp Stacks · Education · Discipline · Practice · Community
+</footer>
+</body>
+</html>

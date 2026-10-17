@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 1: Futures Fundamentals — M&Q University Phase I</title>
+<meta name="description" content="Phase I Module 1: what a futures contract is, ES, MES, NQ, MNQ point values, ticks, and expiration — free education from M&Q University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1428;--navy2:#0E1B33;--gold:#C9A227;--gold-lt:#E8C15A;--parch:#EDE6D6;--muted:#93A0B8;--line:rgba(201,162,39,.28)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--parch);line-height:1.8;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+::selection{background:var(--gold);color:var(--navy)}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.85rem}
+.topnav a{color:var(--gold-lt);text-decoration:none;letter-spacing:.06em}
+.topnav a:hover{color:var(--gold)}
+.topnav .crumb{color:var(--muted)}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+header.hero{padding:4rem 1.5rem 3rem;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(201,162,39,.14),transparent 60%),var(--navy)}
+.kicker{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.4rem}
+header.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:500;line-height:1.12;color:var(--parch);max-width:20ch;margin:0 auto}
+header.hero h1 em{color:var(--gold-lt);font-style:italic}
+section.block{padding:2.6rem 0}
+.block h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--parch);margin-bottom:1.2rem}
+.block h3{font-size:1.35rem;font-weight:600;color:var(--gold-lt);margin:2rem 0 .8rem}
+.block p{margin-bottom:1.1rem;color:#d8d0bc}
+.block ul,.block ol{margin:0 0 1.2rem 1.4rem;color:#d8d0bc}
+.block li{margin-bottom:.55rem}
+.block strong{color:var(--parch);font-weight:600}
+.objbox{background:var(--navy2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:1.6rem 1.6rem;margin:0 0 1rem}
+.objbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem}
+.objbox p{margin:0;color:var(--parch);font-size:1.05rem}
+.exbox{background:var(--navy2);border:1px dashed rgba(201,162,39,.5);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.exbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+.exbox .illus{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1rem}
+.exbox table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.exbox th,.exbox td{border:1px solid rgba(201,162,39,.25);padding:.6rem .7rem;text-align:left}
+.exbox th{color:var(--gold-lt);font-weight:600;background:rgba(201,162,39,.06)}
+.practice{background:rgba(201,162,39,.05);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.practice ol{margin-left:1.3rem}
+.practice li{margin-bottom:.8rem}
+details{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:8px;padding:1rem 1.2rem;margin-bottom:.8rem}
+details summary{cursor:pointer;font-weight:500;color:var(--parch)}
+details summary:hover{color:var(--gold-lt)}
+details p{margin:.8rem 0 0;color:#d8d0bc}
+details p strong{color:var(--gold-lt)}
+.riskbox{border:1px solid rgba(201,162,39,.45);border-radius:12px;padding:1.8rem;margin:2.4rem 0;background:linear-gradient(180deg,rgba(201,162,39,.08),transparent 60%),var(--navy2);text-align:center}
+.riskbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.9rem}
+.riskbox p{margin:0 0 .8rem;color:var(--parch)}
+.riskbox p:last-child{margin:0}
+.modnav{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 1rem;flex-wrap:wrap}
+.modnav a{flex:1;min-width:200px;background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.4rem;text-decoration:none;color:var(--parch)}
+.modnav a:hover{border-color:var(--gold)}
+.modnav .dir{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:.4rem}
+.modnav .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem}
+footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+footer b{color:var(--gold)}
+hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear-gradient(90deg,transparent,var(--line),transparent)}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html">← Phase I Hub</a>
+  <span class="crumb">M&amp;Q University · Phase I</span>
+  <a href="../index.html">University Home →</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Phase I — Market Foundations · Module 1 of 8</div>
+    <h1 class="serif">Futures Fundamentals: <em>ES &amp; MNQ</em></h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="block">
+  <div class="objbox">
+    <div class="lbl">Learning Objective</div>
+    <p>By the end of this module, you can explain in your own words what a futures contract is, name the four index contracts we study (ES, MES, NQ, MNQ) with their dollar-per-point values and tick sizes, describe quarterly expiration codes, and say why a beginner practices on a micro contract instead of a full-size one.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Explanation</h2>
+
+  <h3 class="serif">A futures contract is a promise — not a stock</h3>
+  <p>When you buy a share of stock, you own a piece of a company. A <strong>futures contract</strong> is different: it is a standardized agreement to buy or sell something at a set price on a future date. You are not buying a company. You are entering a contract that gains or loses value as the underlying index moves.</p>
+  <p>Think of it like a bet placed with very formal rules: the contract says "the S&amp;P 500 index, at this price, on this date." As the index moves, the value of your contract moves with it — up if you are long (expecting higher prices), down if you are short (expecting lower prices). When you close the contract, you settle the difference. That is the whole game, and understanding it honestly matters more than any chart pattern you will ever learn.</p>
+
+  <h3 class="serif">The four contracts we study</h3>
+  <p>Our university studies four stock-index futures. They are really two markets, each in two sizes:</p>
+  <ul>
+    <li><strong>ES — E-mini S&amp;P 500.</strong> Tracks the S&amp;P 500 index. Worth <strong>$50 per point</strong> of index movement.</li>
+    <li><strong>MES — Micro E-mini S&amp;P 500.</strong> The same market as ES, at one-tenth the size: <strong>$5 per point</strong>.</li>
+    <li><strong>NQ — E-mini Nasdaq-100.</strong> Tracks the Nasdaq-100 index. Worth <strong>$20 per point</strong>.</li>
+    <li><strong>MNQ — Micro E-mini Nasdaq-100.</strong> The same market as NQ, at one-tenth the size: <strong>$2 per point</strong>.</li>
+  </ul>
+  <p>The Nasdaq-100 tends to move more points per day than the S&amp;P 500 — it is a faster, livelier market. That is why this university centers on <strong>MNQ</strong>: it gives you the liveliness of the Nasdaq-100 at $2 a point, a scale where a beginner can actually afford to learn.</p>
+
+  <h3 class="serif">Ticks: the smallest step</h3>
+  <p>All four contracts move in <strong>0.25-point ticks</strong>. That means the smallest price change you will ever see is one quarter of a point. One tick is therefore worth:</p>
+  <ul>
+    <li>ES: 0.25 × $50 = <strong>$12.50 per tick</strong></li>
+    <li>MES: 0.25 × $5 = <strong>$1.25 per tick</strong></li>
+    <li>NQ: 0.25 × $20 = <strong>$5.00 per tick</strong></li>
+    <li>MNQ: 0.25 × $2 = <strong>$0.50 per tick</strong></li>
+  </ul>
+  <p>Notice what this means in practice: on ES, a routine 10-point wiggle is $500. On MNQ, the same 10-point wiggle is $20. <strong>Same market, same lesson, one-tenth the tuition.</strong> That is the entire argument for micros, and it is a strong one.</p>
+
+  <h3 class="serif">Expiration: the quarterly calendar</h3>
+  <p>Futures contracts expire. Index futures expire <strong>quarterly</strong>, in March, June, September, and December, and each month has a one-letter code used around the world:</p>
+  <ul>
+    <li><strong>H</strong> = March &nbsp;·&nbsp; <strong>M</strong> = June &nbsp;·&nbsp; <strong>U</strong> = September &nbsp;·&nbsp; <strong>Z</strong> = December</li>
+  </ul>
+  <p>So "MNQZ26" would mean the Micro Nasdaq-100 contract expiring in December 2026. Traders almost always trade the <strong>front month</strong> — the nearest expiration — because it has the most volume and the tightest, most honest pricing. As expiration approaches, everyone "rolls" their attention to the next contract. For your studies, simply make sure your chart is showing the front month.</p>
+
+  <h3 class="serif">A word about leverage and margin</h3>
+  <p>Futures are leveraged: a small amount of money controls a large position. That leverage is what makes futures powerful — and what makes them dangerous for the unprepared. Your broker requires a <strong>margin</strong> deposit to hold a contract, but margin requirements <strong>change over time</strong> and differ between providers. Never memorize a fixed margin number from a course, a video, or this page. <strong>Always check the current requirements with your own data or platform provider.</strong> Memorizing an old number is one of the quiet ways beginners get surprised.</p>
+  <p>Leverage is precisely why this university puts risk management (Module 6) and discipline (Module 7) in your foundation before anything else. Speed without brakes is not skill. It is just speed.</p>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Worked Example</h2>
+  <div class="exbox">
+    <div class="lbl">Worked Example — Point Values in Action</div>
+    <p>Imagine MNQ rises <strong>10 points</strong> during a morning session (for instance, from 18,400 to 18,410). For one MNQ contract, that move is worth:</p>
+    <p style="font-size:1.25rem" class="serif">10 points × $2/point = <strong>$20</strong></p>
+    <p>Now imagine the <em>same</em> 10-point move happened on ES instead:</p>
+    <p style="font-size:1.25rem" class="serif">10 points × $50/point = <strong>$500</strong></p>
+    <table>
+      <tr><th>Contract</th><th>Per point</th><th>10-point move</th><th>40-tick move</th></tr>
+      <tr><td>MNQ</td><td>$2</td><td>$20</td><td>$20</td></tr>
+      <tr><td>MES</td><td>$5</td><td>$50</td><td>$50</td></tr>
+      <tr><td>NQ</td><td>$20</td><td>$200</td><td>$200</td></tr>
+      <tr><td>ES</td><td>$50</td><td>$500</td><td>$500</td></tr>
+    </table>
+    <p><strong>The lesson:</strong> point value is the volume knob on risk. The micros let you study the exact same markets — the same charts, the same behavior — at a speed where mistakes are lessons instead of disasters. We do not promise profits at any size; we do promise that learning at micro size costs you less while you learn.</p>
+    <div class="illus">All prices and dollar figures in this example are illustrative teaching numbers, not market data or promises of any outcome.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Practice Exercise</h2>
+  <div class="practice">
+    <ol>
+      <li><strong>Memory drill.</strong> On paper, from memory, write the four contracts, what each tracks, and its dollar-per-point value. Check yourself against this module. Repeat tomorrow until it is automatic.</li>
+      <li><strong>Read a symbol.</strong> Open a free charting website, pull up MNQ, and read the full contract symbol. Identify the expiration letter (H, M, U, or Z) and confirm it is the front month.</li>
+      <li><strong>Hand math.</strong> Compute the dollar value of a 5-point move and a 20-point move on <em>both</em> MNQ and MES. Do it by hand — traders who can do this math in their head stay calmer when markets move.</li>
+      <li><strong>Write your why.</strong> In one paragraph, finish this sentence: "If I ever trade, I will start with micro contracts because…"</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Knowledge Check</h2>
+  <details><summary>1. What is a futures contract, in one sentence?</summary><p><strong>Answer:</strong> A standardized agreement to buy or sell an underlying index at a set price on a future date — a contract whose value moves with the index, not ownership of a company. Saying it in your own words is what matters; if you can explain it to a friend, you understand it.</p></details>
+  <details><summary>2. What are the dollar-per-point values of ES, MES, NQ, and MNQ?</summary><p><strong>Answer:</strong> ES = $50/point, MES = $5/point, NQ = $20/point, MNQ = $2/point. The micros (MES, MNQ) are each one-tenth of their full-size siblings.</p></details>
+  <details><summary>3. All four contracts move in 0.25-point ticks. What is one tick worth on MNQ and on ES?</summary><p><strong>Answer:</strong> MNQ: 0.25 × $2 = $0.50 per tick. ES: 0.25 × $50 = $12.50 per tick. This is why the same chart pattern costs twenty-five times more to be wrong about on ES.</p></details>
+  <details><summary>4. What do the expiration codes H, M, U, and Z stand for, and which contract should you study?</summary><p><strong>Answer:</strong> H = March, M = June, U = September, Z = December. Study the front month — the nearest expiration — because it carries the most volume and the most honest pricing.</p></details>
+  <details><summary>5. A course tells you the margin requirement for MNQ is a fixed number. Should you trust it?</summary><p><strong>Answer:</strong> No. Margin requirements change over time and differ between providers. Always check the current requirements with your own provider; never trade on a memorized number.</p></details>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <div class="riskbox">
+    <div class="lbl">Risk Reminder</div>
+    <p>Futures trading involves substantial risk of loss. Leverage magnifies both gains and losses.</p>
+    <p><strong>We do not promise profits.</strong> This university teaches understanding first — practice, journaling, and discipline long before any real capital is ever considered. If you are not willing to study for months in simulation, you are not ready, and that is an honest answer worth respecting.</p>
+  </div>
+
+  <div class="modnav">
+    <a href="index.html"><span class="dir">← Back</span><span class="t serif">Phase I Hub</span></a>
+    <a href="module-2-candlesticks.html"><span class="dir">Next →</span><span class="t serif">Module 2: Candlestick Structure &amp; Price Action</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <b>M&amp;Q University</b> · Knowledge Is the Legacy<br><br>
+  An educational initiative of MNQ Scalp Stacks · Education · Discipline · Practice · Community
+</footer>
+</body>
+</html>

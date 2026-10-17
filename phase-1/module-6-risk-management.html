@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 6: Risk Management &amp; Position Sizing — M&amp;Q University Phase I</title>
+<meta name="description" content="Phase I Module 6: risk per trade, position sizing math, why the stop comes before the entry, and the non-negotiable rules. Free education from M&Q University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1428;--navy2:#0E1B33;--gold:#C9A227;--gold-lt:#E8C15A;--parch:#EDE6D6;--muted:#93A0B8;--line:rgba(201,162,39,.28)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--parch);line-height:1.8;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+::selection{background:var(--gold);color:var(--navy)}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.85rem}
+.topnav a{color:var(--gold-lt);text-decoration:none;letter-spacing:.06em}
+.topnav a:hover{color:var(--gold)}
+.topnav .crumb{color:var(--muted)}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+header.hero{padding:4rem 1.5rem 3rem;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(201,162,39,.14),transparent 60%),var(--navy)}
+.kicker{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.4rem}
+header.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:500;line-height:1.12;color:var(--parch);max-width:20ch;margin:0 auto}
+header.hero h1 em{color:var(--gold-lt);font-style:italic}
+section.block{padding:2.6rem 0}
+.block h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--parch);margin-bottom:1.2rem}
+.block h3{font-size:1.35rem;font-weight:600;color:var(--gold-lt);margin:2rem 0 .8rem}
+.block p{margin-bottom:1.1rem;color:#d8d0bc}
+.block ul,.block ol{margin:0 0 1.2rem 1.4rem;color:#d8d0bc}
+.block li{margin-bottom:.55rem}
+.block strong{color:var(--parch);font-weight:600}
+.objbox{background:var(--navy2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:1.6rem;margin:0 0 1rem}
+.objbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem}
+.objbox p{margin:0;color:var(--parch);font-size:1.05rem}
+.exbox{background:var(--navy2);border:1px dashed rgba(201,162,39,.5);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.exbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+.exbox .illus{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1rem}
+.exbox .formula{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.3rem;color:var(--gold-lt);background:rgba(0,0,0,.3);border-radius:8px;padding:1rem 1.2rem;margin:1rem 0;text-align:center}
+.practice{background:rgba(201,162,39,.05);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.practice ol{margin-left:1.3rem}
+.practice li{margin-bottom:.8rem}
+details{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:8px;padding:1rem 1.2rem;margin-bottom:.8rem}
+details summary{cursor:pointer;font-weight:500;color:var(--parch)}
+details summary:hover{color:var(--gold-lt)}
+details p{margin:.8rem 0 0;color:#d8d0bc}
+details p strong{color:var(--gold-lt)}
+.riskbox{border:1px solid rgba(201,162,39,.45);border-radius:12px;padding:1.8rem;margin:2.4rem 0;background:linear-gradient(180deg,rgba(201,162,39,.08),transparent 60%),var(--navy2);text-align:center}
+.riskbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.9rem}
+.riskbox p{margin:0 0 .8rem;color:var(--parch)}
+.riskbox p:last-child{margin:0}
+.nonneg{background:rgba(160,30,30,.08);border:1px solid rgba(200,80,80,.4);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.nonneg .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:#e08a8a;font-weight:600;margin-bottom:1rem}
+.nonneg li{margin-bottom:.6rem}
+.modnav{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 1rem;flex-wrap:wrap}
+.modnav a{flex:1;min-width:200px;background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.4rem;text-decoration:none;color:var(--parch)}
+.modnav a:hover{border-color:var(--gold)}
+.modnav .dir{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:.4rem}
+.modnav .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem}
+footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+footer b{color:var(--gold)}
+hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear-gradient(90deg,transparent,var(--line),transparent)}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html">← Phase I Hub</a>
+  <span class="crumb">M&amp;Q University · Phase I</span>
+  <a href="../index.html">University Home →</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Phase I — Market Foundations · Module 6 of 8</div>
+    <h1 class="serif">Risk Management <em>&amp; Position Sizing</em></h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="block">
+  <div class="objbox">
+    <div class="lbl">Learning Objective</div>
+    <p>By the end of this module, you can define your risk per trade in dollars and as a fraction of an account, compute position size from a stop distance using MNQ's $2-per-point value, explain why the stop is chosen <em>before</em> the entry — and state the non-negotiable rules, including: never risk money needed for living.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Explanation</h2>
+
+  <h3 class="serif">Risk first, always</h3>
+  <p>Every sound trade idea begins with the same question: <strong>"Where am I wrong?"</strong> The answer to that question is your <strong>stop</strong> — the price at which the idea is proven wrong and you exit. Here is the discipline this university drills into every student: <strong>the stop is chosen before the entry, always.</strong> If you cannot point to where you are wrong, you do not have a trade. You have a hope. And <em>we don't gamble on hope</em>.</p>
+  <p>This ordering matters because it reverses the beginner's instinct. Beginners pick an entry, feel excited, and only afterward wonder about the stop — by which point hope is already doing the thinking. Professionals decide the exit first. The stop is not pessimism. It is the plan.</p>
+
+  <h3 class="serif">Risk per trade: your ceiling</h3>
+  <p><strong>Risk per trade</strong> is the maximum you allow yourself to lose on a single idea — stated in dollars, and often as a small fraction of the account. Many educators use an illustrative example of <strong>1% of the account per trade</strong>. Understand what this number is: a <em>ceiling</em>, not a target. You are not trying to lose 1%; you are ensuring that no single idea can ever hurt you badly.</p>
+  <p>Why a small fraction? Because <strong>losing streaks are normal</strong>. Even careful, disciplined processes lose several times in a row — that is the mathematics of uncertainty, not a personal failure. If each loss is a small fraction, a streak is a bad week. If each loss is a large fraction, a streak is the end of the account. Risk management is what lets you survive long enough for your learning to compound. <em>Risk before reward</em> — it is a principle because it is arithmetic.</p>
+
+  <h3 class="serif">Position sizing: the formula</h3>
+  <p>Once you know your risk in dollars and your stop distance in points, the number of contracts is not a guess and not a feeling. It is a formula:</p>
+  <div class="exbox" style="border-style:solid">
+    <div class="formula">contracts = risk dollars ÷ (stop distance in points × dollars per point)</div>
+  </div>
+  <p>On MNQ, dollars per point is $2. So a 25-point stop on one MNQ contract risks 25 × $2 = $50. If your risk ceiling is $50, the formula gives you exactly <strong>one contract</strong>. The math decides the size; your feelings don't get a vote. That is the whole point.</p>
+  <p>This is also the deepest reason micros exist for learners: the same formula, the same market, the same lesson — at one-tenth the size. Position sizing is not about being timid. It is about being <em>exact</em>.</p>
+
+  <h3 class="serif">When the math says no</h3>
+  <p>Sometimes the formula returns a fraction of a contract — meaning the setup needs a wider stop than your risk allows. Beginners hear "no" as a problem to solve by widening their risk. Disciplined students hear "no" as a <strong>complete answer</strong>: skip the idea, or wait for a setup whose stop fits the math. Passing on a trade is not missing out. It is risk management working exactly as designed.</p>
+
+  <div class="nonneg">
+    <div class="lbl">Non-Negotiable Rules</div>
+    <ul>
+      <li><strong>Never trade money needed for living.</strong> Rent, food, bills, and family money are never risk capital. If losing it would change your life, it does not belong in a trading account.</li>
+      <li><strong>Never move a stop because of hope.</strong> The stop is the plan. Moving it when price approaches is quitting the plan at the exact moment the plan matters most.</li>
+      <li><strong>Never revenge trade.</strong> After a loss, the next trade is not "the one that gets it back." There is no such trade. There is only the next independent idea, taken at the right size or not at all.</li>
+      <li><strong>Never trade on memorized margin numbers.</strong> Requirements change. Always check current requirements with your provider.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Worked Example</h2>
+  <div class="exbox">
+    <div class="lbl">Worked Example — Sizing a Trade on MNQ</div>
+    <p><strong>The setup</strong> (illustrative): a student paper-trades with an illustrative account of <strong>$5,000</strong> and a risk ceiling of <strong>1% = $50 per trade</strong>.</p>
+    <p><strong>Case 1:</strong> the idea needs a 25-point stop (the chart structure says the idea is wrong 25 points away).</p>
+    <p class="serif" style="font-size:1.2rem">contracts = $50 ÷ (25 × $2) = $50 ÷ $50 = <strong>1 contract</strong></p>
+    <p>The math fits perfectly: one MNQ contract, $50 of risk, no more.</p>
+    <p><strong>Case 2:</strong> a different idea needs a 50-point stop.</p>
+    <p class="serif" style="font-size:1.2rem">contracts = $50 ÷ (50 × $2) = $50 ÷ $100 = <strong>0.5 contracts</strong></p>
+    <p>Half a contract doesn't exist. The math says <strong>no</strong> — the setup is too big for this risk ceiling. The disciplined student skips it or waits for a tighter setup. "No" is a complete answer, and honoring it is what separates students from gamblers.</p>
+    <div class="illus">Account size, risk percentage, and all figures are illustrative teaching numbers — not recommendations, not market data, and not promises of any outcome.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Practice Exercise</h2>
+  <div class="practice">
+    <ol>
+      <li><strong>Run the formula three times.</strong> With an illustrative $50 risk ceiling, compute position size on MNQ ($2/point) for stop distances of 10, 25, and 40 points. Write each answer by hand.</li>
+      <li><strong>Compare contracts.</strong> Repeat the exercise on MES ($5/point). Notice how the contract counts differ — same math, different volume knob.</li>
+      <li><strong>Write your risk rules.</strong> In your journal, define: your maximum risk per trade, your maximum risk per day, and exactly what you will do after three consecutive losses (hint: the answer involves stepping away, not sizing up).</li>
+      <li><strong>Face the streak.</strong> Journal prompt: "If my stop were hit five times in a row, what would my account look like, and what would I do next?" Answer with numbers and with a plan.</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Knowledge Check</h2>
+  <details><summary>1. What is the position-sizing formula, and what does each part mean?</summary><p><strong>Answer:</strong> contracts = risk dollars ÷ (stop distance in points × dollars per point). Risk dollars is your per-trade ceiling; stop distance is how far the idea can go against you before it's proven wrong; dollars per point is the contract's point value ($2 for MNQ). The formula converts your risk into an exact size.</p></details>
+  <details><summary>2. Why must the stop be chosen before the entry?</summary><p><strong>Answer:</strong> Because "where am I wrong?" is the foundation the whole idea stands on. Choosing the entry first lets excitement and hope do the thinking; choosing the stop first makes the risk exact before any commitment exists. No defined stop means no trade — only a hope.</p></details>
+  <details><summary>3. What is a risk ceiling, and why is it a ceiling rather than a target?</summary><p><strong>Answer:</strong> A risk ceiling (e.g., an illustrative 1% of the account) is the maximum allowed loss on one idea. It's a ceiling because you're not aiming to lose it — you're ensuring no single idea can seriously damage the account, so that normal losing streaks remain survivable.</p></details>
+  <details><summary>4. The formula gives you 0.5 contracts. What do you do?</summary><p><strong>Answer:</strong> You pass. Half a contract doesn't exist, which means the setup's stop is too wide for your risk ceiling. You skip the idea or wait for one that fits the math — "no" is a complete answer and honoring it is discipline.</p></details>
+  <details><summary>5. Name two non-negotiable rules from this module and explain why each exists.</summary><p><strong>Answer:</strong> Any two of: never risk living money (a loss must never change your life); never move a stop on hope (the stop is the plan — moving it is abandoning it under pressure); never revenge trade (no trade "gets back" a loss; each idea stands alone); never trust memorized margin numbers (requirements change — check current figures with your provider).</p></details>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <div class="riskbox">
+    <div class="lbl">Risk Reminder</div>
+    <p>This module is the most important one in Phase I. Every other module teaches you to <em>see</em>; this one teaches you to <em>survive</em>.</p>
+    <p><strong>We do not promise profits.</strong> No position-sizing formula creates an edge — it only controls how much an idea can cost you. Master this math in simulation until it is automatic, because in real markets there is no pause button while you do arithmetic under pressure.</p>
+  </div>
+
+  <div class="modnav">
+    <a href="module-5-market-structure.html"><span class="dir">← Previous</span><span class="t serif">Module 5: Market Structure, Support &amp; Resistance</span></a>
+    <a href="module-7-psychology.html"><span class="dir">Next →</span><span class="t serif">Module 7: Trading Psychology &amp; Discipline</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <b>M&amp;Q University</b> · Knowledge Is the Legacy<br><br>
+  An educational initiative of MNQ Scalp Stacks · Education · Discipline · Practice · Community
+</footer>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 7: Trading Psychology &amp; Discipline — M&amp;Q University Phase I</title>
+<meta name="description" content="Phase I Module 7: the emotional traps — FOMO, revenge trading, overconfidence — and the disciplined routines that defeat them. Free education from M&Q University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1428;--navy2:#0E1B33;--gold:#C9A227;--gold-lt:#E8C15A;--parch:#EDE6D6;--muted:#93A0B8;--line:rgba(201,162,39,.28)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--parch);line-height:1.8;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+::selection{background:var(--gold);color:var(--navy)}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.85rem}
+.topnav a{color:var(--gold-lt);text-decoration:none;letter-spacing:.06em}
+.topnav a:hover{color:var(--gold)}
+.topnav .crumb{color:var(--muted)}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+header.hero{padding:4rem 1.5rem 3rem;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(201,162,39,.14),transparent 60%),var(--navy)}
+.kicker{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.4rem}
+header.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:500;line-height:1.12;color:var(--parch);max-width:20ch;margin:0 auto}
+header.hero h1 em{color:var(--gold-lt);font-style:italic}
+section.block{padding:2.6rem 0}
+.block h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--parch);margin-bottom:1.2rem}
+.block h3{font-size:1.35rem;font-weight:600;color:var(--gold-lt);margin:2rem 0 .8rem}
+.block p{margin-bottom:1.1rem;color:#d8d0bc}
+.block ul,.block ol{margin:0 0 1.2rem 1.4rem;color:#d8d0bc}
+.block li{margin-bottom:.55rem}
+.block strong{color:var(--parch);font-weight:600}
+.objbox{background:var(--navy2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:1.6rem;margin:0 0 1rem}
+.objbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem}
+.objbox p{margin:0;color:var(--parch);font-size:1.05rem}
+.exbox{background:var(--navy2);border:1px dashed rgba(201,162,39,.5);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.exbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+.exbox .illus{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1rem}
+.practice{background:rgba(201,162,39,.05);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.practice ol{margin-left:1.3rem}
+.practice li{margin-bottom:.8rem}
+details{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:8px;padding:1rem 1.2rem;margin-bottom:.8rem}
+details summary{cursor:pointer;font-weight:500;color:var(--parch)}
+details summary:hover{color:var(--gold-lt)}
+details p{margin:.8rem 0 0;color:#d8d0bc}
+details p strong{color:var(--gold-lt)}
+.riskbox{border:1px solid rgba(201,162,39,.45);border-radius:12px;padding:1.8rem;margin:2.4rem 0;background:linear-gradient(180deg,rgba(201,162,39,.08),transparent 60%),var(--navy2);text-align:center}
+.riskbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.9rem}
+.riskbox p{margin:0 0 .8rem;color:var(--parch)}
+.riskbox p:last-child{margin:0}
+.traps{display:grid;gap:.9rem;margin:1.4rem 0}
+.trap{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:10px;padding:1.2rem 1.4rem}
+.trap b{color:var(--gold-lt);font-weight:600;display:block;margin-bottom:.3rem}
+.trap span{color:var(--muted);font-size:.95rem}
+.modnav{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 1rem;flex-wrap:wrap}
+.modnav a{flex:1;min-width:200px;background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.4rem;text-decoration:none;color:var(--parch)}
+.modnav a:hover{border-color:var(--gold)}
+.modnav .dir{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:.4rem}
+.modnav .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem}
+footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+footer b{color:var(--gold)}
+hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear-gradient(90deg,transparent,var(--line),transparent)}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html">← Phase I Hub</a>
+  <span class="crumb">M&amp;Q University · Phase I</span>
+  <a href="../index.html">University Home →</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Phase I — Market Foundations · Module 7 of 8</div>
+    <h1 class="serif">Trading Psychology <em>&amp; Discipline</em></h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="block">
+  <div class="objbox">
+    <div class="lbl">Learning Objective</div>
+    <p>By the end of this module, you can name the common emotional traps — FOMO and chasing, revenge trading, overconfidence after wins, fear after losses — describe a pre-session routine and a personal set of rules, and explain why <em>process</em>, not outcome, is the only honest scoreboard.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Explanation</h2>
+
+  <h3 class="serif">The real opponent</h3>
+  <p>Here is a truth most courses bury: <strong>your real opponent is not the market. It is the impulses the market provokes in you.</strong> The chart is neutral — it has no opinion about you. But watch it move fast with money on the line, and your brain — built for survival on the savanna, not for probability — starts shouting. Every trap in this module is that shouting. Discipline is the quiet practice of not obeying it.</p>
+
+  <h3 class="serif">Name the traps</h3>
+  <p>You cannot defeat what you cannot name. The classic traps, plainly stated:</p>
+  <div class="traps">
+    <div class="trap"><b>Chasing / FOMO</b><span>Price is sprinting and you feel you'll "miss it." So you enter late, at the worst price, just as the move exhausts itself. Our motto exists for this exact moment: <em>we don't chase burning candles.</em></span></div>
+    <div class="trap"><b>Revenge trading</b><span>A loss stings, so you jump straight back in — bigger, faster — to "get it back." The market doesn't owe you anything, and it collects interest on this particular debt.</span></div>
+    <div class="trap"><b>Overconfidence after wins</b><span>A few good paper trades and suddenly you're a genius, sizing up, skipping the journal. Wins are the most dangerous teacher because they feel like proof.</span></div>
+    <div class="trap"><b>Fear and paralysis after losses</b><span>The mirror image: after losses you freeze, skip good setups, or exit early — letting one bad stretch rewrite your whole plan.</span></div>
+    <div class="trap"><b>Boredom trading</b><span>Nothing is happening, so you invent action. The market charges admission for entertainment, and the price is always higher than it looks.</span></div>
+  </div>
+  <p>Notice: every trap is an <em>emotion making a trading decision</em>. The market didn't do any of these to you. You did them to yourself, with the market as the stage.</p>
+
+  <h3 class="serif">Discipline, defined operationally</h3>
+  <p>"Discipline" sounds like a personality trait. It isn't — it's a <strong>practice</strong>: <em>doing what your plan says when your feelings say otherwise.</em> You don't need to <em>feel</em> disciplined. You need a plan clear enough to follow and a routine strong enough to carry you when feelings are loud. Discipline is infrastructure, not inspiration.</p>
+
+  <h3 class="serif">The pre-session routine</h3>
+  <p>Professionals in every field warm up; traders should too. Before each practice session:</p>
+  <ol>
+    <li><strong>Review the plan.</strong> Read your rules (you'll write them in the exercise below). One page, out loud if it helps.</li>
+    <li><strong>Set the day's risk limits.</strong> Maximum paper loss for the session, maximum number of setups. Write them down.</li>
+    <li><strong>Define "done."</strong> Decide in advance what ends your session — a number of setups, a time, <em>or</em> hitting your loss limit. "Done" decided beforehand is a shield; "done" decided mid-session is a negotiation you'll lose.</li>
+  </ol>
+  <p>Ten minutes. Every session. This is how discipline gets built — not in heroic moments, but in boring repetition.</p>
+
+  <h3 class="serif">The after-a-loss protocol</h3>
+  <p>Losses will happen — in simulation they are <em>supposed</em> to happen; that's what the laboratory is for. When one does:</p>
+  <ol>
+    <li><strong>Pause.</strong> Hands off the keyboard. Breathe. The next five minutes belong to no trade.</li>
+    <li><strong>Journal it.</strong> Write what happened and whether you followed your plan (Module 8 gives you the template).</li>
+    <li><strong>Step away if needed.</strong> A short walk beats a revenge trade every single time.</li>
+  </ol>
+  <p>Never — <em>never</em> — trade the next five minutes to "get it back." That trade has a name: revenge. You already know how it ends.</p>
+
+  <h3 class="serif">The only honest scoreboard</h3>
+  <p>Here is the reframe that changes everything: <strong>judge the process, not the outcome.</strong> A paper trade that followed every rule and lost was a <em>success</em> — you executed your process under uncertainty, which is the entire skill. A paper trade that broke rules and won was a <em>failure</em> — you got paid for bad behavior, which teaches exactly the wrong lesson.</p>
+  <p>This is our principle <em>Discipline Before Profit</em> in action: a successful decision is one that follows a sound process, regardless of any single outcome. Outcome-thinking is how luck gets confused with skill — and confusing luck with skill is how accounts get destroyed. The scoreboard that matters has one column: <em>did I follow my rules?</em></p>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Worked Example</h2>
+  <div class="exbox">
+    <div class="lbl">Worked Example — The Third Setup</div>
+    <p><strong>The morning</strong> (illustrative): a student paper-trades the MNQ morning session. Two setups, both taken exactly per plan — both stopped out for small, planned paper losses. The journal shows: followed plan? <em>Yes. Yes.</em></p>
+    <p><strong>The moment:</strong> a third setup appears — same quality as the first two, same structure, same kind of retest the student has been practicing. But the student's chest is tight. Two losses. The impulse screams two opposite things at once: <em>skip it, you're cursed today</em> and <em>double the size, win it all back</em>.</p>
+    <p><strong>The undisciplined version:</strong> doubles the paper size "to recover." If it wins, the student learns that breaking rules pays. If it loses, the student learns despair. Both lessons are poison.</p>
+    <p><strong>The disciplined version:</strong> takes the <em>same</em> size, the <em>same</em> stop, journals it honestly — win or lose. The outcome doesn't matter; the process is the grade.</p>
+    <p><strong>The lesson:</strong> discipline is invisible on winning days and decisive on losing ones. Anyone can follow a plan when it's working. The student is forged in the moments it isn't.</p>
+    <div class="illus">This scenario is an illustrative teaching story, not a real trading session or a promise of any outcome.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Practice Exercise</h2>
+  <div class="practice">
+    <ol>
+      <li><strong>Write your constitution.</strong> Draft five personal trading rules in your own words — not copied from this page. (Example starter: "I never enter without a stop already chosen.") Keep it to one page; you'll read it before every session.</li>
+      <li><strong>Design your warm-up.</strong> Write a 10-minute pre-session routine: what you review, what limits you set, and your "done" conditions. Make it specific enough that a stranger could follow it.</li>
+      <li><strong>Borrow from life.</strong> Recall a time you acted on impulse in <em>any</em> area of life — driving, arguing, spending. Write what a pause-protocol would have changed. Trading psychology is human psychology; you've been training for this your whole life.</li>
+      <li><strong>Score the process.</strong> Paper-trade one full session with <em>no profit goal at all</em>. Score yourself 1 point for every rule you kept, 0 for every rule you broke. That score — not the paper P&amp;L — is your grade for the day.</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Knowledge Check</h2>
+  <details><summary>1. Name three emotional traps and what each one makes a trader do.</summary><p><strong>Answer:</strong> Chasing/FOMO — entering late at bad prices from fear of missing out. Revenge trading — jumping back in bigger after a loss to "get it back." Overconfidence — sizing up and skipping the journal after wins. (Also acceptable: fear/paralysis after losses, boredom trading.) Each is an emotion making a trading decision.</p></details>
+  <details><summary>2. What does discipline mean, operationally — in practice, not as a personality trait?</summary><p><strong>Answer:</strong> Doing what your plan says when your feelings say otherwise. It's infrastructure — a clear plan plus a routine — not inspiration or willpower. You don't need to feel disciplined; you need a plan clear enough to follow.</p></details>
+  <details><summary>3. What is the after-a-loss protocol?</summary><p><strong>Answer:</strong> Pause (hands off, breathe — the next five minutes belong to no trade), journal what happened and whether you followed the plan, and step away if needed. Never trade immediately to recover the loss — that's revenge trading by definition.</p></details>
+  <details><summary>4. A paper trade followed every rule and lost. A paper trade broke the rules and won. Which was the success?</summary><p><strong>Answer:</strong> The first one. Process is the only honest scoreboard: executing your plan under uncertainty is the entire skill. The rule-breaking winner got paid for bad behavior — the most dangerous lesson in trading, because it teaches you to trust luck and call it skill.</p></details>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <div class="riskbox">
+    <div class="lbl">Risk Reminder</div>
+    <p>Psychology doesn't remove risk — it removes the <em>extra</em> risk you add to yourself. The market is uncertain enough without your impulses trading too.</p>
+    <p><strong>We do not promise profits.</strong> No mindset, routine, or affirmation guarantees results. What discipline guarantees is simpler and more valuable: that your results will reflect your process, so your journal can actually teach you something.</p>
+  </div>
+
+  <div class="modnav">
+    <a href="module-6-risk-management.html"><span class="dir">← Previous</span><span class="t serif">Module 6: Risk Management &amp; Position Sizing</span></a>
+    <a href="module-8-simulation.html"><span class="dir">Next →</span><span class="t serif">Module 8: Simulation Practice &amp; Quizzes</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <b>M&amp;Q University</b> · Knowledge Is the Legacy<br><br>
+  An educational initiative of MNQ Scalp Stacks · Education · Discipline · Practice · Community
+</footer>
+</body>
+</html>
