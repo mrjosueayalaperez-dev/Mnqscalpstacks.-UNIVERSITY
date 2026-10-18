@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 4: VWAP &amp; RSI 14 — M&amp;Q University Phase I</title>
+<meta name="description" content="Phase I Module 4: VWAP (the session's volume-weighted average price) and RSI 14 (Wilder's momentum oscillator) — what they measure and their honest limits. Free education from M&Q University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1428;--navy2:#0E1B33;--gold:#C9A227;--gold-lt:#E8C15A;--parch:#EDE6D6;--muted:#93A0B8;--line:rgba(201,162,39,.28)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--parch);line-height:1.8;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+::selection{background:var(--gold);color:var(--navy)}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.85rem}
+.topnav a{color:var(--gold-lt);text-decoration:none;letter-spacing:.06em}
+.topnav a:hover{color:var(--gold)}
+.topnav .crumb{color:var(--muted)}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+header.hero{padding:4rem 1.5rem 3rem;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(201,162,39,.14),transparent 60%),var(--navy)}
+.kicker{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.4rem}
+header.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:500;line-height:1.12;color:var(--parch);max-width:20ch;margin:0 auto}
+header.hero h1 em{color:var(--gold-lt);font-style:italic}
+section.block{padding:2.6rem 0}
+.block h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--parch);margin-bottom:1.2rem}
+.block h3{font-size:1.35rem;font-weight:600;color:var(--gold-lt);margin:2rem 0 .8rem}
+.block p{margin-bottom:1.1rem;color:#d8d0bc}
+.block ul,.block ol{margin:0 0 1.2rem 1.4rem;color:#d8d0bc}
+.block li{margin-bottom:.55rem}
+.block strong{color:var(--parch);font-weight:600}
+.objbox{background:var(--navy2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:1.6rem;margin:0 0 1rem}
+.objbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem}
+.objbox p{margin:0;color:var(--parch);font-size:1.05rem}
+.exbox{background:var(--navy2);border:1px dashed rgba(201,162,39,.5);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.exbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+.exbox .illus{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1rem}
+.practice{background:rgba(201,162,39,.05);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.practice ol{margin-left:1.3rem}
+.practice li{margin-bottom:.8rem}
+details{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:8px;padding:1rem 1.2rem;margin-bottom:.8rem}
+details summary{cursor:pointer;font-weight:500;color:var(--parch)}
+details summary:hover{color:var(--gold-lt)}
+details p{margin:.8rem 0 0;color:#d8d0bc}
+details p strong{color:var(--gold-lt)}
+.riskbox{border:1px solid rgba(201,162,39,.45);border-radius:12px;padding:1.8rem;margin:2.4rem 0;background:linear-gradient(180deg,rgba(201,162,39,.08),transparent 60%),var(--navy2);text-align:center}
+.riskbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.9rem}
+.riskbox p{margin:0 0 .8rem;color:var(--parch)}
+.riskbox p:last-child{margin:0}
+.modnav{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 1rem;flex-wrap:wrap}
+.modnav a{flex:1;min-width:200px;background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.4rem;text-decoration:none;color:var(--parch)}
+.modnav a:hover{border-color:var(--gold)}
+.modnav .dir{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:.4rem}
+.modnav .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem}
+footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+footer b{color:var(--gold)}
+hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear-gradient(90deg,transparent,var(--line),transparent)}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html">← Phase I Hub</a>
+  <span class="crumb">M&amp;Q University · Phase I</span>
+  <a href="../index.html">University Home →</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Phase I — Market Foundations · Module 4 of 8</div>
+    <h1 class="serif">VWAP <em>&amp; RSI 14</em></h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="block">
+  <div class="objbox">
+    <div class="lbl">Learning Objective</div>
+    <p>By the end of this module, you can explain VWAP — the volume-weighted average price, reset every session — and RSI 14 — Wilder's 0–100 momentum oscillator. You can read their basic states (price versus VWAP; RSI high, low, or mid-range) and you can state clearly that 70/30 are traditional reference guides, <em>not</em> buy or sell signals.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Explanation</h2>
+
+  <h3 class="serif">VWAP: where the day's business got done</h3>
+  <p><strong>VWAP</strong> — the volume-weighted average price — answers one question: <em>at what average price did most of today's trading actually happen?</em> It is not a simple average of prices. Every trade counts in proportion to its size, so a huge block of contracts traded at one price pulls VWAP toward that price. The result is the market's own measure of "fair" for the day — where the real volume changed hands.</p>
+  <p>Two facts define how you use it:</p>
+  <ul>
+    <li><strong>It resets every session.</strong> Each trading day starts fresh — yesterday's VWAP is history. VWAP is an <em>intraday</em> tool; it belongs on your day-session charts, not on a monthly chart.</li>
+    <li><strong>Price above VWAP means buyers have had the better day so far;</strong> price below it means sellers have. That is a description of the day's balance — useful context, not an instruction.</li>
+  </ul>
+  <p>You will also see <strong>standard-deviation bands</strong> drawn around VWAP (±1, ±2). Treat these as <em>distance markers</em> — "price is stretched two deviations from the day's average" — not as targets price must reach or walls it cannot pass. Stretched can always get more stretched.</p>
+
+  <h3 class="serif">RSI 14: measuring the speed of the move</h3>
+  <p><strong>RSI</strong> — the Relative Strength Index, developed by J. Welles Wilder — is an oscillator that runs from <strong>0 to 100</strong>. Over the last <strong>14 periods</strong>, it compares the size of the up-moves to the size of the down-moves. In plain language: it measures <em>how fast and how hard</em> price has been moving in one direction lately.</p>
+  <ul>
+    <li><strong>High RSI</strong> (traditionally near or above <strong>70</strong>): recent gains have dominated — momentum is stretched to the upside.</li>
+    <li><strong>Low RSI</strong> (traditionally near or below <strong>30</strong>): recent losses have dominated — momentum is stretched to the downside.</li>
+    <li><strong>Mid-range RSI</strong> (around 40–60): no strong momentum either way — the market is balanced or drifting.</li>
+  </ul>
+  <p>Now the sentence this university insists on: <strong>70 and 30 are traditional reference guides, not buy/sell signals.</strong> They describe a momentum <em>state</em>. In a powerful trend, RSI can stay above 70 — or below 30 — for a very long time while price keeps going. Traders who treat 70 as an automatic "sell" learn this lesson the expensive way: stretched is not the same as finished.</p>
+
+  <h3 class="serif">Divergence: a warning light, not a trigger</h3>
+  <p>One RSI concept is worth learning early: <strong>divergence</strong>. It happens when price makes a new high but RSI makes a <em>lower</em> high — the move is still reaching new prices, but with weakening momentum underneath. Think of a car still rolling forward while the engine sputters.</p>
+  <p>Divergence is a <strong>caution flag worth studying</strong> — a dashboard warning light. It says "pay attention; the character of this move is changing." It does <em>not</em> say "reverse now." Warning lights deserve respect and further observation, never blind obedience.</p>
+
+  <h3 class="serif">Lenses, not engines</h3>
+  <p>Hold VWAP and RSI in your mind the way you hold the EMAs from Module 3: they are <strong>lenses</strong> that refine what you see, not <strong>engines</strong> that decide for you. VWAP tells you where the day's balance sits. RSI tells you how stretched the recent momentum is. Neither one removes uncertainty, and neither one is ever a reason, by itself, to act. The disciplined student gathers context from every lens — then, more often than beginners expect, chooses to wait.</p>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Worked Example</h2>
+  <div class="exbox">
+    <div class="lbl">Worked Example — A Morning on MNQ</div>
+    <p><strong>9:30–11:00 (illustrative):</strong> MNQ opens at 18,420 and grinds higher. Price holds <em>above</em> VWAP all morning — buyers are having the better day. RSI 14 climbs into the high 60s: momentum is strong but not yet at the traditional 70 guide.</p>
+    <p><strong>11:00 (illustrative):</strong> sellers step in hard. Price drops <em>through</em> VWAP to 18,395, and RSI 14 falls to 28 — below the traditional 30 guide.</p>
+    <p><strong>Read it honestly:</strong> the day's balance has flipped to sellers, and downside momentum is stretched. That is <em>information</em>, not an instruction. A beginner might feel the urge to chase the drop — but our motto says <em>we don't chase burning candles</em>. The disciplined observation continues.</p>
+    <p><strong>11:45 (illustrative):</strong> price bounces and retests VWAP from below at 18,408 — and fails, turning back down. The retest of the day's balance point held as resistance. Notice the framing: we <em>waited for the retest</em> and observed. Whether you paper-trade it or simply watch, the process is the same: context first, patience always.</p>
+    <div class="illus">All prices, times, and indicator readings are illustrative teaching numbers, not market data or promises of any outcome.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Practice Exercise</h2>
+  <div class="practice">
+    <ol>
+      <li><strong>Track five VWAP crosses.</strong> On an intraday MNQ chart, mark five places where price crossed VWAP. For each, write what happened next in one sentence. Look for a pattern in your observations — not a system, just understanding.</li>
+      <li><strong>Watch RSI for a session.</strong> Keep RSI 14 on your chart for one full session. Note every time it crosses above 70 or below 30, and write what price did afterward. Count how many times "stretched" kept stretching.</li>
+      <li><strong>Hunt one divergence.</strong> Find a spot where price made a new high (or low) but RSI did not confirm. Write what the divergence warned about — and what actually happened next.</li>
+      <li><strong>Finish the sentence.</strong> In your journal, in your own words: "An RSI reading of 70 is a ______, not a ______."</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Knowledge Check</h2>
+  <details><summary>1. What does VWAP measure, and when does it reset?</summary><p><strong>Answer:</strong> VWAP measures the volume-weighted average price of the session — where the day's real trading business got done. It resets every session, which is why it is an intraday tool, not a multi-day one.</p></details>
+  <details><summary>2. What does RSI 14 measure, and what is its range?</summary><p><strong>Answer:</strong> Wilder's RSI compares the size of recent gains to recent losses over 14 periods, producing an oscillator from 0 to 100 that describes the speed and force of recent momentum.</p></details>
+  <details><summary>3. RSI reaches 72. Is that a sell signal? Why or why not?</summary><p><strong>Answer:</strong> No. 70 is a traditional reference guide describing stretched upside momentum — a state, not a command. In strong trends RSI can remain elevated for a long time. Treating it as an automatic signal is one of the classic beginner mistakes.</p></details>
+  <details><summary>4. Price crosses from above VWAP to below it. What does that describe?</summary><p><strong>Answer:</strong> The day's balance has shifted — sellers have taken the better day so far, since price is now trading below where most of the day's volume changed hands. It is context about the session, not a trade instruction.</p></details>
+  <details><summary>5. What is RSI divergence, and what is its honest limit?</summary><p><strong>Answer:</strong> Divergence is when price makes a new extreme but RSI does not confirm it — suggesting weakening momentum beneath the move. Its honest limit: it is a caution flag, a warning light deserving attention and further observation, never a trigger to act on its own.</p></details>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <div class="riskbox">
+    <div class="lbl">Risk Reminder</div>
+    <p>Indicators can make a chart feel certain. Certainty is a feeling, not a fact — the market owes your indicators nothing.</p>
+    <p><strong>We do not promise profits.</strong> Use VWAP and RSI to understand sessions more deeply in simulation. The student who reads "stretched" and waits anyway is practicing the exact discipline this university exists to teach.</p>
+  </div>
+
+  <div class="modnav">
+    <a href="module-3-ema.html"><span class="dir">← Previous</span><span class="t serif">Module 3: EMA 9, EMA 21 &amp; EMA 200</span></a>
+    <a href="module-5-market-structure.html"><span class="dir">Next →</span><span class="t serif">Module 5: Market Structure, Support &amp; Resistance</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <b>M&amp;Q University</b> · Knowledge Is the Legacy<br><br>
+  An educational initiative of MNQ Scalp Stacks · Education · Discipline · Practice · Community
+</footer>
+</body>
+</html>

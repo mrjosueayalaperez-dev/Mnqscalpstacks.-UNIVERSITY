@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 3: EMA 9, EMA 21 &amp; EMA 200 — M&amp;Q University Phase I</title>
+<meta name="description" content="Phase I Module 3: what exponential moving averages are, what the 9/21/200 lengths mean, and how to read them as context — not signals. Free education from M&Q University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1428;--navy2:#0E1B33;--gold:#C9A227;--gold-lt:#E8C15A;--parch:#EDE6D6;--muted:#93A0B8;--line:rgba(201,162,39,.28)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--parch);line-height:1.8;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+::selection{background:var(--gold);color:var(--navy)}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.85rem}
+.topnav a{color:var(--gold-lt);text-decoration:none;letter-spacing:.06em}
+.topnav a:hover{color:var(--gold)}
+.topnav .crumb{color:var(--muted)}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+header.hero{padding:4rem 1.5rem 3rem;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(201,162,39,.14),transparent 60%),var(--navy)}
+.kicker{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.4rem}
+header.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:500;line-height:1.12;color:var(--parch);max-width:20ch;margin:0 auto}
+header.hero h1 em{color:var(--gold-lt);font-style:italic}
+section.block{padding:2.6rem 0}
+.block h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--parch);margin-bottom:1.2rem}
+.block h3{font-size:1.35rem;font-weight:600;color:var(--gold-lt);margin:2rem 0 .8rem}
+.block p{margin-bottom:1.1rem;color:#d8d0bc}
+.block ul,.block ol{margin:0 0 1.2rem 1.4rem;color:#d8d0bc}
+.block li{margin-bottom:.55rem}
+.block strong{color:var(--parch);font-weight:600}
+.objbox{background:var(--navy2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:1.6rem;margin:0 0 1rem}
+.objbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem}
+.objbox p{margin:0;color:var(--parch);font-size:1.05rem}
+.exbox{background:var(--navy2);border:1px dashed rgba(201,162,39,.5);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.exbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+.exbox .illus{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1rem}
+.practice{background:rgba(201,162,39,.05);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.practice ol{margin-left:1.3rem}
+.practice li{margin-bottom:.8rem}
+details{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:8px;padding:1rem 1.2rem;margin-bottom:.8rem}
+details summary{cursor:pointer;font-weight:500;color:var(--parch)}
+details summary:hover{color:var(--gold-lt)}
+details p{margin:.8rem 0 0;color:#d8d0bc}
+details p strong{color:var(--gold-lt)}
+.riskbox{border:1px solid rgba(201,162,39,.45);border-radius:12px;padding:1.8rem;margin:2.4rem 0;background:linear-gradient(180deg,rgba(201,162,39,.08),transparent 60%),var(--navy2);text-align:center}
+.riskbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.9rem}
+.riskbox p{margin:0 0 .8rem;color:var(--parch)}
+.riskbox p:last-child{margin:0}
+.modnav{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 1rem;flex-wrap:wrap}
+.modnav a{flex:1;min-width:200px;background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.4rem;text-decoration:none;color:var(--parch)}
+.modnav a:hover{border-color:var(--gold)}
+.modnav .dir{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:.4rem}
+.modnav .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem}
+footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+footer b{color:var(--gold)}
+hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear-gradient(90deg,transparent,var(--line),transparent)}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html">← Phase I Hub</a>
+  <span class="crumb">M&amp;Q University · Phase I</span>
+  <a href="../index.html">University Home →</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Phase I — Market Foundations · Module 3 of 8</div>
+    <h1 class="serif">EMA 9, EMA 21 <em>&amp; EMA 200</em></h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="block">
+  <div class="objbox">
+    <div class="lbl">Learning Objective</div>
+    <p>By the end of this module, you can explain what an exponential moving average is, what the 9, 21, and 200 lengths represent (fast, medium, slow), read the basic relationships between price and the EMAs — above, below, stacked, crossing — and treat them as <em>context</em>, never as buy or sell signals.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Explanation</h2>
+
+  <h3 class="serif">Smoothing the noise</h3>
+  <p>Price jumps around constantly — every tick is a small argument. A <strong>moving average</strong> quiets the argument down: it takes the average price over the last N periods and draws it as one smooth line, updating with every new candle. Instead of fifty jagged candles, you see the market's <em>current</em> — the direction the water is flowing beneath the waves.</p>
+  <p>An <strong>exponential</strong> moving average (EMA) gives more weight to the most recent prices and less to older ones. Conceptually: the EMA cares more about what happened <em>just now</em> than what happened a while ago. That makes it react faster than a simple average — useful on fast markets like MNQ, where "a while ago" can mean forty candles back and a different market mood entirely.</p>
+
+  <h3 class="serif">Three lengths, three perspectives</h3>
+  <p>Our university studies three EMAs together because each answers a different question:</p>
+  <ul>
+    <li><strong>EMA 9 — the fast line.</strong> The average of the last 9 periods: the <em>present moment</em>. It hugs price closely and turns quickly. Think of it as the market's current mood.</li>
+    <li><strong>EMA 21 — the medium line.</strong> The average of the last 21 periods: the <em>recent trend</em>. Smoother and slower, it shows whether the last stretch of price action has genuinely leaned one way. Think of it as the market's recent memory.</li>
+    <li><strong>EMA 200 — the slow line.</strong> The average of the last 200 periods: the <em>big picture</em>. It barely moves, and that is its virtue — it marks the long-term balance point that larger participants watch. Think of it as the market's deep current.</li>
+  </ul>
+  <p>Together they are like three witnesses: one who saw the last minute, one who watched the last hour, one who has watched for weeks. When all three agree, the story is clear. When they disagree, the market itself is undecided — and undecided markets are where beginners should simply watch and learn.</p>
+
+  <h3 class="serif">Reading the stack</h3>
+  <p>The most useful EMA picture is the <strong>stack</strong> — how price and the three lines are ordered:</p>
+  <ul>
+    <li><strong>Bullish stack:</strong> price above EMA 9, EMA 9 above EMA 21, EMA 21 above EMA 200. Every timeframe's witness agrees: the recent past has been rising. This describes an <em>uptrend's story</em>.</li>
+    <li><strong>Bearish stack:</strong> price below EMA 9, EMA 9 below EMA 21, EMA 21 below EMA 200. The mirror image — a <em>downtrend's story</em>.</li>
+    <li><strong>Tangled:</strong> lines crossing through each other and through price, no clean order. The witnesses disagree. This is a sideways, choppy market — and it is the single most expensive place for a beginner to trade.</li>
+  </ul>
+  <p>Notice the language: these describe a <em>story</em>, not a command. A bullish stack does not mean "buy now." It means "the recent past has been rising" — information you combine with everything else you are learning.</p>
+
+  <h3 class="serif">Crossovers: confirmation, not prediction</h3>
+  <p>When the fast EMA crosses above the slow one, traders call it a bullish crossover (and the reverse, bearish). Here is the honest truth about crossovers: <strong>they confirm a change that has already happened.</strong> By the time EMA 9 crosses EMA 21, price has <em>already</em> been moving in the new direction long enough to drag the averages along. The crossover is the market's rear-view mirror, not its headlights. Treat it as confirmation of a story you already see in price — never as the reason to act.</p>
+
+  <h3 class="serif">The trap: chop</h3>
+  <p>In a sideways market, price whipsaws back and forth across flat EMAs. The fast line crosses up, then down, then up again — each cross looking like a signal, each one failing. This is where undisciplined beginners bleed: they chase every crossover, buying tops and selling bottoms, exactly backwards. When you see tangled EMAs and price slicing through them repeatedly, the disciplined move is the one this university's motto teaches: <em>we don't chase burning candles</em> — we wait. Sometimes the best analysis ends with "not now."</p>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Worked Example</h2>
+  <div class="exbox">
+    <div class="lbl">Worked Example — Two Timeframes, One Market</div>
+    <p><strong>The daily picture</strong> (illustrative): MNQ is trading at 18,500. EMA 9 sits at 18,470, EMA 21 at 18,430, and EMA 200 at 18,200. Price is above all three, and the lines are stacked 9 &gt; 21 &gt; 200. <strong>Read: bullish stack.</strong> The big-picture story is an uptrend — every witness agrees the recent past has been rising.</p>
+    <p><strong>The 5-minute picture, same day at lunch</strong> (illustrative): price is oscillating between 18,490 and 18,510. EMA 9 and EMA 21 are flat, tangled together, and price keeps slicing through both. EMA 9 crosses below EMA 21, then back above it an hour later.</p>
+    <p><strong>Read the two together:</strong> the daily stack says "uptrend context"; the 5-minute tangle says "choppy right now, no clear direction." The crossover was not a signal — it was chop doing what chop does. A disciplined student sees the disagreement and waits for clarity instead of trading the noise. <strong>Context, not a trade signal.</strong></p>
+    <div class="illus">All prices and indicator values are illustrative teaching numbers, not market data or promises of any outcome.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Practice Exercise</h2>
+  <div class="practice">
+    <ol>
+      <li><strong>Stack the daily.</strong> Add EMA 9, 21, and 200 to an MNQ daily chart. Write down the current order of price and the three lines, and in one sentence describe the story they tell.</li>
+      <li><strong>Compare two days.</strong> On a 5-minute chart, find one clean trending day and one choppy sideways day. Describe how the EMAs behaved in each — stacked and smooth versus flat and tangled.</li>
+      <li><strong>Dissect a crossover.</strong> Find one EMA 9/21 crossover. Look at what price did <em>before</em> the cross — the move that caused it. Write two sentences explaining why the cross confirmed rather than predicted.</li>
+      <li><strong>Journal the trap.</strong> Answer in your journal: "When are EMAs most likely to mislead me, and what will I do when I see that happening?"</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Knowledge Check</h2>
+  <details><summary>1. What is an exponential moving average, and why "exponential"?</summary><p><strong>Answer:</strong> An EMA is a smoothed average of the last N periods' prices that gives more weight to recent prices and less to older ones — "exponential" refers to that recency weighting. It reacts faster to new price action than a simple average, which suits fast markets like MNQ.</p></details>
+  <details><summary>2. What does each of the three lengths represent?</summary><p><strong>Answer:</strong> EMA 9 = the fast line, the present moment; EMA 21 = the medium line, the recent trend; EMA 200 = the slow line, the big picture and long-term balance. Three witnesses on three time horizons.</p></details>
+  <details><summary>3. Price is above all three EMAs and they are stacked 9 &gt; 21 &gt; 200. What does that say — and what does it NOT say?</summary><p><strong>Answer:</strong> It says the recent past has been rising across timeframes — an uptrend's story. It does NOT say "buy now" or that price will keep rising. It is context for your thinking, not a signal for action.</p></details>
+  <details><summary>4. Why is a choppy, sideways market the most dangerous place to follow EMA crossovers?</summary><p><strong>Answer:</strong> In chop, price whipsaws across flat, tangled EMAs, producing repeated false crossovers — each looking like a signal and each failing. Traders who chase them buy tops and sell bottoms. The disciplined response to tangled EMAs is to wait, not to trade.</p></details>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <div class="riskbox">
+    <div class="lbl">Risk Reminder</div>
+    <p>Indicators describe; they do not decide. No combination of moving averages removes risk or guarantees results.</p>
+    <p><strong>We do not promise profits.</strong> Study EMAs on historical charts and in simulation. The goal of this module is calmer, clearer <em>reading</em> — and the wisdom to recognize when the market is unreadable and the right move is to wait.</p>
+  </div>
+
+  <div class="modnav">
+    <a href="module-2-candlesticks.html"><span class="dir">← Previous</span><span class="t serif">Module 2: Candlestick Structure &amp; Price Action</span></a>
+    <a href="module-4-vwap-rsi.html"><span class="dir">Next →</span><span class="t serif">Module 4: VWAP &amp; RSI 14</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <b>M&amp;Q University</b> · Knowledge Is the Legacy<br><br>
+  An educational initiative of MNQ Scalp Stacks · Education · Discipline · Practice · Community
+</footer>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase I — Market Foundations · M&Q University</title>
+<meta name="description" content="Phase I of M&Q University: Market Foundations. Eight free modules — futures fundamentals, candlesticks, EMA, VWAP, RSI, market structure, risk, psychology, and simulation practice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A1428; --navy2:#0E1B33; --navy3:#132441;
+    --gold:#C9A227; --gold-lt:#E8C15A;
+    --parch:#EDE6D6; --parch-dk:#C9BFA8; --muted:#93A0B8;
+    --line:rgba(201,162,39,.28);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--parch);line-height:1.75;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+  .serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+  ::selection{background:var(--gold);color:var(--navy)}
+  .topnav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.82rem}
+  .topnav a{color:var(--gold-lt);text-decoration:none;letter-spacing:.06em}
+  .topnav a:hover{text-decoration:underline}
+  .hero{text-align:center;padding:3.5rem 1.5rem 2.5rem;background:radial-gradient(1000px 480px at 50% -10%, rgba(201,162,39,.13), transparent 60%),var(--navy)}
+  .eyebrow{font-size:.7rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:1.2rem;font-weight:500}
+  .hero h1{font-size:clamp(2.4rem,7vw,4.2rem);font-weight:500;line-height:1.08;margin-bottom:1rem}
+  .hero h1 em{color:var(--gold-lt);font-style:italic}
+  .hero p.lead{max-width:62ch;margin:0 auto;color:#D8D0BC;font-size:1.1rem}
+  .wrap{max-width:860px;margin:0 auto;padding:0 1.5rem}
+  .status{display:flex;gap:.7rem;align-items:center;justify-content:center;margin:2rem auto 0;max-width:860px;padding:0 1.5rem}
+  .pill{font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--navy);background:var(--gold);font-weight:600;border-radius:999px;padding:.45rem 1.1rem}
+  .status span.note{color:var(--muted);font-size:.85rem}
+  .modules{display:grid;gap:1.1rem;padding:2.5rem 0 1rem}
+  @media(min-width:680px){.modules{grid-template-columns:1fr 1fr}}
+  .mod{background:var(--navy2);border:1px solid rgba(201,162,39,.16);border-radius:12px;padding:1.6rem 1.5rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.5rem;transition:border-color .2s,transform .2s}
+  .mod:hover{border-color:var(--gold);transform:translateY(-2px)}
+  .mod .mn{font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:600}
+  .mod h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:600;color:var(--parch);line-height:1.25}
+  .mod p{color:var(--muted);font-size:.94rem;margin:0}
+  .mod .go{margin-top:auto;padding-top:.6rem;color:var(--gold-lt);font-size:.85rem;letter-spacing:.12em;font-weight:500}
+  .how{padding:2.5rem 0}
+  .how h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:500;margin-bottom:1rem}
+  .how h2 em{color:var(--gold-lt);font-style:italic}
+  .how ol{margin:1rem 0 1rem 1.3rem;color:#D8D0BC;display:grid;gap:.7rem}
+  .how li::marker{color:var(--gold);font-weight:600}
+  .creed{border-left:3px solid var(--gold);padding:.4rem 0 .4rem 1.6rem;margin:2.2rem 0}
+  .creed p{font-size:1.25rem;line-height:1.6;margin:0}
+  .creed strong{color:var(--gold-lt);font-weight:600}
+  footer{text-align:center;padding:3.5rem 1.5rem 3rem;color:var(--muted);border-top:1px solid var(--line);margin-top:2rem}
+  footer .ident{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+  footer .tiny{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase}
+  footer .tiny b{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../index.html">← M&amp;Q University</a>
+  <a href="https://github.com/mrjosueayalaperez-dev/Mnqscalpstacks.-UNIVERSITY">GitHub</a>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow">M&amp;Q University · An Educational Initiative of MNQ Scalp Stacks</div>
+  <h1 class="serif">Phase I — <em>Market Foundations</em></h1>
+  <p class="lead">Eight free modules that build the foundation every student needs before risking a single dollar: how futures work, how to read a chart, how to measure risk, and how to practice with discipline.</p>
+  <div class="status">
+    <span class="pill">In development</span>
+    <span class="note">Modules open below — new phases arrive as they are built and reviewed.</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="modules">
+    <a class="mod" href="module-1-futures-fundamentals.html">
+      <span class="mn">Module 1</span>
+      <h2>Futures Fundamentals: ES &amp; MNQ</h2>
+      <p>What a futures contract is, how the E-mini and Micro E-mini S&amp;P 500 and Nasdaq-100 work, ticks, point values, and expirations.</p>
+      <span class="go">Begin →</span>
+    </a>
+    <a class="mod" href="module-2-candlesticks.html">
+      <span class="mn">Module 2</span>
+      <h2>Candlestick Structure &amp; Price Action</h2>
+      <p>Reading candles — body, wicks, range — and what price action tells you about buying and selling pressure.</p>
+      <span class="go">Begin →</span>
+    </a>
+    <a class="mod" href="module-3-ema.html">
+      <span class="mn">Module 3</span>
+      <h2>EMA 9, EMA 21 &amp; EMA 200</h2>
+      <p>Exponential moving averages: what they smooth, how traders read trend and dynamic levels with the 9, 21, and 200.</p>
+      <span class="go">Begin →</span>
+    </a>
+    <a class="mod" href="module-4-vwap-rsi.html">
+      <span class="mn">Module 4</span>
+      <h2>VWAP &amp; RSI 14</h2>
+      <p>The session's volume-weighted average price and Wilder's momentum oscillator — what they measure and what they don't.</p>
+      <span class="go">Begin →</span>
+    </a>
+    <a class="mod" href="module-5-market-structure.html">
+      <span class="mn">Module 5</span>
+      <h2>Market Structure, Support &amp; Resistance</h2>
+      <p>Swings, trends, and ranges; where support and resistance come from and how to mark them honestly.</p>
+      <span class="go">Begin →</span>
+    </a>
+    <a class="mod" href="module-6-risk-management.html">
+      <span class="mn">Module 6</span>
+      <h2>Risk Management &amp; Position Sizing</h2>
+      <p>Risk before reward: sizing positions from your stop, protecting capital, and why survival is the strategy.</p>
+      <span class="go">Begin →</span>
+    </a>
+    <a class="mod" href="module-7-psychology.html">
+      <span class="mn">Module 7</span>
+      <h2>Trading Psychology &amp; Discipline</h2>
+      <p>Fear, greed, revenge trading, and FOMO — and the routines, rules, and journaling that keep discipline in charge.</p>
+      <span class="go">Begin →</span>
+    </a>
+    <a class="mod" href="module-8-simulation.html">
+      <span class="mn">Module 8</span>
+      <h2>Simulation Practice &amp; Quizzes</h2>
+      <p>Practice before performance: paper-trading routines, a journaling template, and self-grading checklists.</p>
+      <span class="go">Begin →</span>
+    </a>
+  </div>
+
+  <section class="how">
+    <h2 class="serif">How to <em>study</em> Phase I</h2>
+    <ol>
+      <li><strong>Go in order.</strong> Each module builds on the one before it — Module 1 first, Module 8 last.</li>
+      <li><strong>Do the practice exercise</strong> at the end of every module on a real chart before moving on.</li>
+      <li><strong>Take the knowledge check</strong> honestly. If you miss one, re-read the section — that's the point.</li>
+      <li><strong>Journal everything.</strong> Module 8 gives you the template; start using it from Module 1.</li>
+      <li><strong>No real money.</strong> Phase I is for learning. Simulation only, until a later phase says otherwise.</li>
+    </ol>
+    <div class="creed">
+      <p><strong>We do not promise profits.</strong><br>
+      We teach preparation, patience, accountability, and disciplined execution.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="ident">M&amp;Q University · An Educational Initiative of MNQ Scalp Stacks</div>
+  <div class="tiny"><b>Knowledge is the legacy.</b> &nbsp;·&nbsp; Education · Discipline · Practice · Community</div>
+</footer>
+
+</body>
+</html>

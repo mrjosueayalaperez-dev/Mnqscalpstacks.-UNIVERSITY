@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 5: Market Structure, Support &amp; Resistance — M&amp;Q University Phase I</title>
+<meta name="description" content="Phase I Module 5: reading market structure — higher highs, lower lows, ranges — marking support and resistance zones, and waiting for the retest. Free education from M&Q University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1428;--navy2:#0E1B33;--gold:#C9A227;--gold-lt:#E8C15A;--parch:#EDE6D6;--muted:#93A0B8;--line:rgba(201,162,39,.28)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--parch);line-height:1.8;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+::selection{background:var(--gold);color:var(--navy)}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.85rem}
+.topnav a{color:var(--gold-lt);text-decoration:none;letter-spacing:.06em}
+.topnav a:hover{color:var(--gold)}
+.topnav .crumb{color:var(--muted)}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+header.hero{padding:4rem 1.5rem 3rem;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(201,162,39,.14),transparent 60%),var(--navy)}
+.kicker{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.4rem}
+header.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:500;line-height:1.12;color:var(--parch);max-width:20ch;margin:0 auto}
+header.hero h1 em{color:var(--gold-lt);font-style:italic}
+section.block{padding:2.6rem 0}
+.block h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--parch);margin-bottom:1.2rem}
+.block h3{font-size:1.35rem;font-weight:600;color:var(--gold-lt);margin:2rem 0 .8rem}
+.block p{margin-bottom:1.1rem;color:#d8d0bc}
+.block ul,.block ol{margin:0 0 1.2rem 1.4rem;color:#d8d0bc}
+.block li{margin-bottom:.55rem}
+.block strong{color:var(--parch);font-weight:600}
+.objbox{background:var(--navy2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:1.6rem;margin:0 0 1rem}
+.objbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem}
+.objbox p{margin:0;color:var(--parch);font-size:1.05rem}
+.exbox{background:var(--navy2);border:1px dashed rgba(201,162,39,.5);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.exbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+.exbox .illus{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1rem}
+.practice{background:rgba(201,162,39,.05);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.practice ol{margin-left:1.3rem}
+.practice li{margin-bottom:.8rem}
+details{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:8px;padding:1rem 1.2rem;margin-bottom:.8rem}
+details summary{cursor:pointer;font-weight:500;color:var(--parch)}
+details summary:hover{color:var(--gold-lt)}
+details p{margin:.8rem 0 0;color:#d8d0bc}
+details p strong{color:var(--gold-lt)}
+.riskbox{border:1px solid rgba(201,162,39,.45);border-radius:12px;padding:1.8rem;margin:2.4rem 0;background:linear-gradient(180deg,rgba(201,162,39,.08),transparent 60%),var(--navy2);text-align:center}
+.riskbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.9rem}
+.riskbox p{margin:0 0 .8rem;color:var(--parch)}
+.riskbox p:last-child{margin:0}
+.motto{background:radial-gradient(600px 260px at 50% 50%,rgba(201,162,39,.10),transparent 70%);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2rem 1.5rem;margin:2rem 0;text-align:center}
+.motto p{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.4rem;font-style:italic;line-height:1.9;color:var(--parch);margin:0}
+.modnav{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 1rem;flex-wrap:wrap}
+.modnav a{flex:1;min-width:200px;background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.4rem;text-decoration:none;color:var(--parch)}
+.modnav a:hover{border-color:var(--gold)}
+.modnav .dir{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:.4rem}
+.modnav .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem}
+footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+footer b{color:var(--gold)}
+hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear-gradient(90deg,transparent,var(--line),transparent)}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html">← Phase I Hub</a>
+  <span class="crumb">M&amp;Q University · Phase I</span>
+  <a href="../index.html">University Home →</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Phase I — Market Foundations · Module 5 of 8</div>
+    <h1 class="serif">Market Structure, <em>Support &amp; Resistance</em></h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="block">
+  <div class="objbox">
+    <div class="lbl">Learning Objective</div>
+    <p>By the end of this module, you can identify an uptrend (higher highs, higher lows), a downtrend (lower highs, lower lows), and a range; mark simple support and resistance <em>zones</em> from prior swing points; and describe a "break and retest" in the mission's own language.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Explanation</h2>
+
+  <h3 class="serif">Structure: the market's handwriting</h3>
+  <p>Strip away every indicator and a chart still speaks. Its handwriting is called <strong>market structure</strong> — the pattern of peaks and valleys price leaves behind. There are only three things it can be writing:</p>
+  <ul>
+    <li><strong>Uptrend:</strong> <em>higher highs and higher lows</em> (HH/HL). Each rally reaches further than the last, and each pullback stops shallower than the last. Buyers are in charge of the story.</li>
+    <li><strong>Downtrend:</strong> <em>lower highs and lower lows</em> (LH/LL). Each rally falls shorter, each decline reaches deeper. Sellers are in charge of the story.</li>
+    <li><strong>Range:</strong> price moves sideways between an upper border and a lower border, with no clear sequence of higher or lower swings. Neither side is in charge — the market is negotiating.</li>
+  </ul>
+  <p>Learning to label structure is learning to answer the first question of every session: <em>"What kind of market am I looking at today?"</em> A student who can answer that honestly already trades — or rather, already <em>waits</em> — better than most beginners.</p>
+
+  <h3 class="serif">Support and resistance are zones, not lines</h3>
+  <p><strong>Support</strong> is an area where buying interest has repeatedly shown up and slowed or stopped declines. <strong>Resistance</strong> is an area where selling interest has repeatedly shown up and slowed or stopped rallies. Beginners draw them as razor-thin lines; experienced students draw them as <strong>zones</strong> — shaded neighborhoods a few points wide — because price rarely respects a line to the exact tick.</p>
+  <p>You find zones at <strong>prior swing points</strong>: places where price turned before. Mark the swing highs and swing lows on your chart, and the clusters where price reacted multiple times become your zones.</p>
+  <p>Why do old levels matter at all? Because markets have memory. Stops, entries, and human psychology cluster around prices where battles were fought before. When price returns to an old battleground, participants react — some defending, some attacking. This is a <em>tendency</em>, never a guarantee. Zones describe where reactions are <em>likely</em>; they promise nothing.</p>
+
+  <h3 class="serif">The retest: our motto in action</h3>
+  <div class="motto">
+    <p>We don't chase burning candles.<br>We <strong>wait for the retest</strong>.</p>
+  </div>
+  <p>Here is what that means in structure language. Suppose resistance at 18,600 has held three times. On the fourth approach, price pushes <em>through</em> it with conviction — a <strong>break</strong>. The impatient trader chases the breakout candle. The disciplined student waits: very often, price <strong>returns to the broken level</strong> — the old resistance, now acting as support — before continuing. That return visit is the <strong>retest</strong>.</p>
+  <p>The retest is where patience gets paid in <em>information</em>: if the level holds, the break is confirmed by the market itself. If price slices straight back through, the "break" was a head-fake, and the student who waited just avoided a trap. Either way, waiting was the right process. Chasing the candle is how beginners buy the top of false breaks; waiting for the retest is how students let the market show its hand first.</p>
+
+  <h3 class="serif">Stronger zones, cleaner charts</h3>
+  <ul>
+    <li><strong>More touches, stronger story.</strong> A zone price has respected four times carries more meaning than one touched once — more participants are watching it.</li>
+    <li><strong>Clean breaks weaken zones.</strong> When price blasts through a zone with long momentum candles and never looks back, that zone's story is over. Respect what the market tells you.</li>
+    <li><strong>Fewer, cleaner zones beat clutter.</strong> A chart with twenty lines is a chart that says everything and means nothing. Mark two or three major zones from the daily chart, then zoom in. If a level doesn't make you say "price clearly reacted here," it doesn't deserve ink.</li>
+  </ul>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Worked Example</h2>
+  <div class="exbox">
+    <div class="lbl">Worked Example — Structure and a Retest</div>
+    <p><strong>The structure</strong> (illustrative): over several sessions, MNQ rallies to 18,600, pulls back to 18,520, rallies to 18,650, then pulls back to 18,560. Read the swings: higher high (18,600 → 18,650), higher low (18,520 → 18,560). <strong>HH, HL, HH, HL — an uptrend.</strong> The handwriting is clear.</p>
+    <p><strong>The zone:</strong> 18,600 was resistance — price stalled there on the first rally. After the break above it, 18,600 becomes the zone to watch.</p>
+    <p><strong>The retest</strong> (illustrative): two sessions later, price pulls back from 18,680 and touches 18,600 — the old resistance, now support. It holds; candles show rejection wicks at the zone, and price turns back up.</p>
+    <p><strong>The lesson is the process, not the outcome:</strong> mark the structure → identify the zone → wait for the retest → observe what the market does. The student who waited was never in danger during the pullback, because the student was never <em>in</em> anything. Patience is a position.</p>
+    <div class="illus">All prices are illustrative teaching numbers, not market data or promises of any outcome.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Practice Exercise</h2>
+  <div class="practice">
+    <ol>
+      <li><strong>Label the structure.</strong> On an MNQ daily chart, mark the last three swing highs and three swing lows. Label the structure: uptrend, downtrend, or range — in your own handwriting.</li>
+      <li><strong>Draw three zones.</strong> From prior swing points where price clearly reacted, draw two to three support/resistance zones (wide shaded areas, not thin lines). Note how many times each was touched.</li>
+      <li><strong>Find a retest.</strong> Locate one break-and-retest on your chart. Screenshot it or sketch it, and describe it in two sentences using the words "break," "retest," and "wait."</li>
+      <li><strong>Declutter.</strong> Delete half the lines and zones on your chart. Write one paragraph explaining why fewer, cleaner zones serve you better than a cluttered chart.</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Knowledge Check</h2>
+  <details><summary>1. How do you recognize an uptrend, a downtrend, and a range?</summary><p><strong>Answer:</strong> Uptrend = higher highs and higher lows (each rally goes further, each pullback stops shallower). Downtrend = lower highs and lower lows. Range = sideways movement between an upper and lower border with no clear swing sequence.</p></details>
+  <details><summary>2. Why should support and resistance be drawn as zones rather than exact lines?</summary><p><strong>Answer:</strong> Because price rarely respects a level to the exact tick — reactions happen across a neighborhood a few points wide. A zone honestly represents where buying or selling interest has clustered; a thin line pretends to a precision the market doesn't offer.</p></details>
+  <details><summary>3. Why do old price levels tend to matter when price returns to them?</summary><p><strong>Answer:</strong> Markets have memory: stops, entries, and trader psychology cluster around prices where battles were fought before, so reactions tend to recur there. It is a tendency, never a guarantee — zones describe where reactions are likely, not certain.</p></details>
+  <details><summary>4. What is a retest, and why does our motto say to wait for it?</summary><p><strong>Answer:</strong> After a level breaks, price often returns to the broken level before continuing — that return visit is the retest. Waiting lets the market confirm the break (or expose it as a head-fake) instead of chasing the breakout candle, which is how beginners buy false breaks.</p></details>
+  <details><summary>5. Your chart has fifteen support and resistance lines. What's wrong?</summary><p><strong>Answer:</strong> Clutter. A chart that marks everything means nothing — you can't tell which levels actually matter. The fix: keep two or three major zones from clear prior reactions and remove the rest.</p></details>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <div class="riskbox">
+    <div class="lbl">Risk Reminder</div>
+    <p>Structure reading is a skill of <em>observation</em>. Even a perfectly labeled chart cannot tell you what happens next — zones break, trends end, and retests fail.</p>
+    <p><strong>We do not promise profits.</strong> Practice marking structure on historical charts and in simulation. The reward of this module is not a signal — it is the calm that comes from always knowing what kind of market you're looking at.</p>
+  </div>
+
+  <div class="modnav">
+    <a href="module-4-vwap-rsi.html"><span class="dir">← Previous</span><span class="t serif">Module 4: VWAP &amp; RSI 14</span></a>
+    <a href="module-6-risk-management.html"><span class="dir">Next →</span><span class="t serif">Module 6: Risk Management &amp; Position Sizing</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <b>M&amp;Q University</b> · Knowledge Is the Legacy<br><br>
+  An educational initiative of MNQ Scalp Stacks · Education · Discipline · Practice · Community
+</footer>
+</body>
+</html>
