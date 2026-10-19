@@ -21,7 +21,8 @@
 
 **Worked-example sketch (illustrative numbers):**
 - MNQ moves 10 points in the student's favor → 10 × $2 = **$20 per contract** (labeled illustrative).
-- Same 10-point move on ES → 10 × $50 = **$500 per contract** — ten times the size, ten times the speed of loss.
+- Same 10-point move on NQ → 10 × $20 = **$200 per contract** — ten times the size, ten times the speed of loss.
+- Pair rule: ten-to-one comparisons only inside a pair — ES↔MES track the S&P 500, NQ↔MNQ track the Nasdaq-100. Never compare across pairs.
 - Lesson: point value is the "volume knob" of risk; micros let you learn the same market at one-tenth the speed.
 
 **Practice exercise:**

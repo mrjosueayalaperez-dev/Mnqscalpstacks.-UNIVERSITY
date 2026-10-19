@@ -109,6 +109,9 @@ hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear
   <h3 class="serif">When the math says no</h3>
   <p>Sometimes the formula returns a fraction of a contract — meaning the setup needs a wider stop than your risk allows. Beginners hear "no" as a problem to solve by widening their risk. Disciplined students hear "no" as a <strong>complete answer</strong>: skip the idea, or wait for a setup whose stop fits the math. Passing on a trade is not missing out. It is risk management working exactly as designed.</p>
 
+  <h3 class="serif">Round down — and leave room for fees</h3>
+  <p>Two details the formula alone doesn't show you. First: <strong>always round down to a whole contract, never up.</strong> If the math gives 1.7 contracts, you trade 1 — because 2 would spend risk you don't have. Contracts come in whole numbers; your risk ceiling is a ceiling, not a suggestion. Second: <strong>the stop is not your only cost.</strong> Every round trip carries a commission — a few dollars per contract, varying by broker — and it lands on top of whatever the stop risks. Size so that <em>(contracts × stop distance × dollars per point) + (contracts × round-trip fee)</em> stays inside your ceiling. If adding the fee breaks the ceiling, drop one more contract. Never assume fees are zero. And one honesty note beyond fees: <strong>slippage can make the real loss bigger than the planned stop.</strong> In a fast market your stop order can fill worse than its trigger price — the formula plans the risk, but the market decides the fill. That is one more reason the ceiling is a ceiling: plan for the worst fill, not the printed one.</p>
+
   <div class="nonneg">
     <div class="lbl">Non-Negotiable Rules</div>
     <ul>
@@ -143,7 +146,7 @@ hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear
   <h2 class="serif">Practice Exercise</h2>
   <div class="practice">
     <ol>
-      <li><strong>Run the formula three times.</strong> With an illustrative $50 risk ceiling, compute position size on MNQ ($2/point) for stop distances of 10, 25, and 40 points. Write each answer by hand.</li>
+      <li><strong>Run the formula three times.</strong> With an illustrative $50 risk ceiling, compute position size on MNQ ($2/point) for stop distances of 10, 25, and 40 points. Round <em>down</em> to whole contracts, and note where the fee buffer from the lesson above would change your answer. Write each answer by hand.</li>
       <li><strong>Compare contracts.</strong> Repeat the exercise on MES ($5/point). Notice how the contract counts differ — same math, different volume knob.</li>
       <li><strong>Write your risk rules.</strong> In your journal, define: your maximum risk per trade, your maximum risk per day, and exactly what you will do after three consecutive losses (hint: the answer involves stepping away, not sizing up).</li>
       <li><strong>Face the streak.</strong> Journal prompt: "If my stop were hit five times in a row, what would my account look like, and what would I do next?" Answer with numbers and with a plan.</li>

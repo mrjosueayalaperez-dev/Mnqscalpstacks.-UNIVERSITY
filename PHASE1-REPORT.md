@@ -52,3 +52,15 @@ Validation script (`/tmp/test_phase1.py`, kept out of the repo):
 - **Old repo preserved** — `Mnqscalpstacks-university-` untouched; its fate (archive/redirect) is Zelator's call.
 - Quiz "logic" is zero-JS `<details>` reveal — deliberately dependency-free; a future interactive quiz engine can replace it without touching content.
 - Nothing deployed, nothing spent, no credentials anywhere in this branch.
+
+## Addendum — Oct 18, 2026: post-merge corrections (Zelator review)
+
+PR #1 merged to main as 0270aef. Zelator's post-merge review found a teaching error: Module 1 compared ES vs MNQ as "same market" at "one-tenth" the size (ES tracks the S&P 500 at $50/pt; MNQ tracks the Nasdaq-100 at $2/pt; $500 ÷ $20 = 25, not 10). Two further notes: Module 6 needed whole-contract rounding + room for fees; Module 8's practice count (5 sessions × 3 setups = 15 max) didn't reach the 20-trade graduation bar.
+
+Fixes (branch `fix/phase1-contract-pairs`):
+- Module 1: all ten-to-one comparisons now use NQ ($20/pt) vs MNQ ($2/pt) — 10 points = $200 vs $20; added explicit pair rule (ES↔MES = S&P 500, NQ↔MNQ = Nasdaq-100; never compare across pairs).
+- PHASE1-CURRICULUM.md: same NQ/MNQ correction + pair rule.
+- Module 6: new "Round down — and leave room for fees" section (floor to whole contracts, never up; size so stop-risk + round-trip fees stay inside the ceiling); exercise now practices rounding down.
+- Module 8: five-session exercise now notes 15 < 20 and directs students to continue into a second week until the journal clears the 20-trade bar.
+
+Validation re-run Oct 18: **113/113 checks pass** — HTML well-formedness (10 files), internal links resolve, all 38 knowledge checks answered, zero profit promises (only "we do not promise profits" disclaimers), ES/MNQ cross-pair error absent, all four fixes present. Modules 2–8 audit: nav chain intact, viewport + fluid phone layout on all, exercises present, no placeholders/TODOs, no other unfinished features found.
