@@ -132,7 +132,8 @@ hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear
     <p><strong>The setup</strong> (illustrative): a student paper-trades with an illustrative account of <strong>$5,000</strong> and a risk ceiling of <strong>1% = $50 per trade</strong>.</p>
     <p><strong>Case 1:</strong> the idea needs a 25-point stop (the chart structure says the idea is wrong 25 points away).</p>
     <p class="serif" style="font-size:1.2rem">contracts = $50 ÷ (25 × $2) = $50 ÷ $50 = <strong>1 contract</strong></p>
-    <p>The math fits perfectly: one MNQ contract, $50 of risk, no more.</p>
+    <p>Price risk is $50 (1 × 25 pts × $2). Adding an illustrative $1.50 round-trip fee brings total risk to $51.50, which is over the $50 ceiling. By the rule above, drop to 0 contracts: pass on this trade or wait for a setup with a stop under 25 points (at 24 pts, $48 + $1.50 = $49.50, which fits). Round down, and never round up to squeeze it in.</p>
+    <p class="illus">Fee is illustrative; check your broker's current MNQ round-trip cost.</p>
     <p><strong>Case 2:</strong> a different idea needs a 50-point stop.</p>
     <p class="serif" style="font-size:1.2rem">contracts = $50 ÷ (50 × $2) = $50 ÷ $100 = <strong>0.5 contracts</strong></p>
     <p>Half a contract doesn't exist. The math says <strong>no</strong> — the setup is too big for this risk ceiling. The disciplined student skips it or waits for a tighter setup. "No" is a complete answer, and honoring it is what separates students from gamblers.</p>
@@ -186,5 +187,6 @@ hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear
   <b>M&amp;Q University</b> · Knowledge Is the Legacy<br><br>
   An educational initiative of MNQ Scalp Stacks · Education · Discipline · Practice · Community
 </footer>
+<script src="progress.js" defer></script>
 </body>
 </html>
