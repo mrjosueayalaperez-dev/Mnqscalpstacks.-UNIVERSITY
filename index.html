@@ -118,6 +118,7 @@
   }
   .phases{display:grid;gap:1rem;margin:2.2rem 0}
   @media(min-width:640px){.phases{grid-template-columns:1fr 1fr}}
+  @media(max-width:639px){.hero{min-height:62vh;padding:3rem 1.25rem 2.5rem}}
   .phase{
     background:var(--navy2); border:1px solid rgba(201,162,39,.16);
     border-radius:10px; padding:1.4rem 1.5rem;
@@ -178,7 +179,13 @@
   <h1 class="serif">Knowledge Is <em>the Legacy</em></h1>
   <div class="sub">Education · Discipline · Practice · Community</div>
   <div class="scroll-hint">Enter ↓</div>
+  <a class="es-entry" href="platform.html?lang=es" lang="es" hreflang="es" style="margin-top:1rem;color:var(--gold);font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;text-decoration:none">Español · Avatar bilingüe y simulador →</a>
 </header>
+<nav class="sitenav" aria-label="Main" style="display:flex;gap:1.6rem;justify-content:center;flex-wrap:wrap;padding:1rem;border-bottom:1px solid var(--line);background:var(--navy2);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase">
+  <a href="phase-1/index.html" style="color:var(--gold-lt);text-decoration:none">Phase I · 8 Modules</a>
+  <a href="platform.html" style="color:var(--gold-lt);text-decoration:none">Teaching Avatar · Simulator</a>
+  <a href="platform.html?lang=es" lang="es" hreflang="es" style="color:var(--gold-lt);text-decoration:none">Español</a>
+</nav>
 
 <main>
 <!-- ================= MISSION ================= -->
