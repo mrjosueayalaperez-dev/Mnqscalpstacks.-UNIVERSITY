@@ -651,11 +651,36 @@ let lang="en", cur=0, rateIdx=1; const RATES=[0.85,1.0,1.15];
 const done=new Set(), best={};
 const $=id=>document.getElementById(id);
 function esc(s){return s.replace(/</g,"&lt;");}
+// The Professor's voice: pick an adult-male voice on the student's own device so
+// the spoken greeting, read-aloud lessons, and spoken answers match the Professor
+// instead of the device default voice. Best available match wins; the pitch is
+// set a touch lower for the same reason. The greeting videos keep his recorded voice.
+var profVoice={en:null,es:null};
+function pickProfVoice(){
+  if(!("speechSynthesis" in window)) return;
+  var vs=speechSynthesis.getVoices(); if(!vs || !vs.length) return;
+  var PREF={en:["Microsoft Guy","Microsoft David","Daniel","Alex","Fred","#male","Male"],
+            es:["Microsoft Pablo","Jorge","Diego","Carlos","#male","Male"]};
+  var FEMALE=/female|zira|samantha|maria|paulina|luciana|helena/i;
+  function pick(lg){
+    var pool=vs.filter(function(v){return v.lang && v.lang.toLowerCase().indexOf(lg)===0;});
+    if(!pool.length) return null;
+    var prefs=PREF[lg];
+    for(var i=0;i<prefs.length;i++){ var hit=null;
+      for(var j=0;j<pool.length;j++){ if(pool[j].name.indexOf(prefs[i])>=0){ hit=pool[j]; break; } }
+      if(hit) return hit; }
+    for(var k=0;k<pool.length;k++){ if(!FEMALE.test(pool[k].name)) return pool[k]; }
+    return pool[0];
+  }
+  profVoice.en=pick("en"); profVoice.es=pick("es");
+}
+if("speechSynthesis" in window){ pickProfVoice(); try{ speechSynthesis.onvoiceschanged=pickProfVoice; }catch(e){} }
 function speak(text){
   $("speech").textContent=text;
   if(!$("speakChk").checked || !("speechSynthesis" in window)) return;
   speechSynthesis.cancel();
   const u=new SpeechSynthesisUtterance(text); u.lang= lang==="es"? "es-US":"en-US"; u.rate=RATES[rateIdx];
+  const pv= lang==="es"? profVoice.es : profVoice.en; if(pv) u.voice=pv; u.pitch=0.9;
   u.onstart=()=>$("avatarBox").classList.add("speaking"); u.onend=()=>$("avatarBox").classList.remove("speaking");
   speechSynthesis.speak(u);
 }
