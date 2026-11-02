@@ -1,0 +1,1 @@
+Professor voice clips for M&Q University — recorded in Helio (avocado_v2:MAI_03), the same voice as the Professor greeting videos and Community Bridge. Each file is one fixed spoken line of the platform (greeting, lesson, answer, simulator caption, feedback), named by content hash. Generated Nov 2, 2026.
