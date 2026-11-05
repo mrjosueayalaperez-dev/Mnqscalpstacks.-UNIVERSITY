@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<title>Módulo 6: Gestión del Riesgo y Tamaño de la Posición — M&amp;Q University Fase I</title>
+<meta name="description" content="Fase I, Módulo 6: riesgo por operación, las matemáticas del tamaño de la posición, por qué el stop va antes que la entrada y las reglas no negociables. Educación gratuita de M&Q University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1428;--navy2:#0E1B33;--gold:#C9A227;--gold-lt:#E8C15A;--parch:#EDE6D6;--muted:#93A0B8;--line:rgba(201,162,39,.28)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--parch);line-height:1.8;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+::selection{background:var(--gold);color:var(--navy)}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.85rem}
+.topnav a{color:var(--gold-lt);text-decoration:none;letter-spacing:.06em}
+.topnav a:hover{color:var(--gold)}
+.topnav .crumb{color:var(--muted)}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+header.hero{padding:4rem 1.5rem 3rem;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(201,162,39,.14),transparent 60%),var(--navy)}
+.kicker{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.4rem}
+header.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:500;line-height:1.12;color:var(--parch);max-width:20ch;margin:0 auto}
+header.hero h1 em{color:var(--gold-lt);font-style:italic}
+section.block{padding:2.6rem 0}
+.block h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--parch);margin-bottom:1.2rem}
+.block h3{font-size:1.35rem;font-weight:600;color:var(--gold-lt);margin:2rem 0 .8rem}
+.block p{margin-bottom:1.1rem;color:#d8d0bc}
+.block ul,.block ol{margin:0 0 1.2rem 1.4rem;color:#d8d0bc}
+.block li{margin-bottom:.55rem}
+.block strong{color:var(--parch);font-weight:600}
+.objbox{background:var(--navy2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:1.6rem;margin:0 0 1rem}
+.objbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem}
+.objbox p{margin:0;color:var(--parch);font-size:1.05rem}
+.exbox{background:var(--navy2);border:1px dashed rgba(201,162,39,.5);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.exbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+.exbox .illus{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1rem}
+.exbox .formula{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.3rem;color:var(--gold-lt);background:rgba(0,0,0,.3);border-radius:8px;padding:1rem 1.2rem;margin:1rem 0;text-align:center}
+.practice{background:rgba(201,162,39,.05);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.practice ol{margin-left:1.3rem}
+.practice li{margin-bottom:.8rem}
+details{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:8px;padding:1rem 1.2rem;margin-bottom:.8rem}
+details summary{cursor:pointer;font-weight:500;color:var(--parch)}
+details summary:hover{color:var(--gold-lt)}
+details p{margin:.8rem 0 0;color:#d8d0bc}
+details p strong{color:var(--gold-lt)}
+.riskbox{border:1px solid rgba(201,162,39,.45);border-radius:12px;padding:1.8rem;margin:2.4rem 0;background:linear-gradient(180deg,rgba(201,162,39,.08),transparent 60%),var(--navy2);text-align:center}
+.riskbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.9rem}
+.riskbox p{margin:0 0 .8rem;color:var(--parch)}
+.riskbox p:last-child{margin:0}
+.nonneg{background:rgba(160,30,30,.08);border:1px solid rgba(200,80,80,.4);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.nonneg .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:#e08a8a;font-weight:600;margin-bottom:1rem}
+.nonneg li{margin-bottom:.6rem}
+.modnav{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 1rem;flex-wrap:wrap}
+.modnav a{flex:1;min-width:200px;background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.4rem;text-decoration:none;color:var(--parch)}
+.modnav a:hover{border-color:var(--gold)}
+.modnav .dir{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:.4rem}
+.modnav .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem}
+footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+footer b{color:var(--gold)}
+hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear-gradient(90deg,transparent,var(--line),transparent)}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html">← Centro de la Fase I</a>
+  <span class="crumb">M&amp;Q University · Fase I</span>
+  <a href="../index.html">Inicio de la Universidad →</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Fase I — Fundamentos del Mercado · Módulo 6 de 8</div>
+    <h1 class="serif">Gestión del Riesgo <em>y Tamaño de la Posición</em></h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="block">
+  <div class="objbox">
+    <div class="lbl">Objetivo de Aprendizaje</div>
+    <p>Al terminar este módulo, podrás definir tu riesgo por operación en dólares y como fracción de una cuenta, calcular el tamaño de la posición a partir de una distancia de stop usando el valor de $2 por punto de MNQ, explicar por qué el stop se elige <em>antes</em> de la entrada — y enumerar las reglas no negociables, entre ellas: nunca arriesgues dinero necesario para vivir.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Explicación</h2>
+
+  <h3 class="serif">El riesgo primero, siempre</h3>
+  <p>Toda idea de operación sólida empieza con la misma pregunta: <strong>"¿Dónde estoy equivocado?"</strong> La respuesta a esa pregunta es tu <strong>stop</strong> — el precio en el que la idea se demuestra equivocada y sales. Esta es la disciplina que esta universidad inculca a cada estudiante: <strong>el stop se elige antes de la entrada, siempre.</strong> Si no puedes señalar dónde estás equivocado, no tienes una operación. Tienes una esperanza. Y <em>no apostamos a la esperanza</em>.</p>
+  <p>Este orden importa porque invierte el instinto del principiante. El principiante elige una entrada, se emociona, y solo después se pregunta por el stop — cuando la esperanza ya está haciendo el trabajo de pensar. Los profesionales deciden primero la salida. El stop no es pesimismo. Es el plan.</p>
+
+  <h3 class="serif">Riesgo por operación: tu techo</h3>
+  <p>El <strong>riesgo por operación</strong> es lo máximo que te permites perder en una sola idea — expresado en dólares, y a menudo como una pequeña fracción de la cuenta. Muchos educadores usan como ejemplo ilustrativo el <strong>1% de la cuenta por operación</strong>. Entiende qué es ese número: un <em>techo</em>, no una meta. No estás tratando de perder el 1%; estás garantizando que ninguna idea individual pueda dañarte gravemente.</p>
+  <p>¿Por qué una fracción pequeña? Porque <strong>las rachas de pérdidas son normales</strong>. Incluso los procesos cuidadosos y disciplinados pierden varias veces seguidas — eso es la matemática de la incertidumbre, no un fracaso personal. Si cada pérdida es una fracción pequeña, una racha es una mala semana. Si cada pérdida es una fracción grande, una racha es el fin de la cuenta. La gestión del riesgo es lo que te permite sobrevivir el tiempo suficiente para que tu aprendizaje se acumule. <em>El riesgo antes que la recompensa</em> — es un principio porque es aritmética.</p>
+
+  <h3 class="serif">Tamaño de la posición: la fórmula</h3>
+  <p>Una vez que conoces tu riesgo en dólares y tu distancia de stop en puntos, el número de contratos no es una suposición ni un presentimiento. Es una fórmula:</p>
+  <div class="exbox" style="border-style:solid">
+    <div class="formula">contratos = dólares de riesgo ÷ (distancia de stop en puntos × dólares por punto)</div>
+  </div>
+  <p>En MNQ, el valor en dólares por punto es $2. Así que un stop de 25 puntos en un contrato de MNQ arriesga 25 × $2 = $50. Si tu techo de riesgo es $50, la fórmula te da exactamente <strong>un contrato</strong>. La matemática decide el tamaño; tus sentimientos no tienen voto. De eso se trata todo.</p>
+  <p>Esta es también la razón más profunda por la que existen los micros para quien está aprendiendo: la misma fórmula, el mismo mercado, la misma lección — a una décima parte del tamaño. El tamaño de la posición no es ser tímido. Es ser <em>exacto</em>.</p>
+
+  <h3 class="serif">Cuando la matemática dice no</h3>
+  <p>A veces la fórmula devuelve una fracción de contrato — lo que significa que la configuración necesita un stop más amplio de lo que tu riesgo permite. El principiante escucha el "no" como un problema que debe resolver ampliando su riesgo. El estudiante disciplinado escucha el "no" como una <strong>respuesta completa</strong>: descarta la idea, o espera una configuración cuyo stop encaje en la matemática. Dejar pasar una operación no es quedarse fuera. Es la gestión del riesgo funcionando exactamente como fue diseñada.</p>
+
+  <h3 class="serif">Redondea hacia abajo — y deja espacio para las comisiones</h3>
+  <p>Dos detalles que la fórmula por sí sola no te muestra. Primero: <strong>redondea siempre hacia abajo hasta un contrato entero, nunca hacia arriba.</strong> Si la matemática da 1.7 contratos, operas 1 — porque 2 gastarían un riesgo que no tienes. Los contratos vienen en números enteros; tu techo de riesgo es un techo, no una sugerencia. Segundo: <strong>el stop no es tu único costo.</strong> Cada viaje de ida y vuelta conlleva una comisión — unos pocos dólares por contrato, que varían según el bróker — y se suma a lo que arriesgue el stop. Calcula el tamaño de modo que <em>(contratos × distancia de stop × dólares por punto) + (contratos × comisión de ida y vuelta)</em> se mantenga dentro de tu techo. Si al sumar la comisión se rompe el techo, reduce un contrato más. Nunca supongas que las comisiones son cero. Y una nota de honestidad más allá de las comisiones: <strong>el deslizamiento puede hacer que la pérdida real sea mayor que el stop planificado.</strong> En un mercado rápido, tu orden de stop puede ejecutarse a un precio peor que su precio de activación — la fórmula planifica el riesgo, pero el mercado decide la ejecución. Esa es una razón más para que el techo sea un techo: planifica para la peor ejecución, no para la que está impresa.</p>
+
+  <div class="nonneg">
+    <div class="lbl">Reglas No Negociables</div>
+    <ul>
+      <li><strong>Nunca operes con dinero necesario para vivir.</strong> El alquiler, la comida, las facturas y el dinero de la familia nunca son capital de riesgo. Si perderlo cambiaría tu vida, no pertenece a una cuenta de operaciones.</li>
+      <li><strong>Nunca muevas un stop por esperanza.</strong> El stop es el plan. Moverlo cuando el precio se acerca es abandonar el plan en el momento exacto en que el plan más importa.</li>
+      <li><strong>Nunca operes por venganza.</strong> Después de una pérdida, la siguiente operación no es "la que lo recupera". Esa operación no existe. Solo existe la siguiente idea independiente, tomada con el tamaño correcto o no tomada en absoluto.</li>
+      <li><strong>Nunca operes basándote en números de margen memorizados.</strong> Los requisitos cambian. Consulta siempre los requisitos actuales con tu proveedor.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Ejemplo Resuelto</h2>
+  <div class="exbox">
+    <div class="lbl">Ejemplo Resuelto — Calcular el Tamaño de una Operación en MNQ</div>
+    <p><strong>La configuración</strong> (ilustrativa): un estudiante opera en simulación con una cuenta ilustrativa de <strong>$5,000</strong> y un techo de riesgo del <strong>1% = $50 por operación</strong>.</p>
+    <p><strong>Caso 1:</strong> la idea necesita un stop de 25 puntos (la estructura del gráfico indica que la idea está equivocada a 25 puntos de distancia).</p>
+    <p class="serif" style="font-size:1.2rem">contratos = $50 ÷ (25 × $2) = $50 ÷ $50 = <strong>1 contrato</strong></p>
+    <p>El riesgo de precio es $50 (1 × 25 pts × $2). Al añadir una comisión ilustrativa de ida y vuelta de $1.50, el riesgo total sube a $51.50, lo que supera el techo de $50. Según la regla anterior, baja a 0 contratos: deja pasar esta operación o espera una configuración con un stop por debajo de 25 puntos (con 24 pts, $48 + $1.50 = $49.50, lo que sí encaja). Redondea hacia abajo, y nunca redondees hacia arriba para forzarlo.</p>
+    <p class="illus">La comisión es ilustrativa; consulta con tu bróker el costo actual de ida y vuelta de MNQ.</p>
+    <p><strong>Caso 2:</strong> otra idea necesita un stop de 50 puntos.</p>
+    <p class="serif" style="font-size:1.2rem">contratos = $50 ÷ (50 × $2) = $50 ÷ $100 = <strong>0.5 contratos</strong></p>
+    <p>Medio contrato no existe. La matemática dice <strong>no</strong> — la configuración es demasiado grande para este techo de riesgo. El estudiante disciplinado la descarta o espera una configuración más ajustada. El "no" es una respuesta completa, y respetarlo es lo que separa a los estudiantes de los apostadores.</p>
+    <div class="illus">El tamaño de la cuenta, el porcentaje de riesgo y todas las cifras son números ilustrativos de enseñanza — no son recomendaciones, ni datos de mercado, ni promesas de ningún resultado.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Ejercicio de Práctica</h2>
+  <div class="practice">
+    <ol>
+      <li><strong>Aplica la fórmula tres veces.</strong> Con un techo de riesgo ilustrativo de $50, calcula el tamaño de la posición en MNQ ($2/punto) para distancias de stop de 10, 25 y 40 puntos. Redondea <em>hacia abajo</em> a contratos enteros, y anota dónde el margen para comisiones de la lección anterior cambiaría tu respuesta. Escribe cada respuesta a mano.</li>
+      <li><strong>Compara contratos.</strong> Repite el ejercicio en MES ($5/punto). Observa cómo difieren los conteos de contratos — la misma matemática, una perilla de volumen diferente.</li>
+      <li><strong>Escribe tus reglas de riesgo.</strong> En tu diario de operaciones, define: tu riesgo máximo por operación, tu riesgo máximo por día, y exactamente qué harás después de tres pérdidas consecutivas (pista: la respuesta implica apartarte, no aumentar el tamaño).</li>
+      <li><strong>Enfrenta la racha.</strong> Tema para el diario: "Si mi stop se activara cinco veces seguidas, ¿cómo quedaría mi cuenta y qué haría después?" Responde con números y con un plan.</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Revisión de Conocimientos</h2>
+  <details><summary>1. ¿Cuál es la fórmula del tamaño de la posición y qué significa cada parte?</summary><p><strong>Respuesta:</strong> contratos = dólares de riesgo ÷ (distancia de stop en puntos × dólares por punto). Los dólares de riesgo son tu techo por operación; la distancia de stop es cuánto puede moverse la idea en tu contra antes de demostrarse equivocada; los dólares por punto son el valor por punto del contrato ($2 en MNQ). La fórmula convierte tu riesgo en un tamaño exacto.</p></details>
+  <details><summary>2. ¿Por qué el stop debe elegirse antes de la entrada?</summary><p><strong>Respuesta:</strong> Porque "¿dónde estoy equivocado?" es el cimiento sobre el que se sostiene toda la idea. Elegir primero la entrada deja que la emoción y la esperanza hagan el trabajo de pensar; elegir primero el stop hace que el riesgo sea exacto antes de que exista cualquier compromiso. Sin un stop definido no hay operación — solo una esperanza.</p></details>
+  <details><summary>3. ¿Qué es un techo de riesgo y por qué es un techo y no una meta?</summary><p><strong>Respuesta:</strong> Un techo de riesgo (por ejemplo, un 1% ilustrativo de la cuenta) es la pérdida máxima permitida en una sola idea. Es un techo porque no estás tratando de alcanzarlo — estás garantizando que ninguna idea pueda dañar seriamente la cuenta, de modo que las rachas normales de pérdidas sigan siendo sobrevivibles.</p></details>
+  <details><summary>4. La fórmula te da 0.5 contratos. ¿Qué haces?</summary><p><strong>Respuesta:</strong> La dejas pasar. Medio contrato no existe, lo que significa que el stop de la configuración es demasiado amplio para tu techo de riesgo. Descartas la idea o esperas una que encaje en la matemática — el "no" es una respuesta completa y respetarlo es disciplina.</p></details>
+  <details><summary>5. Nombra dos reglas no negociables de este módulo y explica por qué existe cada una.</summary><p><strong>Respuesta:</strong> Cualquiera de estas dos: nunca arriesgues dinero necesario para vivir (una pérdida nunca debe cambiar tu vida); nunca muevas un stop por esperanza (el stop es el plan — moverlo es abandonarlo bajo presión); nunca operes por venganza (ninguna operación "recupera" una pérdida; cada idea se sostiene por sí sola); nunca confíes en números de margen memorizados (los requisitos cambian — consulta las cifras actuales con tu proveedor).</p></details>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <div class="riskbox">
+    <div class="lbl">Recordatorio de Riesgo</div>
+    <p>Este módulo es el más importante de la Fase I. Todos los demás módulos te enseñan a <em>ver</em>; este te enseña a <em>sobrevivir</em>.</p>
+    <p><strong>No prometemos ganancias.</strong> Ninguna fórmula de tamaño de posición crea una ventaja — solo controla cuánto puede costarte una idea. Domina esta matemática en simulación hasta que sea automática, porque en los mercados reales no hay botón de pausa mientras haces aritmética bajo presión.</p>
+  </div>
+
+  <div class="modnav">
+    <a href="module-5-market-structure.html"><span class="dir">← Anterior</span><span class="t serif">Módulo 5: Estructura del Mercado, Soporte y Resistencia</span></a>
+    <a href="module-7-psychology.html"><span class="dir">Siguiente →</span><span class="t serif">Módulo 7: Psicología del Trading y Disciplina</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p class="risk-disclaimer" role="note" style="font-size:.78rem;color:#93a0b8;max-width:60ch;margin:0 auto 1rem;line-height:1.6">Operar futuros implica un riesgo sustancial de pérdida y no es adecuado para todos los inversionistas. Esto es educación y práctica estructurada, no asesoría financiera.</p>
+  <b>M&amp;Q University</b> · El Conocimiento Es el Legado<br><br>
+  Una iniciativa educativa de MNQ Scalp Stacks · Educación · Disciplina · Práctica · Comunidad
+  <p><a href="../module-6-risk-management.html">English version</a></p>
+</footer>
+<script src="progress.js" defer></script>
+</body>
+</html>

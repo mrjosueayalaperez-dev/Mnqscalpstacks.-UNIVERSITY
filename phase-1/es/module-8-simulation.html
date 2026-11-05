@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<title>Módulo 8: Práctica en Simulación y Cuestionarios — M&amp;Q University Fase I</title>
+<meta name="description" content="Fase I, Módulo 8: rutinas estructuradas de práctica en simulación, la plantilla del diario de operaciones y una lista de autoevaluación. Solo simulación — ningún paso con dinero real. Educación gratuita de M&Q University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1428;--navy2:#0E1B33;--gold:#C9A227;--gold-lt:#E8C15A;--parch:#EDE6D6;--muted:#93A0B8;--line:rgba(201,162,39,.28)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--parch);line-height:1.8;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+::selection{background:var(--gold);color:var(--navy)}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.85rem}
+.topnav a{color:var(--gold-lt);text-decoration:none;letter-spacing:.06em}
+.topnav a:hover{color:var(--gold)}
+.topnav .crumb{color:var(--muted)}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+header.hero{padding:4rem 1.5rem 3rem;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(201,162,39,.14),transparent 60%),var(--navy)}
+.kicker{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.4rem}
+header.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:500;line-height:1.12;color:var(--parch);max-width:20ch;margin:0 auto}
+header.hero h1 em{color:var(--gold-lt);font-style:italic}
+section.block{padding:2.6rem 0}
+.block h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--parch);margin-bottom:1.2rem}
+.block h3{font-size:1.35rem;font-weight:600;color:var(--gold-lt);margin:2rem 0 .8rem}
+.block p{margin-bottom:1.1rem;color:#d8d0bc}
+.block ul,.block ol{margin:0 0 1.2rem 1.4rem;color:#d8d0bc}
+.block li{margin-bottom:.55rem}
+.block strong{color:var(--parch);font-weight:600}
+.objbox{background:var(--navy2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:1.6rem;margin:0 0 1rem}
+.objbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem}
+.objbox p{margin:0;color:var(--parch);font-size:1.05rem}
+.exbox{background:var(--navy2);border:1px dashed rgba(201,162,39,.5);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.exbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+.exbox .illus{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1rem}
+.exbox table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.92rem}
+.exbox th,.exbox td{border:1px solid rgba(201,162,39,.25);padding:.6rem .7rem;text-align:left;vertical-align:top}
+.exbox th{color:var(--gold-lt);font-weight:600;background:rgba(201,162,39,.06)}
+.practice{background:rgba(201,162,39,.05);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.practice ol{margin-left:1.3rem}
+.practice li{margin-bottom:.8rem}
+details{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:8px;padding:1rem 1.2rem;margin-bottom:.8rem}
+details summary{cursor:pointer;font-weight:500;color:var(--parch)}
+details summary:hover{color:var(--gold-lt)}
+details p{margin:.8rem 0 0;color:#d8d0bc}
+details p strong{color:var(--gold-lt)}
+.riskbox{border:1px solid rgba(201,162,39,.45);border-radius:12px;padding:1.8rem;margin:2.4rem 0;background:linear-gradient(180deg,rgba(201,162,39,.08),transparent 60%),var(--navy2);text-align:center}
+.riskbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.9rem}
+.riskbox p{margin:0 0 .8rem;color:var(--parch)}
+.riskbox p:last-child{margin:0}
+.checklist{background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.checklist .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1rem}
+.checklist li{list-style:none;margin-bottom:.7rem;padding-left:1.8rem;position:relative}
+.checklist ul{margin:0}
+.checklist li::before{content:"☐";position:absolute;left:0;color:var(--gold-lt)}
+.modnav{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 1rem;flex-wrap:wrap}
+.modnav a{flex:1;min-width:200px;background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.4rem;text-decoration:none;color:var(--parch)}
+.modnav a:hover{border-color:var(--gold)}
+.modnav .dir{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:.4rem}
+.modnav .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem}
+footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+footer b{color:var(--gold)}
+hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear-gradient(90deg,transparent,var(--line),transparent)}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html">← Centro de la Fase I</a>
+  <span class="crumb">M&amp;Q University · Fase I</span>
+  <a href="../platform.html">Simulador →</a>
+  <a href="../index.html">Inicio de la Universidad →</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Fase I — Fundamentos del Mercado · Módulo 8 de 8</div>
+    <h1 class="serif">Práctica en Simulación <em>y Cuestionarios</em></h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="block">
+  <div class="objbox">
+    <div class="lbl">Objetivo de Aprendizaje</div>
+    <p>Al terminar este módulo, podrás ejecutar una rutina estructurada de práctica en simulación, llevar un diario de operaciones completo — fecha, configuración, entrada, stop, objetivo, resultado, lección — y autoevaluar una semana de práctica con una lista de verificación. Este módulo contiene <strong>cero pasos con dinero real</strong>: solo simulación, de la primera página a la última.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Explicación</h2>
+
+  <h3 class="serif">El laboratorio</h3>
+  <p>Todo lo que aprendiste en los Módulos 1–7 fue teoría. <strong>La simulación — operar en papel — es donde la teoría se convierte en habilidad.</strong> Un simulador te permite practicar entradas, stops, objetivos y el tamaño de la posición con cero dólares en riesgo. Cada error no te cuesta nada, pero te lo enseña todo, <em>si</em> lo registras con honestidad. Ese "si" es todo el módulo: la práctica sin estructura forma hábitos, pero solo la práctica <em>estructurada</em> forma habilidad.</p>
+  <p>Usa cualquier simulador gratuito de operación en papel o herramienta de repetición de gráficos. La plataforma no importa — la rutina sí. El simulador gratuito de M&Q University (solo datos simulados, sin dinero real, sin órdenes en vivo) está dentro del <a href="../platform.html">Profesor Virtual</a>, en inglés y en <a href="../platform.html?lang=es" lang="es">Español</a>.</p>
+
+  <h3 class="serif">La rutina de práctica</h3>
+  <p>Cada sesión de práctica sigue la misma forma. La misma forma, siempre — la rutina es lo que convierte la repetición en aprendizaje:</p>
+  <ol>
+    <li><strong>Prepara la sesión.</strong> Elige un mercado (MNQ), un gráfico, un marco temporal. Decide el <em>enfoque</em> del día — una sola habilidad, por ejemplo, "marcar la estructura antes que cualquier otra cosa" o "esperar el retroceso, sin perseguir".</li>
+    <li><strong>Calienta.</strong> Ejecuta tu rutina previa a la sesión del Módulo 7: revisa tus reglas, fija los límites de riesgo en simulación, define tus condiciones para "terminar".</li>
+    <li><strong>Opera en simulación un número fijo de configuraciones.</strong> Tres son más que suficientes. Calidad sobre cantidad — el simulador seguirá ahí mañana.</li>
+    <li><strong>Registra cada configuración en tu diario de inmediato.</strong> No después, no "de memoria esta noche". De inmediato, mientras las razones están frescas.</li>
+    <li><strong>Detente al "terminar".</strong> La sesión termina cuando se cumplen tus condiciones definidas de antemano — configuraciones completadas, tiempo transcurrido o límite de pérdida en simulación alcanzado. Terminado es terminado.</li>
+  </ol>
+
+  <h3 class="serif">El diario: donde el aprendizaje se multiplica</h3>
+  <p>Un diario no es un registro de sentimientos. Es un <strong>conjunto de datos sobre ti</strong> — y los conjuntos de datos solo funcionan cuando cada fila tiene las mismas columnas. Cada operación en papel recibe una fila con estas siete columnas:</p>
+  <ul>
+    <li><strong>Fecha</strong> — cuándo ocurrió.</li>
+    <li><strong>Configuración</strong> — el nombre de la idea con tus propias palabras ("retroceso hasta la zona de 18,600", "cruce del VWAP con el RSI estirado").</li>
+    <li><strong>Entrada</strong> — el precio al que entraste (en simulación).</li>
+    <li><strong>Stop</strong> — dónde la idea se demostraba equivocada (elegido <em>antes</em> de la entrada, según el Módulo 6).</li>
+    <li><strong>Objetivo</strong> — dónde planeabas salir con una ganancia.</li>
+    <li><strong>Resultado</strong> — el resultado en puntos (y en dólares de simulación si quieres practicar la matemática).</li>
+    <li><strong>Lección</strong> — una frase. ¿Qué te enseñó esta operación? ("Esperar el retroceso me mantuvo fuera del ruido". "Moví mi stop — eso fue abandonar el plan".)</li>
+  </ul>
+  <p>Más una columna honesta de sí/no que los profesionales consideran la más importante de todas: <strong>¿Seguí el plan?</strong> Después de veinte filas, ordena por esa columna. El patrón en <em>tu comportamiento</em> te enseñará más de lo que cualquier patrón del mercado podría enseñarte jamás.</p>
+
+  <h3 class="serif">Ritmo de revisión</h3>
+  <ul>
+    <li><strong>Fin del día — 10 minutos.</strong> Lee las filas de hoy. Marca con un círculo tu mejor decisión y tu peor impulso. Escribe el único enfoque de mañana.</li>
+    <li><strong>Fin de semana — 30 minutos.</strong> Lee toda la semana. Enumera tus tres comportamientos más repetidos — buenos <em>y</em> malos. Elige <em>un</em> hábito para corregir la próxima semana. Solo uno; el estudiante que trata de corregir todo no corrige nada.</li>
+  </ul>
+
+  <h3 class="serif">La lista de autoevaluación</h3>
+  <p>Cada semana, califícate con honestidad — este es un cuestionario en el que no puedes hacer trampa, porque el único estudiante que calificas eres tú:</p>
+  <div class="checklist">
+    <div class="lbl">Autoevaluación Semanal</div>
+    <ul>
+      <li><strong>Reglas seguidas:</strong> seguí mi plan escrito en cada operación en simulación (cuenta las filas con "No" — mientras menos, mejor).</li>
+      <li><strong>Riesgo respetado:</strong> cada stop se eligió antes de la entrada; los tamaños de posición coincidieron con la fórmula; ningún stop se movió jamás por esperanza.</li>
+      <li><strong>Diario completo:</strong> cada configuración registrada de inmediato, las siete columnas llenas, la frase de la lección escrita.</li>
+      <li><strong>Emociones anotadas:</strong> escribí lo que sentí antes/durante/después — en especial la impaciencia, el miedo y el exceso de confianza.</li>
+      <li><strong>Lecciones extraídas:</strong> mi revisión semanal nombra un comportamiento repetido y un hábito para corregir la próxima semana.</li>
+    </ul>
+  </div>
+
+  <h3 class="serif">Graduación: qué significa "terminar"</h3>
+  <p>La graduación de la Fase I no es una meta de ganancias — <strong>no prometemos ganancias, y no medimos a los estudiantes por ellas.</strong> El estándar es la <em>consistencia del proceso</em>: <strong>20+ operaciones en simulación registradas en el diario</strong> con respuestas honestas a "¿seguí el plan?", revisiones semanales completadas, y una lista de verificación que puedas defender en voz alta. Cuando tu diario muestra que sigues tus reglas incluso en los días de pérdida, has construido el cimiento sobre el que se sostiene todo lo demás.</p>
+  <p>Lo que viene después: la Fase II profundiza en las herramientas — volumen, estructura avanzada y los comienzos del pensamiento estratégico. Tu trabajo entre ahora y entonces es practicar, llevar tu diario y tener paciencia. No se habla de dinero real, no se sugiere ni se necesita — ni en este módulo, ni en esta fase.</p>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Ejemplo Resuelto</h2>
+  <div class="exbox">
+    <div class="lbl">Ejemplo Resuelto — Dos Filas del Diario</div>
+    <table>
+      <tr><th>Columna</th><th>Fila 1 — el buen proceso</th><th>Fila 2 — el fracaso honesto</th></tr>
+      <tr><td><strong>Fecha</strong></td><td>2026-10-20</td><td>2026-10-21</td></tr>
+      <tr><td><strong>Configuración</strong></td><td>Retroceso hasta la zona de 18,600</td><td>Perseguir una ruptura, sin zona marcada</td></tr>
+      <tr><td><strong>Entrada</strong></td><td>18,602</td><td>18,655</td></tr>
+      <tr><td><strong>Stop</strong></td><td>18,592 (10 pts = $20 de riesgo en simulación, 1 MNQ)</td><td>18,640 (15 pts — elegido después de la entrada)</td></tr>
+      <tr><td><strong>Objetivo</strong></td><td>18,622</td><td>18,680 ("se sintió correcto")</td></tr>
+      <tr><td><strong>Resultado</strong></td><td>+12 pts en simulación</td><td>−15 pts en simulación</td></tr>
+      <tr><td><strong>¿Seguí el plan?</strong></td><td><strong>Sí</strong></td><td><strong>No</strong> — entré por FOMO, el stop se colocó tarde</td></tr>
+      <tr><td><strong>Lección</strong></td><td>"Esperar el retroceso me mantuvo fuera del ruido."</td><td>"El stop es el plan; colocarlo tarde es abandonar el plan."</td></tr>
+    </table>
+    <p><strong>La lección:</strong> el fracaso de la Fila 2 vale más que el éxito de la Fila 1 — porque fue <em>escrito con honestidad</em>. Un diario que solo registra ganancias es un álbum de recortes. Un diario que registra la verdad es una educación. Fíjate en que las dos filas enseñan; solo la honesta se multiplica.</p>
+    <div class="illus">Todas las fechas, precios y cifras son números ilustrativos de enseñanza de una sesión ficticia de operación en simulación — no son datos de mercado ni promesas de ningún resultado.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Ejercicio de Práctica</h2>
+  <div class="practice">
+    <ol>
+      <li><strong>Crea tu diario.</strong> En papel o en una hoja de cálculo, crea las siete columnas: fecha, configuración, entrada, stop, objetivo, resultado, lección — más la columna de sí/no "¿seguí el plan?". Este es ahora tu herramienta de operaciones más importante.</li>
+      <li><strong>Opera en simulación cinco sesiones.</strong> Máximo tres configuraciones por sesión, registrando cada una de inmediato. Ninguna sesión supera tus condiciones de "terminar" definidas de antemano. Cinco sesiones te dan como máximo 15 operaciones registradas en el diario — la graduación necesita 20+, así que continúa una segunda semana hasta que tu diario supere la marca.</li>
+      <li><strong>Haz una revisión semanal.</strong> Lee las cinco sesiones. Enumera tus tres comportamientos más repetidos — buenos y malos. Elige un hábito para corregir la próxima semana.</li>
+      <li><strong>Califícate.</strong> Aplica la lista de autoevaluación semanal con honestidad. Escribe tus puntuaciones y consérvalas — en un mes tendrás una gráfica de tu disciplina, que es la única curva de capital que importa en la Fase I.</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Revisión de Conocimientos</h2>
+  <details><summary>1. ¿Cuáles son las siete columnas del diario y por qué cada fila debe usar las mismas?</summary><p><strong>Respuesta:</strong> Fecha, configuración, entrada, stop, objetivo, resultado, lección (más el sí/no de "¿seguí el plan?"). Las columnas idénticas convierten el diario en un conjunto de datos sobre tu comportamiento — solo puedes encontrar patrones en tus hábitos si cada fila se registra de la misma manera.</p></details>
+  <details><summary>2. ¿Por qué la simulación va antes de cualquier cosa que involucre dinero real?</summary><p><strong>Respuesta:</strong> Porque la simulación es el laboratorio: te permite poner a prueba cada concepto de los Módulos 1–7 — entradas, stops, tamaños, disciplina — con cero dólares en riesgo. Los errores en simulación no cuestan nada y lo enseñan todo; los mismos errores con capital real pueden terminar la educación para siempre. (Nuestro principio: Práctica Antes que Rendimiento.)</p></details>
+  <details><summary>3. ¿Cuál es el ritmo de revisión y qué produce cada revisión?</summary><p><strong>Respuesta:</strong> 10 minutos al final del día (marca tu mejor decisión y tu peor impulso; define el enfoque de mañana) y 30 minutos al final de la semana (enumera los tres comportamientos más repetidos; elige un hábito para corregir). Las revisiones convierten las filas en bruto del diario en aprendizaje real.</p></details>
+  <details><summary>4. ¿Qué mide la lista de autoevaluación semanal?</summary><p><strong>Respuesta:</strong> El proceso, no las ganancias: reglas seguidas, riesgo respetado (stops antes de las entradas, tamaño según la fórmula, stops sin mover), diario completo, emociones anotadas y lecciones extraídas. Es un cuestionario sobre disciplina — la única asignatura que la Fase I califica.</p></details>
+  <details><summary>5. ¿Qué significa "graduarse" de la Fase I?</summary><p><strong>Respuesta:</strong> Consistencia del proceso — 20+ operaciones en simulación registradas con honestidad en el diario, revisiones semanales completadas y una lista de verificación que puedas defender — no ganancias. No prometemos ganancias ni medimos a los estudiantes por ellas; graduarse significa que tu diario demuestra que sigues tus reglas incluso en los días de pérdida.</p></details>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <div class="riskbox">
+    <div class="lbl">Recordatorio de Riesgo</div>
+    <p>El éxito en simulación no predice nada sobre los resultados con dinero real — las emociones cambian cuando los dólares son reales, y esa es exactamente la razón por la que el diario y la disciplina van primero.</p>
+    <p><strong>No prometemos ganancias.</strong> No hay pasos con dinero real en este módulo, en esta fase, ni en los fundamentos de esta universidad. Si alguien te dice alguna vez que estás "listo" porque tu simulador se ve bien, recuerda: estar listo es un proceso que demuestras durante meses, no un sentimiento que te llega con una semana en verde.</p>
+  </div>
+
+  <div class="modnav">
+    <a href="module-7-psychology.html"><span class="dir">← Anterior</span><span class="t serif">Módulo 7: Psicología del Trading y Disciplina</span></a>
+    <a href="index.html"><span class="dir">Siguiente →</span><span class="t serif">Centro de la Fase I — Revisión y Qué Sigue</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p class="risk-disclaimer" role="note" style="font-size:.78rem;color:#93a0b8;max-width:60ch;margin:0 auto 1rem;line-height:1.6">Operar futuros implica un riesgo sustancial de pérdida y no es adecuado para todos los inversionistas. Esto es educación y práctica estructurada, no asesoría financiera.</p>
+  <b>M&amp;Q University</b> · El Conocimiento Es el Legado<br><br>
+  Una iniciativa educativa de MNQ Scalp Stacks · Educación · Disciplina · Práctica · Comunidad
+  <p><a href="../module-8-simulation.html">English version</a></p>
+</footer>
+<script src="progress.js" defer></script>
+</body>
+</html>

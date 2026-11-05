@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<title>Módulo 5: Estructura del Mercado, Soporte y Resistencia — M&amp;Q University Fase I</title>
+<meta name="description" content="Fase I, Módulo 5: leer la estructura del mercado — máximos más altos, mínimos más bajos, rangos — marcar zonas de soporte y resistencia, y esperar el retest. Educación gratuita de M&Q University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1428;--navy2:#0E1B33;--gold:#C9A227;--gold-lt:#E8C15A;--parch:#EDE6D6;--muted:#93A0B8;--line:rgba(201,162,39,.28)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--parch);line-height:1.8;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+::selection{background:var(--gold);color:var(--navy)}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.85rem}
+.topnav a{color:var(--gold-lt);text-decoration:none;letter-spacing:.06em}
+.topnav a:hover{color:var(--gold)}
+.topnav .crumb{color:var(--muted)}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+header.hero{padding:4rem 1.5rem 3rem;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(201,162,39,.14),transparent 60%),var(--navy)}
+.kicker{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.4rem}
+header.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:500;line-height:1.12;color:var(--parch);max-width:20ch;margin:0 auto}
+header.hero h1 em{color:var(--gold-lt);font-style:italic}
+section.block{padding:2.6rem 0}
+.block h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--parch);margin-bottom:1.2rem}
+.block h3{font-size:1.35rem;font-weight:600;color:var(--gold-lt);margin:2rem 0 .8rem}
+.block p{margin-bottom:1.1rem;color:#d8d0bc}
+.block ul,.block ol{margin:0 0 1.2rem 1.4rem;color:#d8d0bc}
+.block li{margin-bottom:.55rem}
+.block strong{color:var(--parch);font-weight:600}
+.objbox{background:var(--navy2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:1.6rem;margin:0 0 1rem}
+.objbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem}
+.objbox p{margin:0;color:var(--parch);font-size:1.05rem}
+.exbox{background:var(--navy2);border:1px dashed rgba(201,162,39,.5);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.exbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+.exbox .illus{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1rem}
+.practice{background:rgba(201,162,39,.05);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.practice ol{margin-left:1.3rem}
+.practice li{margin-bottom:.8rem}
+details{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:8px;padding:1rem 1.2rem;margin-bottom:.8rem}
+details summary{cursor:pointer;font-weight:500;color:var(--parch)}
+details summary:hover{color:var(--gold-lt)}
+details p{margin:.8rem 0 0;color:#d8d0bc}
+details p strong{color:var(--gold-lt)}
+.riskbox{border:1px solid rgba(201,162,39,.45);border-radius:12px;padding:1.8rem;margin:2.4rem 0;background:linear-gradient(180deg,rgba(201,162,39,.08),transparent 60%),var(--navy2);text-align:center}
+.riskbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.9rem}
+.riskbox p{margin:0 0 .8rem;color:var(--parch)}
+.riskbox p:last-child{margin:0}
+.motto{background:radial-gradient(600px 260px at 50% 50%,rgba(201,162,39,.10),transparent 70%);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:2rem 1.5rem;margin:2rem 0;text-align:center}
+.motto p{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.4rem;font-style:italic;line-height:1.9;color:var(--parch);margin:0}
+.modnav{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 1rem;flex-wrap:wrap}
+.modnav a{flex:1;min-width:200px;background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.4rem;text-decoration:none;color:var(--parch)}
+.modnav a:hover{border-color:var(--gold)}
+.modnav .dir{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:.4rem}
+.modnav .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem}
+footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+footer b{color:var(--gold)}
+hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear-gradient(90deg,transparent,var(--line),transparent)}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html">← Inicio de la Fase I</a>
+  <span class="crumb">M&amp;Q University · Fase I</span>
+  <a href="../index.html">Inicio de la Universidad →</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Fase I — Fundamentos del Mercado · Módulo 5 de 8</div>
+    <h1 class="serif">Estructura del Mercado, <em>Soporte y Resistencia</em></h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="block">
+  <div class="objbox">
+    <div class="lbl">Objetivo de Aprendizaje</div>
+    <p>Al terminar este módulo, podrás identificar una tendencia alcista (máximos más altos, mínimos más altos), una tendencia bajista (máximos más bajos, mínimos más bajos) y un rango; marcar <em>zonas</em> simples de soporte y resistencia desde puntos de giro anteriores; y describir una «ruptura y retest» en el lenguaje propio de la misión.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Explicación</h2>
+
+  <h3 class="serif">Estructura: la letra del mercado</h3>
+  <p>Quita todos los indicadores y un gráfico sigue hablando. Su letra se llama <strong>estructura del mercado</strong>: el patrón de picos y valles que el precio deja atrás. Solo puede estar escribiendo tres cosas:</p>
+  <ul>
+    <li><strong>Tendencia alcista:</strong> <em>máximos más altos y mínimos más altos</em> (HH/HL). Cada subida llega más lejos que la anterior, y cada retroceso se detiene menos profundo que el anterior. Los compradores dirigen la historia.</li>
+    <li><strong>Tendencia bajista:</strong> <em>máximos más bajos y mínimos más bajos</em> (LH/LL). Cada subida se queda más corta, cada caída llega más profundo. Los vendedores dirigen la historia.</li>
+    <li><strong>Rango:</strong> el precio se mueve lateralmente entre un borde superior y un borde inferior, sin una secuencia clara de oscilaciones más altas o más bajas. Ningún lado dirige: el mercado está negociando.</li>
+  </ul>
+  <p>Aprender a etiquetar la estructura es aprender a responder la primera pregunta de cada sesión: <em>«¿Qué tipo de mercado estoy mirando hoy?»</em> Un estudiante que puede responder eso con honestidad ya opera — o mejor dicho, ya <em>espera</em> — mejor que la mayoría de los principiantes.</p>
+
+  <h3 class="serif">El soporte y la resistencia son zonas, no líneas</h3>
+  <p>El <strong>soporte</strong> es un área donde el interés comprador ha aparecido repetidamente y ha frenado o detenido las caídas. La <strong>resistencia</strong> es un área donde el interés vendedor ha aparecido repetidamente y ha frenado o detenido las subidas. Los principiantes los dibujan como líneas finísimas; los estudiantes con experiencia los dibujan como <strong>zonas</strong> — barrios sombreados de unos pocos puntos de ancho — porque el precio rara vez respeta una línea hasta el tick exacto.</p>
+  <p>Encuentras las zonas en los <strong>puntos de giro anteriores</strong>: lugares donde el precio giró antes. Marca los máximos y mínimos de giro en tu gráfico, y los grupos donde el precio reaccionó varias veces se convierten en tus zonas.</p>
+  <p>¿Por qué importan los niveles antiguos? Porque los mercados tienen memoria. Los stops, las entradas y la psicología humana se agrupan alrededor de precios donde antes se lucharon batallas. Cuando el precio vuelve a un campo de batalla antiguo, los participantes reaccionan: unos defienden, otros atacan. Esto es una <em>tendencia</em>, nunca una garantía. Las zonas describen dónde es <em>probable</em> que haya reacciones; no prometen nada.</p>
+
+  <h3 class="serif">El retest: nuestro lema en acción</h3>
+  <div class="motto">
+    <p>No perseguimos velas encendidas.<br><strong>Esperamos el retest</strong>.</p>
+  </div>
+  <p>Esto es lo que significa en lenguaje de estructura. Supón que la resistencia en 18,600 se ha mantenido tres veces. En el cuarto acercamiento, el precio la <em>atraviesa</em> con convicción: una <strong>ruptura</strong>. El trader impaciente persigue la vela de la ruptura. El estudiante disciplinado espera: muy a menudo, el precio <strong>vuelve al nivel roto</strong> — la antigua resistencia, que ahora actúa como soporte — antes de continuar. Esa visita de regreso es el <strong>retest</strong>.</p>
+  <p>El retest es donde la paciencia se paga en <em>información</em>: si el nivel se mantiene, la ruptura queda confirmada por el propio mercado. Si el precio vuelve a atravesarlo directamente, la «ruptura» era una finta, y el estudiante que esperó acaba de evitar una trampa. En cualquier caso, esperar fue el proceso correcto. Perseguir la vela es como los principiantes compran el techo de las rupturas falsas; esperar el retest es como los estudiantes dejan que el mercado muestre su mano primero.</p>
+
+  <h3 class="serif">Zonas más fuertes, gráficos más limpios</h3>
+  <ul>
+    <li><strong>Más toques, historia más fuerte.</strong> Una zona que el precio ha respetado cuatro veces significa más que una tocada una sola vez: más participantes la están observando.</li>
+    <li><strong>Las rupturas limpias debilitan las zonas.</strong> Cuando el precio atraviesa una zona con velas largas de impulso y nunca mira atrás, la historia de esa zona terminó. Respeta lo que el mercado te dice.</li>
+    <li><strong>Menos zonas y más limpias vencen al desorden.</strong> Un gráfico con veinte líneas es un gráfico que lo dice todo y no significa nada. Marca dos o tres zonas principales desde el gráfico diario y luego acerca la vista. Si un nivel no te hace decir «el precio reaccionó claramente aquí», no merece tinta.</li>
+  </ul>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Ejemplo Resuelto</h2>
+  <div class="exbox">
+    <div class="lbl">Ejemplo Resuelto — Estructura y un Retest</div>
+    <p><strong>La estructura</strong> (ilustrativa): durante varias sesiones, el MNQ sube a 18,600, retrocede a 18,520, sube a 18,650 y luego retrocede a 18,560. Lee las oscilaciones: máximo más alto (18,600 → 18,650), mínimo más alto (18,520 → 18,560). <strong>HH, HL, HH, HL: una tendencia alcista.</strong> La letra es clara.</p>
+    <p><strong>La zona:</strong> 18,600 era resistencia: el precio se detuvo ahí en la primera subida. Después de la ruptura por encima, 18,600 se convierte en la zona a observar.</p>
+    <p><strong>El retest</strong> (ilustrativo): dos sesiones después, el precio retrocede desde 18,680 y toca 18,600 — la antigua resistencia, ahora soporte. Se mantiene; las velas muestran mechas de rechazo en la zona y el precio vuelve a subir.</p>
+    <p><strong>La lección es el proceso, no el resultado:</strong> marca la estructura → identifica la zona → espera el retest → observa lo que hace el mercado. El estudiante que esperó nunca estuvo en peligro durante el retroceso, porque el estudiante nunca estuvo <em>dentro</em> de nada. La paciencia es una posición.</p>
+    <div class="illus">Todos los precios son números ilustrativos de enseñanza, no datos de mercado ni promesas de ningún resultado.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Ejercicio de Práctica</h2>
+  <div class="practice">
+    <ol>
+      <li><strong>Etiqueta la estructura.</strong> En un gráfico diario del MNQ, marca los últimos tres máximos de giro y tres mínimos de giro. Etiqueta la estructura: tendencia alcista, tendencia bajista o rango, con tu propia letra.</li>
+      <li><strong>Dibuja tres zonas.</strong> Desde puntos de giro anteriores donde el precio reaccionó claramente, dibuja dos o tres zonas de soporte/resistencia (áreas sombreadas anchas, no líneas finas). Anota cuántas veces fue tocada cada una.</li>
+      <li><strong>Encuentra un retest.</strong> Localiza una ruptura y retest en tu gráfico. Hazle una captura de pantalla o dibújalo, y descríbelo en dos frases usando las palabras «ruptura», «retest» y «esperar».</li>
+      <li><strong>Despeja el gráfico.</strong> Borra la mitad de las líneas y zonas de tu gráfico. Escribe un párrafo explicando por qué menos zonas, y más limpias, te sirven mejor que un gráfico desordenado.</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Comprobación de Conocimientos</h2>
+  <details><summary>1. ¿Cómo reconoces una tendencia alcista, una tendencia bajista y un rango?</summary><p><strong>Respuesta:</strong> Tendencia alcista = máximos más altos y mínimos más altos (cada subida va más lejos, cada retroceso se detiene menos profundo). Tendencia bajista = máximos más bajos y mínimos más bajos. Rango = movimiento lateral entre un borde superior y uno inferior, sin una secuencia clara de oscilaciones.</p></details>
+  <details><summary>2. ¿Por qué el soporte y la resistencia deben dibujarse como zonas y no como líneas exactas?</summary><p><strong>Respuesta:</strong> Porque el precio rara vez respeta un nivel hasta el tick exacto: las reacciones ocurren en un barrio de unos pocos puntos de ancho. Una zona representa honestamente dónde se ha agrupado el interés comprador o vendedor; una línea fina finge una precisión que el mercado no ofrece.</p></details>
+  <details><summary>3. ¿Por qué los niveles antiguos de precio tienden a importar cuando el precio vuelve a ellos?</summary><p><strong>Respuesta:</strong> Los mercados tienen memoria: los stops, las entradas y la psicología de los traders se agrupan alrededor de precios donde antes se lucharon batallas, así que las reacciones tienden a repetirse ahí. Es una tendencia, nunca una garantía: las zonas describen dónde las reacciones son probables, no seguras.</p></details>
+  <details><summary>4. ¿Qué es un retest y por qué nuestro lema dice que hay que esperarlo?</summary><p><strong>Respuesta:</strong> Después de que un nivel se rompe, el precio a menudo vuelve al nivel roto antes de continuar: esa visita de regreso es el retest. Esperar permite que el mercado confirme la ruptura (o la exponga como una finta) en lugar de perseguir la vela de la ruptura, que es como los principiantes compran las rupturas falsas.</p></details>
+  <details><summary>5. Tu gráfico tiene quince líneas de soporte y resistencia. ¿Qué está mal?</summary><p><strong>Respuesta:</strong> El desorden. Un gráfico que lo marca todo no significa nada: no puedes distinguir qué niveles importan de verdad. La solución: conserva dos o tres zonas principales de reacciones anteriores claras y elimina el resto.</p></details>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <div class="riskbox">
+    <div class="lbl">Recordatorio de Riesgo</div>
+    <p>Leer la estructura es una habilidad de <em>observación</em>. Ni siquiera un gráfico perfectamente etiquetado puede decirte qué pasará después: las zonas se rompen, las tendencias terminan y los retests fallan.</p>
+    <p><strong>No prometemos ganancias.</strong> Practica marcar la estructura en gráficos históricos y en simulación. La recompensa de este módulo no es una señal: es la calma que viene de saber siempre qué tipo de mercado estás mirando.</p>
+  </div>
+
+  <div class="modnav">
+    <a href="module-4-vwap-rsi.html"><span class="dir">← Anterior</span><span class="t serif">Módulo 4: VWAP y RSI 14</span></a>
+    <a href="module-6-risk-management.html"><span class="dir">Siguiente →</span><span class="t serif">Módulo 6: Gestión del Riesgo y Tamaño de la Posición</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p class="risk-disclaimer" role="note" style="font-size:.78rem;color:#93a0b8;max-width:60ch;margin:0 auto 1rem;line-height:1.6">Operar futuros implica un riesgo sustancial de pérdida y no es adecuado para todos los inversionistas. Esto es educación y práctica estructurada, no asesoría financiera.</p>
+  <b>M&amp;Q University</b> · El Conocimiento Es el Legado<br><br>
+  Una iniciativa educativa de MNQ Scalp Stacks · Educación · Disciplina · Práctica · Comunidad
+  <p><a href="../module-5-market-structure.html">English version</a></p>
+</footer>
+<script src="progress.js" defer></script>
+</body>
+</html>

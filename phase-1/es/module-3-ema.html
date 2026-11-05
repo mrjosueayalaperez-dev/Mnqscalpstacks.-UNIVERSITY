@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<title>Módulo 3: EMA 9, EMA 21 y EMA 200 — M&amp;Q University Fase I</title>
+<meta name="description" content="Fase I, Módulo 3: qué son las medias móviles exponenciales, qué significan las longitudes 9/21/200 y cómo leerlas como contexto, no como señales. Educación gratuita de M&Q University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1428;--navy2:#0E1B33;--gold:#C9A227;--gold-lt:#E8C15A;--parch:#EDE6D6;--muted:#93A0B8;--line:rgba(201,162,39,.28)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--parch);line-height:1.8;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+::selection{background:var(--gold);color:var(--navy)}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.85rem}
+.topnav a{color:var(--gold-lt);text-decoration:none;letter-spacing:.06em}
+.topnav a:hover{color:var(--gold)}
+.topnav .crumb{color:var(--muted)}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+header.hero{padding:4rem 1.5rem 3rem;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(201,162,39,.14),transparent 60%),var(--navy)}
+.kicker{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.4rem}
+header.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:500;line-height:1.12;color:var(--parch);max-width:20ch;margin:0 auto}
+header.hero h1 em{color:var(--gold-lt);font-style:italic}
+section.block{padding:2.6rem 0}
+.block h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--parch);margin-bottom:1.2rem}
+.block h3{font-size:1.35rem;font-weight:600;color:var(--gold-lt);margin:2rem 0 .8rem}
+.block p{margin-bottom:1.1rem;color:#d8d0bc}
+.block ul,.block ol{margin:0 0 1.2rem 1.4rem;color:#d8d0bc}
+.block li{margin-bottom:.55rem}
+.block strong{color:var(--parch);font-weight:600}
+.objbox{background:var(--navy2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:1.6rem;margin:0 0 1rem}
+.objbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem}
+.objbox p{margin:0;color:var(--parch);font-size:1.05rem}
+.exbox{background:var(--navy2);border:1px dashed rgba(201,162,39,.5);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.exbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+.exbox .illus{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1rem}
+.practice{background:rgba(201,162,39,.05);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.practice ol{margin-left:1.3rem}
+.practice li{margin-bottom:.8rem}
+details{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:8px;padding:1rem 1.2rem;margin-bottom:.8rem}
+details summary{cursor:pointer;font-weight:500;color:var(--parch)}
+details summary:hover{color:var(--gold-lt)}
+details p{margin:.8rem 0 0;color:#d8d0bc}
+details p strong{color:var(--gold-lt)}
+.riskbox{border:1px solid rgba(201,162,39,.45);border-radius:12px;padding:1.8rem;margin:2.4rem 0;background:linear-gradient(180deg,rgba(201,162,39,.08),transparent 60%),var(--navy2);text-align:center}
+.riskbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.9rem}
+.riskbox p{margin:0 0 .8rem;color:var(--parch)}
+.riskbox p:last-child{margin:0}
+.modnav{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 1rem;flex-wrap:wrap}
+.modnav a{flex:1;min-width:200px;background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.4rem;text-decoration:none;color:var(--parch)}
+.modnav a:hover{border-color:var(--gold)}
+.modnav .dir{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:.4rem}
+.modnav .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem}
+footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+footer b{color:var(--gold)}
+hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear-gradient(90deg,transparent,var(--line),transparent)}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html">← Inicio de la Fase I</a>
+  <span class="crumb">M&amp;Q University · Fase I</span>
+  <a href="../index.html">Inicio de la Universidad →</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Fase I — Fundamentos del Mercado · Módulo 3 de 8</div>
+    <h1 class="serif">EMA 9, EMA 21 <em>y EMA 200</em></h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="block">
+  <div class="objbox">
+    <div class="lbl">Objetivo de Aprendizaje</div>
+    <p>Al terminar este módulo, podrás explicar qué es una media móvil exponencial (EMA), qué representan las longitudes 9, 21 y 200 (rápida, media, lenta), leer las relaciones básicas entre el precio y las EMA — por encima, por debajo, apiladas, cruzándose — y tratarlas como <em>contexto</em>, nunca como señales de compra o venta.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Explicación</h2>
+
+  <h3 class="serif">Suavizar el ruido</h3>
+  <p>El precio salta constantemente: cada tick es una pequeña discusión. Una <strong>media móvil</strong> calma esa discusión: toma el precio promedio de los últimos N períodos y lo dibuja como una sola línea suave, que se actualiza con cada vela nueva. En lugar de cincuenta velas dentadas, ves la <em>corriente</em> del mercado: la dirección en la que fluye el agua bajo las olas.</p>
+  <p>Una media móvil <strong>exponencial</strong> (EMA) da más peso a los precios más recientes y menos a los más antiguos. En concepto: a la EMA le importa más lo que pasó <em>ahora mismo</em> que lo que pasó hace un tiempo. Eso la hace reaccionar más rápido que una media simple, algo útil en mercados rápidos como el MNQ, donde «hace un tiempo» puede significar cuarenta velas atrás y un estado de ánimo del mercado completamente distinto.</p>
+
+  <h3 class="serif">Tres longitudes, tres perspectivas</h3>
+  <p>Nuestra universidad estudia tres EMA juntas porque cada una responde a una pregunta distinta:</p>
+  <ul>
+    <li><strong>EMA 9 — la línea rápida.</strong> El promedio de los últimos 9 períodos: el <em>momento presente</em>. Se pega mucho al precio y gira rápido. Piensa en ella como el estado de ánimo actual del mercado.</li>
+    <li><strong>EMA 21 — la línea media.</strong> El promedio de los últimos 21 períodos: la <em>tendencia reciente</em>. Más suave y más lenta, muestra si el último tramo de la acción del precio se ha inclinado de verdad hacia un lado. Piensa en ella como la memoria reciente del mercado.</li>
+    <li><strong>EMA 200 — la línea lenta.</strong> El promedio de los últimos 200 períodos: el <em>panorama general</em>. Apenas se mueve, y esa es su virtud: marca el punto de equilibrio de largo plazo que observan los participantes más grandes. Piensa en ella como la corriente profunda del mercado.</li>
+  </ul>
+  <p>Juntas son como tres testigos: uno que vio el último minuto, uno que observó la última hora y uno que lleva semanas observando. Cuando los tres están de acuerdo, la historia es clara. Cuando no están de acuerdo, el mercado mismo está indeciso, y los mercados indecisos son donde los principiantes deberían simplemente mirar y aprender.</p>
+
+  <h3 class="serif">Cómo leer el apilamiento</h3>
+  <p>La imagen más útil de las EMA es el <strong>apilamiento</strong>: cómo están ordenados el precio y las tres líneas:</p>
+  <ul>
+    <li><strong>Apilamiento alcista:</strong> el precio por encima de la EMA 9, la EMA 9 por encima de la EMA 21, la EMA 21 por encima de la EMA 200. Todos los testigos de cada marco temporal están de acuerdo: el pasado reciente ha estado subiendo. Esto describe la <em>historia de una tendencia alcista</em>.</li>
+    <li><strong>Apilamiento bajista:</strong> el precio por debajo de la EMA 9, la EMA 9 por debajo de la EMA 21, la EMA 21 por debajo de la EMA 200. La imagen espejo: la <em>historia de una tendencia bajista</em>.</li>
+    <li><strong>Enredadas:</strong> líneas que se cruzan entre sí y a través del precio, sin un orden claro. Los testigos no están de acuerdo. Es un mercado lateral y desordenado, y es el lugar más caro para operar para un principiante.</li>
+  </ul>
+  <p>Fíjate en el lenguaje: describen una <em>historia</em>, no una orden. Un apilamiento alcista no significa «compra ahora». Significa «el pasado reciente ha estado subiendo»: información que combinas con todo lo demás que estás aprendiendo.</p>
+
+  <h3 class="serif">Cruces: confirmación, no predicción</h3>
+  <p>Cuando la EMA rápida cruza por encima de la lenta, los traders lo llaman un cruce alcista (y al revés, bajista). Esta es la verdad honesta sobre los cruces: <strong>confirman un cambio que ya ocurrió.</strong> Para cuando la EMA 9 cruza la EMA 21, el precio <em>ya</em> se ha estado moviendo en la nueva dirección el tiempo suficiente para arrastrar a las medias consigo. El cruce es el espejo retrovisor del mercado, no sus faros delanteros. Trátalo como confirmación de una historia que ya ves en el precio, nunca como la razón para actuar.</p>
+
+  <h3 class="serif">La trampa: el mercado sin dirección (chop)</h3>
+  <p>En un mercado lateral, el precio rebota de un lado a otro cruzando EMA planas. La línea rápida cruza hacia arriba, luego hacia abajo, luego hacia arriba otra vez: cada cruce parece una señal y cada uno falla. Aquí es donde los principiantes sin disciplina se desangran: persiguen cada cruce, compran los techos y venden los suelos, exactamente al revés. Cuando veas EMA enredadas y el precio atravesándolas una y otra vez, el movimiento disciplinado es el que enseña el lema de esta universidad: <em>no perseguimos velas encendidas</em>: esperamos. A veces el mejor análisis termina con un «todavía no».</p>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Ejemplo Resuelto</h2>
+  <div class="exbox">
+    <div class="lbl">Ejemplo Resuelto — Dos Marcos Temporales, Un Solo Mercado</div>
+    <p><strong>La imagen diaria</strong> (ilustrativa): el MNQ opera en 18,500. La EMA 9 está en 18,470, la EMA 21 en 18,430 y la EMA 200 en 18,200. El precio está por encima de las tres y las líneas están apiladas 9 &gt; 21 &gt; 200. <strong>Lectura: apilamiento alcista.</strong> La historia del panorama general es una tendencia alcista: todos los testigos están de acuerdo en que el pasado reciente ha estado subiendo.</p>
+    <p><strong>La imagen de 5 minutos, el mismo día al mediodía</strong> (ilustrativa): el precio oscila entre 18,490 y 18,510. La EMA 9 y la EMA 21 están planas, enredadas entre sí, y el precio sigue atravesando ambas. La EMA 9 cruza por debajo de la EMA 21, y una hora después vuelve a cruzar por encima.</p>
+    <p><strong>Lee las dos juntas:</strong> el apilamiento diario dice «contexto de tendencia alcista»; el enredo de 5 minutos dice «desordenado ahora mismo, sin dirección clara». El cruce no fue una señal: fue el chop haciendo lo que hace el chop. Un estudiante disciplinado ve el desacuerdo y espera claridad en lugar de operar el ruido. <strong>Contexto, no una señal de operación.</strong></p>
+    <div class="illus">Todos los precios y valores de los indicadores son números ilustrativos de enseñanza, no datos de mercado ni promesas de ningún resultado.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Ejercicio de Práctica</h2>
+  <div class="practice">
+    <ol>
+      <li><strong>Apila el gráfico diario.</strong> Agrega las EMA 9, 21 y 200 a un gráfico diario del MNQ. Escribe el orden actual del precio y las tres líneas, y en una frase describe la historia que cuentan.</li>
+      <li><strong>Compara dos días.</strong> En un gráfico de 5 minutos, encuentra un día de tendencia limpia y un día lateral desordenado. Describe cómo se comportaron las EMA en cada uno: apiladas y suaves frente a planas y enredadas.</li>
+      <li><strong>Disecciona un cruce.</strong> Encuentra un cruce de EMA 9/21. Mira lo que hizo el precio <em>antes</em> del cruce: el movimiento que lo causó. Escribe dos frases explicando por qué el cruce confirmó en lugar de predecir.</li>
+      <li><strong>Anota la trampa en tu diario.</strong> Responde en tu diario: «¿Cuándo es más probable que las EMA me engañen, y qué haré cuando vea que eso está pasando?»</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Comprobación de Conocimientos</h2>
+  <details><summary>1. ¿Qué es una media móvil exponencial y por qué «exponencial»?</summary><p><strong>Respuesta:</strong> Una EMA es un promedio suavizado de los precios de los últimos N períodos que da más peso a los precios recientes y menos a los más antiguos; «exponencial» se refiere a esa ponderación por recencia. Reacciona más rápido a la nueva acción del precio que una media simple, lo que conviene a mercados rápidos como el MNQ.</p></details>
+  <details><summary>2. ¿Qué representa cada una de las tres longitudes?</summary><p><strong>Respuesta:</strong> EMA 9 = la línea rápida, el momento presente; EMA 21 = la línea media, la tendencia reciente; EMA 200 = la línea lenta, el panorama general y el equilibrio de largo plazo. Tres testigos en tres horizontes de tiempo.</p></details>
+  <details><summary>3. El precio está por encima de las tres EMA y están apiladas 9 &gt; 21 &gt; 200. ¿Qué dice eso, y qué NO dice?</summary><p><strong>Respuesta:</strong> Dice que el pasado reciente ha estado subiendo en todos los marcos temporales: la historia de una tendencia alcista. NO dice «compra ahora» ni que el precio seguirá subiendo. Es contexto para tu pensamiento, no una señal para actuar.</p></details>
+  <details><summary>4. ¿Por qué un mercado lateral y desordenado es el lugar más peligroso para seguir los cruces de EMA?</summary><p><strong>Respuesta:</strong> En el chop, el precio rebota cruzando EMA planas y enredadas, produciendo cruces falsos repetidos: cada uno parece una señal y cada uno falla. Los traders que los persiguen compran techos y venden suelos. La respuesta disciplinada ante EMA enredadas es esperar, no operar.</p></details>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <div class="riskbox">
+    <div class="lbl">Recordatorio de Riesgo</div>
+    <p>Los indicadores describen; no deciden. Ninguna combinación de medias móviles elimina el riesgo ni garantiza resultados.</p>
+    <p><strong>No prometemos ganancias.</strong> Estudia las EMA en gráficos históricos y en simulación. El objetivo de este módulo es una <em>lectura</em> más tranquila y clara, y la sabiduría de reconocer cuándo el mercado no se puede leer y el movimiento correcto es esperar.</p>
+  </div>
+
+  <div class="modnav">
+    <a href="module-2-candlesticks.html"><span class="dir">← Anterior</span><span class="t serif">Módulo 2: Estructura de las Velas y Acción del Precio</span></a>
+    <a href="module-4-vwap-rsi.html"><span class="dir">Siguiente →</span><span class="t serif">Módulo 4: VWAP y RSI 14</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p class="risk-disclaimer" role="note" style="font-size:.78rem;color:#93a0b8;max-width:60ch;margin:0 auto 1rem;line-height:1.6">Operar futuros implica un riesgo sustancial de pérdida y no es adecuado para todos los inversionistas. Esto es educación y práctica estructurada, no asesoría financiera.</p>
+  <b>M&amp;Q University</b> · El Conocimiento Es el Legado<br><br>
+  Una iniciativa educativa de MNQ Scalp Stacks · Educación · Disciplina · Práctica · Comunidad
+  <p><a href="../module-3-ema.html">English version</a></p>
+</footer>
+<script src="progress.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<title>Módulo 4: VWAP y RSI 14 — M&amp;Q University Fase I</title>
+<meta name="description" content="Fase I, Módulo 4: VWAP (el precio promedio ponderado por volumen de la sesión) y RSI 14 (el oscilador de impulso de Wilder): qué miden y sus límites honestos. Educación gratuita de M&Q University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1428;--navy2:#0E1B33;--gold:#C9A227;--gold-lt:#E8C15A;--parch:#EDE6D6;--muted:#93A0B8;--line:rgba(201,162,39,.28)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--parch);line-height:1.8;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+::selection{background:var(--gold);color:var(--navy)}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.85rem}
+.topnav a{color:var(--gold-lt);text-decoration:none;letter-spacing:.06em}
+.topnav a:hover{color:var(--gold)}
+.topnav .crumb{color:var(--muted)}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+header.hero{padding:4rem 1.5rem 3rem;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(201,162,39,.14),transparent 60%),var(--navy)}
+.kicker{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.4rem}
+header.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:500;line-height:1.12;color:var(--parch);max-width:20ch;margin:0 auto}
+header.hero h1 em{color:var(--gold-lt);font-style:italic}
+section.block{padding:2.6rem 0}
+.block h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--parch);margin-bottom:1.2rem}
+.block h3{font-size:1.35rem;font-weight:600;color:var(--gold-lt);margin:2rem 0 .8rem}
+.block p{margin-bottom:1.1rem;color:#d8d0bc}
+.block ul,.block ol{margin:0 0 1.2rem 1.4rem;color:#d8d0bc}
+.block li{margin-bottom:.55rem}
+.block strong{color:var(--parch);font-weight:600}
+.objbox{background:var(--navy2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:1.6rem;margin:0 0 1rem}
+.objbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem}
+.objbox p{margin:0;color:var(--parch);font-size:1.05rem}
+.exbox{background:var(--navy2);border:1px dashed rgba(201,162,39,.5);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.exbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+.exbox .illus{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1rem}
+.practice{background:rgba(201,162,39,.05);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.practice ol{margin-left:1.3rem}
+.practice li{margin-bottom:.8rem}
+details{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:8px;padding:1rem 1.2rem;margin-bottom:.8rem}
+details summary{cursor:pointer;font-weight:500;color:var(--parch)}
+details summary:hover{color:var(--gold-lt)}
+details p{margin:.8rem 0 0;color:#d8d0bc}
+details p strong{color:var(--gold-lt)}
+.riskbox{border:1px solid rgba(201,162,39,.45);border-radius:12px;padding:1.8rem;margin:2.4rem 0;background:linear-gradient(180deg,rgba(201,162,39,.08),transparent 60%),var(--navy2);text-align:center}
+.riskbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.9rem}
+.riskbox p{margin:0 0 .8rem;color:var(--parch)}
+.riskbox p:last-child{margin:0}
+.modnav{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 1rem;flex-wrap:wrap}
+.modnav a{flex:1;min-width:200px;background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.4rem;text-decoration:none;color:var(--parch)}
+.modnav a:hover{border-color:var(--gold)}
+.modnav .dir{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:.4rem}
+.modnav .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem}
+footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+footer b{color:var(--gold)}
+hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear-gradient(90deg,transparent,var(--line),transparent)}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html">← Inicio de la Fase I</a>
+  <span class="crumb">M&amp;Q University · Fase I</span>
+  <a href="../index.html">Inicio de la Universidad →</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Fase I — Fundamentos del Mercado · Módulo 4 de 8</div>
+    <h1 class="serif">VWAP <em>y RSI 14</em></h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="block">
+  <div class="objbox">
+    <div class="lbl">Objetivo de Aprendizaje</div>
+    <p>Al terminar este módulo, podrás explicar el VWAP — el precio promedio ponderado por volumen, que se reinicia cada sesión — y el RSI 14 — el oscilador de impulso de Wilder que va de 0 a 100. Podrás leer sus estados básicos (el precio frente al VWAP; el RSI alto, bajo o en rango medio) y afirmar con claridad que 70/30 son guías de referencia tradicionales, <em>no</em> señales de compra o venta.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Explicación</h2>
+
+  <h3 class="serif">VWAP: dónde se hizo el negocio del día</h3>
+  <p><strong>VWAP</strong> — el precio promedio ponderado por volumen — responde una sola pregunta: <em>¿a qué precio promedio ocurrió realmente la mayor parte de las operaciones de hoy?</em> No es un promedio simple de precios. Cada operación cuenta en proporción a su tamaño, así que un bloque enorme de contratos operado a un precio atrae el VWAP hacia ese precio. El resultado es la medida que el propio mercado tiene de lo «justo» para el día: dónde cambió de manos el volumen real.</p>
+  <p>Dos hechos definen cómo lo usas:</p>
+  <ul>
+    <li><strong>Se reinicia cada sesión.</strong> Cada día de operaciones empieza de nuevo: el VWAP de ayer es historia. El VWAP es una herramienta <em>intradía</em>; pertenece a tus gráficos de la sesión del día, no a un gráfico mensual.</li>
+    <li><strong>El precio por encima del VWAP significa que los compradores han tenido el mejor día hasta ahora;</strong> el precio por debajo significa que lo han tenido los vendedores. Eso es una descripción del equilibrio del día: contexto útil, no una instrucción.</li>
+  </ul>
+  <p>También verás <strong>bandas de desviación estándar</strong> dibujadas alrededor del VWAP (±1, ±2). Trátalas como <em>marcadores de distancia</em> — «el precio está estirado dos desviaciones desde el promedio del día» — no como objetivos que el precio debe alcanzar ni muros que no puede cruzar. Lo estirado siempre puede estirarse más.</p>
+
+  <h3 class="serif">RSI 14: medir la velocidad del movimiento</h3>
+  <p>El <strong>RSI</strong> — el Índice de Fuerza Relativa (Relative Strength Index), desarrollado por J. Welles Wilder — es un oscilador que va de <strong>0 a 100</strong>. Durante los últimos <strong>14 períodos</strong>, compara el tamaño de los movimientos al alza con el tamaño de los movimientos a la baja. En lenguaje sencillo: mide <em>qué tan rápido y qué tan fuerte</em> se ha estado moviendo el precio en una dirección últimamente.</p>
+  <ul>
+    <li><strong>RSI alto</strong> (tradicionalmente cerca o por encima de <strong>70</strong>): las ganancias recientes han dominado: el impulso está estirado al alza.</li>
+    <li><strong>RSI bajo</strong> (tradicionalmente cerca o por debajo de <strong>30</strong>): las pérdidas recientes han dominado: el impulso está estirado a la baja.</li>
+    <li><strong>RSI en rango medio</strong> (alrededor de 40–60): sin impulso fuerte en ninguna dirección: el mercado está equilibrado o a la deriva.</li>
+  </ul>
+  <p>Ahora la frase en la que esta universidad insiste: <strong>70 y 30 son guías de referencia tradicionales, no señales de compra/venta.</strong> Describen un <em>estado</em> del impulso. En una tendencia poderosa, el RSI puede quedarse por encima de 70 — o por debajo de 30 — durante mucho tiempo mientras el precio sigue avanzando. Los traders que tratan el 70 como un «vende» automático aprenden esta lección por la vía cara: estirado no es lo mismo que terminado.</p>
+
+  <h3 class="serif">Divergencia: una luz de advertencia, no un gatillo</h3>
+  <p>Un concepto del RSI vale la pena aprenderlo temprano: la <strong>divergencia</strong>. Ocurre cuando el precio marca un nuevo máximo pero el RSI marca un máximo <em>más bajo</em>: el movimiento sigue alcanzando precios nuevos, pero con un impulso que se debilita por debajo. Piensa en un coche que sigue rodando hacia adelante mientras el motor empieza a fallar.</p>
+  <p>La divergencia es una <strong>señal de precaución que vale la pena estudiar</strong>: una luz de advertencia en el tablero. Dice «presta atención; el carácter de este movimiento está cambiando». <em>No</em> dice «invierte ahora». Las luces de advertencia merecen respeto y más observación, nunca obediencia ciega.</p>
+
+  <h3 class="serif">Lentes, no motores</h3>
+  <p>Mantén el VWAP y el RSI en tu mente como mantienes las EMA del Módulo 3: son <strong>lentes</strong> que afinan lo que ves, no <strong>motores</strong> que deciden por ti. El VWAP te dice dónde está el equilibrio del día. El RSI te dice qué tan estirado está el impulso reciente. Ninguno de los dos elimina la incertidumbre, y ninguno es nunca, por sí solo, una razón para actuar. El estudiante disciplinado reúne contexto de cada lente y luego, más a menudo de lo que los principiantes esperan, elige esperar.</p>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Ejemplo Resuelto</h2>
+  <div class="exbox">
+    <div class="lbl">Ejemplo Resuelto — Una Mañana en el MNQ</div>
+    <p><strong>9:30–11:00 (ilustrativo):</strong> el MNQ abre en 18,420 y sube poco a poco. El precio se mantiene <em>por encima</em> del VWAP toda la mañana: los compradores están teniendo el mejor día. El RSI 14 sube hasta la parte alta de los 60: el impulso es fuerte, pero todavía no llega a la guía tradicional de 70.</p>
+    <p><strong>11:00 (ilustrativo):</strong> los vendedores entran con fuerza. El precio cae <em>a través</em> del VWAP hasta 18,395, y el RSI 14 baja a 28: por debajo de la guía tradicional de 30.</p>
+    <p><strong>Léelo con honestidad:</strong> el equilibrio del día ha cambiado a favor de los vendedores, y el impulso a la baja está estirado. Eso es <em>información</em>, no una instrucción. Un principiante podría sentir las ganas de perseguir la caída, pero nuestro lema dice <em>no perseguimos velas encendidas</em>. La observación disciplinada continúa.</p>
+    <p><strong>11:45 (ilustrativo):</strong> el precio rebota y vuelve a probar el VWAP desde abajo en 18,408, y falla, girando de nuevo hacia abajo. La nueva prueba del punto de equilibrio del día se mantuvo como resistencia. Fíjate en el encuadre: <em>esperamos la nueva prueba</em> y observamos. Ya sea que lo operes en papel o simplemente mires, el proceso es el mismo: contexto primero, paciencia siempre.</p>
+    <div class="illus">Todos los precios, horarios y lecturas de los indicadores son números ilustrativos de enseñanza, no datos de mercado ni promesas de ningún resultado.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Ejercicio de Práctica</h2>
+  <div class="practice">
+    <ol>
+      <li><strong>Sigue cinco cruces del VWAP.</strong> En un gráfico intradía del MNQ, marca cinco lugares donde el precio cruzó el VWAP. Para cada uno, escribe en una frase qué pasó después. Busca un patrón en tus observaciones: no un sistema, solo comprensión.</li>
+      <li><strong>Observa el RSI durante una sesión.</strong> Mantén el RSI 14 en tu gráfico durante una sesión completa. Anota cada vez que cruce por encima de 70 o por debajo de 30, y escribe qué hizo el precio después. Cuenta cuántas veces lo «estirado» siguió estirándose.</li>
+      <li><strong>Caza una divergencia.</strong> Encuentra un lugar donde el precio marcó un nuevo máximo (o mínimo) pero el RSI no lo confirmó. Escribe sobre qué advirtió la divergencia y qué pasó realmente después.</li>
+      <li><strong>Completa la frase.</strong> En tu diario, con tus propias palabras: «Una lectura del RSI de 70 es una ______, no una ______.»</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Comprobación de Conocimientos</h2>
+  <details><summary>1. ¿Qué mide el VWAP y cuándo se reinicia?</summary><p><strong>Respuesta:</strong> El VWAP mide el precio promedio ponderado por volumen de la sesión: dónde se hizo el negocio real de operaciones del día. Se reinicia cada sesión, por eso es una herramienta intradía y no de varios días.</p></details>
+  <details><summary>2. ¿Qué mide el RSI 14 y cuál es su rango?</summary><p><strong>Respuesta:</strong> El RSI de Wilder compara el tamaño de las ganancias recientes con el de las pérdidas recientes durante 14 períodos, y produce un oscilador de 0 a 100 que describe la velocidad y la fuerza del impulso reciente.</p></details>
+  <details><summary>3. El RSI llega a 72. ¿Es eso una señal de venta? ¿Por qué sí o por qué no?</summary><p><strong>Respuesta:</strong> No. El 70 es una guía de referencia tradicional que describe un impulso alcista estirado: un estado, no una orden. En tendencias fuertes, el RSI puede permanecer elevado durante mucho tiempo. Tratarlo como una señal automática es uno de los errores clásicos del principiante.</p></details>
+  <details><summary>4. El precio cruza desde arriba del VWAP hasta debajo de él. ¿Qué describe eso?</summary><p><strong>Respuesta:</strong> Que el equilibrio del día ha cambiado: los vendedores han tenido el mejor día hasta ahora, porque el precio ahora opera por debajo de donde cambió de manos la mayor parte del volumen del día. Es contexto sobre la sesión, no una instrucción de operación.</p></details>
+  <details><summary>5. ¿Qué es la divergencia del RSI y cuál es su límite honesto?</summary><p><strong>Respuesta:</strong> La divergencia ocurre cuando el precio marca un nuevo extremo pero el RSI no lo confirma, lo que sugiere un impulso que se debilita bajo el movimiento. Su límite honesto: es una señal de precaución, una luz de advertencia que merece atención y más observación, nunca un gatillo para actuar por sí sola.</p></details>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <div class="riskbox">
+    <div class="lbl">Recordatorio de Riesgo</div>
+    <p>Los indicadores pueden hacer que un gráfico se sienta seguro. La seguridad es un sentimiento, no un hecho: el mercado no le debe nada a tus indicadores.</p>
+    <p><strong>No prometemos ganancias.</strong> Usa el VWAP y el RSI para entender las sesiones más a fondo en simulación. El estudiante que lee «estirado» y aun así espera está practicando exactamente la disciplina que esta universidad existe para enseñar.</p>
+  </div>
+
+  <div class="modnav">
+    <a href="module-3-ema.html"><span class="dir">← Anterior</span><span class="t serif">Módulo 3: EMA 9, EMA 21 y EMA 200</span></a>
+    <a href="module-5-market-structure.html"><span class="dir">Siguiente →</span><span class="t serif">Módulo 5: Estructura del Mercado, Soporte y Resistencia</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p class="risk-disclaimer" role="note" style="font-size:.78rem;color:#93a0b8;max-width:60ch;margin:0 auto 1rem;line-height:1.6">Operar futuros implica un riesgo sustancial de pérdida y no es adecuado para todos los inversionistas. Esto es educación y práctica estructurada, no asesoría financiera.</p>
+  <b>M&amp;Q University</b> · El Conocimiento Es el Legado<br><br>
+  Una iniciativa educativa de MNQ Scalp Stacks · Educación · Disciplina · Práctica · Comunidad
+  <p><a href="../module-4-vwap-rsi.html">English version</a></p>
+</footer>
+<script src="progress.js" defer></script>
+</body>
+</html>

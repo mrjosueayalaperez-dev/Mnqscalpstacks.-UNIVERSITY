@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<title>Módulo 1: Fundamentos de Futuros — M&Q University Fase I</title>
+<meta name="description" content="Fase I, Módulo 1: qué es un contrato de futuros, ES, MES, NQ, MNQ, valores por punto, ticks y vencimiento — educación gratuita de M&Q University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1428;--navy2:#0E1B33;--gold:#C9A227;--gold-lt:#E8C15A;--parch:#EDE6D6;--muted:#93A0B8;--line:rgba(201,162,39,.28)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--parch);line-height:1.8;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+::selection{background:var(--gold);color:var(--navy)}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.85rem}
+.topnav a{color:var(--gold-lt);text-decoration:none;letter-spacing:.06em}
+.topnav a:hover{color:var(--gold)}
+.topnav .crumb{color:var(--muted)}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+header.hero{padding:4rem 1.5rem 3rem;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(201,162,39,.14),transparent 60%),var(--navy)}
+.kicker{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.4rem}
+header.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:500;line-height:1.12;color:var(--parch);max-width:20ch;margin:0 auto}
+header.hero h1 em{color:var(--gold-lt);font-style:italic}
+section.block{padding:2.6rem 0}
+.block h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--parch);margin-bottom:1.2rem}
+.block h3{font-size:1.35rem;font-weight:600;color:var(--gold-lt);margin:2rem 0 .8rem}
+.block p{margin-bottom:1.1rem;color:#d8d0bc}
+.block ul,.block ol{margin:0 0 1.2rem 1.4rem;color:#d8d0bc}
+.block li{margin-bottom:.55rem}
+.block strong{color:var(--parch);font-weight:600}
+.objbox{background:var(--navy2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:1.6rem 1.6rem;margin:0 0 1rem}
+.objbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem}
+.objbox p{margin:0;color:var(--parch);font-size:1.05rem}
+.exbox{background:var(--navy2);border:1px dashed rgba(201,162,39,.5);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.exbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+.exbox .illus{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1rem}
+.exbox table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+.exbox th,.exbox td{border:1px solid rgba(201,162,39,.25);padding:.6rem .7rem;text-align:left}
+.exbox th{color:var(--gold-lt);font-weight:600;background:rgba(201,162,39,.06)}
+.practice{background:rgba(201,162,39,.05);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.practice ol{margin-left:1.3rem}
+.practice li{margin-bottom:.8rem}
+details{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:8px;padding:1rem 1.2rem;margin-bottom:.8rem}
+details summary{cursor:pointer;font-weight:500;color:var(--parch)}
+details summary:hover{color:var(--gold-lt)}
+details p{margin:.8rem 0 0;color:#d8d0bc}
+details p strong{color:var(--gold-lt)}
+.riskbox{border:1px solid rgba(201,162,39,.45);border-radius:12px;padding:1.8rem;margin:2.4rem 0;background:linear-gradient(180deg,rgba(201,162,39,.08),transparent 60%),var(--navy2);text-align:center}
+.riskbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.9rem}
+.riskbox p{margin:0 0 .8rem;color:var(--parch)}
+.riskbox p:last-child{margin:0}
+.modnav{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 1rem;flex-wrap:wrap}
+.modnav a{flex:1;min-width:200px;background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.4rem;text-decoration:none;color:var(--parch)}
+.modnav a:hover{border-color:var(--gold)}
+.modnav .dir{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:.4rem}
+.modnav .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem}
+footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+footer b{color:var(--gold)}
+hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear-gradient(90deg,transparent,var(--line),transparent)}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html">← Inicio de la Fase I</a>
+  <span class="crumb">M&amp;Q University · Fase I</span>
+  <a href="../index.html">Inicio de la Universidad →</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Fase I — Fundamentos del Mercado · Módulo 1 de 8</div>
+    <h1 class="serif">Fundamentos de Futuros: <em>ES y MNQ</em></h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="block">
+  <div class="objbox">
+    <div class="lbl">Objetivo de Aprendizaje</div>
+    <p>Al final de este módulo, podrás explicar con tus propias palabras qué es un contrato de futuros, nombrar los cuatro contratos de índices que estudiamos (ES, MES, NQ, MNQ) con sus valores en dólares por punto y tamaños de tick, describir los códigos de vencimiento trimestral y decir por qué un principiante practica con un contrato micro en lugar de uno de tamaño completo.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Explicación</h2>
+
+  <h3 class="serif">Un contrato de futuros es una promesa — no una acción</h3>
+  <p>Cuando compras una acción, eres dueño de una parte de una empresa. Un <strong>contrato de futuros</strong> es diferente: es un acuerdo estandarizado para comprar o vender algo a un precio fijado en una fecha futura. No estás comprando una empresa. Estás entrando en un contrato que gana o pierde valor a medida que se mueve el índice subyacente.</p>
+  <p>Piensa en ello como una apuesta hecha con reglas muy formales: el contrato dice «el índice S&amp;P 500, a este precio, en esta fecha». A medida que el índice se mueve, el valor de tu contrato se mueve con él — sube si estás en largo (esperas precios más altos), baja si estás en corto (esperas precios más bajos). Cuando cierras el contrato, liquidas la diferencia. Ese es todo el juego, y entenderlo con honestidad importa más que cualquier patrón de gráfico que aprendas en tu vida.</p>
+
+  <h3 class="serif">Los cuatro contratos que estudiamos</h3>
+  <p>Nuestra universidad estudia cuatro futuros sobre índices bursátiles. En realidad son dos mercados, cada uno en dos tamaños:</p>
+  <ul>
+    <li><strong>ES — E-mini S&amp;P 500.</strong> Sigue al índice S&amp;P 500. Vale <strong>$50 por punto</strong> de movimiento del índice.</li>
+    <li><strong>MES — Micro E-mini S&amp;P 500.</strong> El mismo mercado que el ES, a la décima parte del tamaño: <strong>$5 por punto</strong>.</li>
+    <li><strong>NQ — E-mini Nasdaq-100.</strong> Sigue al índice Nasdaq-100. Vale <strong>$20 por punto</strong>.</li>
+    <li><strong>MNQ — Micro E-mini Nasdaq-100.</strong> El mismo mercado que el NQ, a la décima parte del tamaño: <strong>$2 por punto</strong>.</li>
+  </ul>
+  <p>El Nasdaq-100 tiende a moverse más puntos por día que el S&amp;P 500 — es un mercado más rápido y más vivo. Por eso esta universidad se centra en el <strong>MNQ</strong>: te da la viveza del Nasdaq-100 a $2 por punto, una escala en la que un principiante realmente puede permitirse aprender.</p>
+
+  <h3 class="serif">Ticks: el paso más pequeño</h3>
+  <p>Los cuatro contratos se mueven en <strong>ticks de 0.25 puntos</strong>. Eso significa que el cambio de precio más pequeño que verás es un cuarto de punto. Por lo tanto, un tick vale:</p>
+  <ul>
+    <li>ES: 0.25 × $50 = <strong>$12.50 por tick</strong></li>
+    <li>MES: 0.25 × $5 = <strong>$1.25 por tick</strong></li>
+    <li>NQ: 0.25 × $20 = <strong>$5.00 por tick</strong></li>
+    <li>MNQ: 0.25 × $2 = <strong>$0.50 por tick</strong></li>
+  </ul>
+  <p>Fíjate en lo que esto significa en la práctica: en el NQ, una oscilación rutinaria de 10 puntos son $200. En el MNQ, la misma oscilación de 10 puntos son $20. <strong>El mismo mercado, la misma lección, la décima parte de la matrícula.</strong> Ese es todo el argumento a favor de los micros, y es un argumento sólido.</p>
+
+  <h3 class="serif">Vencimiento: el calendario trimestral</h3>
+  <p>Los contratos de futuros vencen. Los futuros sobre índices vencen <strong>trimestralmente</strong>, en marzo, junio, septiembre y diciembre, y cada mes tiene un código de una letra que se usa en todo el mundo:</p>
+  <ul>
+    <li><strong>H</strong> = marzo &nbsp;·&nbsp; <strong>M</strong> = junio &nbsp;·&nbsp; <strong>U</strong> = septiembre &nbsp;·&nbsp; <strong>Z</strong> = diciembre</li>
+  </ul>
+  <p>Así, «MNQZ26» significaría el contrato Micro Nasdaq-100 que vence en diciembre de 2026. Los traders casi siempre operan el <strong>mes más cercano</strong> — el vencimiento más próximo — porque tiene el mayor volumen y los precios más ajustados y honestos. A medida que se acerca el vencimiento, todos «pasan» su atención al siguiente contrato. Para tus estudios, simplemente asegúrate de que tu gráfico muestre el mes más cercano.</p>
+
+  <h3 class="serif">Una palabra sobre el apalancamiento y el margen</h3>
+  <p>Los futuros son apalancados: una pequeña cantidad de dinero controla una posición grande. Ese apalancamiento es lo que hace poderosos a los futuros — y lo que los hace peligrosos para quien no está preparado. Tu bróker exige un <strong>margen</strong> — un depósito — para mantener un contrato, pero los requisitos de margen <strong>cambian con el tiempo</strong> y difieren entre proveedores. Nunca memorices una cifra fija de margen de un curso, un video o esta página. <strong>Verifica siempre los requisitos actuales con tu propio proveedor de datos o de plataforma.</strong> Memorizar una cifra antigua es una de las formas silenciosas en que los principiantes se llevan sorpresas.</p>
+  <p>El apalancamiento es precisamente la razón por la que esta universidad pone la gestión del riesgo (Módulo 6) y la disciplina (Módulo 7) en tu base antes que cualquier otra cosa. La velocidad sin frenos no es habilidad. Es solo velocidad.</p>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Ejemplo Resuelto</h2>
+  <div class="exbox">
+    <div class="lbl">Ejemplo Resuelto — Valores por Punto en Acción</div>
+    <p>Imagina que el MNQ sube <strong>10 puntos</strong> durante una sesión de la mañana (por ejemplo, de 18,400 a 18,410). Para un contrato de MNQ, ese movimiento vale:</p>
+    <p style="font-size:1.25rem" class="serif">10 puntos × $2/punto = <strong>$20</strong></p>
+    <p>Ahora imagina que el <em>mismo</em> movimiento de 10 puntos ocurriera en el NQ — el hermano de tamaño completo del MNQ — en su lugar:</p>
+    <p style="font-size:1.25rem" class="serif">10 puntos × $20/punto = <strong>$200</strong></p>
+    <table>
+      <tr><th>Contrato</th><th>Por punto</th><th>Movimiento de 10 puntos</th><th>Movimiento de 40 ticks</th></tr>
+      <tr><td>MNQ</td><td>$2</td><td>$20</td><td>$20</td></tr>
+      <tr><td>MES</td><td>$5</td><td>$50</td><td>$50</td></tr>
+      <tr><td>NQ</td><td>$20</td><td>$200</td><td>$200</td></tr>
+      <tr><td>ES</td><td>$50</td><td>$500</td><td>$500</td></tr>
+    </table>
+    <p><strong>Las parejas importan:</strong> el ES y el MES siguen ambos al S&amp;P 500; el NQ y el MNQ siguen ambos al Nasdaq-100. Una comparación de diez a uno solo funciona <em>dentro</em> de una pareja — ES contra MES, o NQ contra MNQ. ES contra MNQ es una proporción de 25:1 en dólares por punto entre dos mercados diferentes, así que enseña la lección equivocada sobre el tamaño. (Comparar la dirección de sus mercados sigue siendo útil — los dos índices a menudo se mueven juntos — pero la dirección no es el tamaño.)</p>
+    <p><strong>La lección:</strong> el valor por punto es la perilla de volumen del riesgo. Los micros te permiten estudiar exactamente los mismos mercados — los mismos gráficos, el mismo comportamiento — a una velocidad en la que los errores son lecciones en lugar de desastres. No prometemos ganancias en ningún tamaño; sí prometemos que aprender en tamaño micro te cuesta menos mientras aprendes.</p>
+    <div class="illus">Todos los precios y cifras en dólares de este ejemplo son números ilustrativos de enseñanza, no datos de mercado ni promesas de ningún resultado.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Ejercicio de Práctica</h2>
+  <div class="practice">
+    <ol>
+      <li><strong>Ejercicio de memoria.</strong> En papel, de memoria, escribe los cuatro contratos, qué sigue cada uno y su valor en dólares por punto. Compruébate con este módulo. Repítelo mañana hasta que sea automático.</li>
+      <li><strong>Lee un símbolo.</strong> Abre un sitio gratuito de gráficos, busca el MNQ y lee el símbolo completo del contrato. Identifica la letra de vencimiento (H, M, U o Z) y confirma que es el mes más cercano.</li>
+      <li><strong>Matemáticas a mano.</strong> Calcula el valor en dólares de un movimiento de 5 puntos y de uno de 20 puntos tanto en el MNQ como en el MES. Hazlo a mano — los traders que pueden hacer estas cuentas en su cabeza mantienen más la calma cuando los mercados se mueven.</li>
+      <li><strong>Escribe tu porqué.</strong> En un párrafo, completa esta frase: «Si alguna vez opero, empezaré con contratos micro porque…»</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Comprobación de Conocimientos</h2>
+  <details><summary>1. ¿Qué es un contrato de futuros, en una frase?</summary><p><strong>Respuesta:</strong> Un acuerdo estandarizado para comprar o vender un índice subyacente a un precio fijado en una fecha futura — un contrato cuyo valor se mueve con el índice, no la propiedad de una empresa. Decirlo con tus propias palabras es lo que importa; si puedes explicárselo a un amigo, lo entiendes.</p></details>
+  <details><summary>2. ¿Cuáles son los valores en dólares por punto del ES, el MES, el NQ y el MNQ?</summary><p><strong>Respuesta:</strong> ES = $50/punto, MES = $5/punto, NQ = $20/punto, MNQ = $2/punto. Los micros (MES, MNQ) son cada uno la décima parte de sus hermanos de tamaño completo.</p></details>
+  <details><summary>3. Los cuatro contratos se mueven en ticks de 0.25 puntos. ¿Cuánto vale un tick en el MNQ y en el ES?</summary><p><strong>Respuesta:</strong> MNQ: 0.25 × $2 = $0.50 por tick. ES: 0.25 × $50 = $12.50 por tick. Por eso equivocarse con el mismo patrón de gráfico cuesta veinticinco veces más en el ES.</p></details>
+  <details><summary>4. ¿Qué significan los códigos de vencimiento H, M, U y Z, y qué contrato deberías estudiar?</summary><p><strong>Respuesta:</strong> H = marzo, M = junio, U = septiembre, Z = diciembre. Estudia el mes más cercano — el vencimiento más próximo — porque tiene el mayor volumen y los precios más honestos.</p></details>
+  <details><summary>5. Un curso te dice que el requisito de margen del MNQ es una cifra fija. ¿Deberías confiar en ello?</summary><p><strong>Respuesta:</strong> No. Los requisitos de margen cambian con el tiempo y difieren entre proveedores. Verifica siempre los requisitos actuales con tu propio proveedor; nunca operes basándote en una cifra memorizada.</p></details>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <div class="riskbox">
+    <div class="lbl">Recordatorio de Riesgo</div>
+    <p>Operar futuros implica un riesgo sustancial de pérdida y no es adecuado para todos los inversionistas. Esto es educación y práctica estructurada, no asesoría financiera. El apalancamiento magnifica tanto las ganancias como las pérdidas.</p>
+    <p><strong>No prometemos ganancias.</strong> Esta universidad enseña primero a comprender — práctica, diario y disciplina mucho antes de que se considere cualquier capital real. Si no estás dispuesto a estudiar durante meses en simulación, no estás listo, y esa es una respuesta honesta que vale la pena respetar.</p>
+  </div>
+
+  <div class="modnav">
+    <a href="index.html"><span class="dir">← Atrás</span><span class="t serif">Inicio de la Fase I</span></a>
+    <a href="module-2-candlesticks.html"><span class="dir">Siguiente →</span><span class="t serif">Módulo 2: Estructura de las Velas y Acción del Precio</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p class="risk-disclaimer" role="note" style="font-size:.78rem;color:#93a0b8;max-width:60ch;margin:0 auto 1rem;line-height:1.6">Operar futuros implica un riesgo sustancial de pérdida y no es adecuado para todos los inversionistas. Esto es educación y práctica estructurada, no asesoría financiera.</p>
+  <b>M&amp;Q University</b> · El conocimiento es el legado<br><br>
+  Una iniciativa educativa de MNQ Scalp Stacks · Educación · Disciplina · Práctica · Comunidad
+  <p><a href="../module-1-futures-fundamentals.html">English version</a></p>
+</footer>
+<script src="progress.js" defer></script>
+</body>
+</html>

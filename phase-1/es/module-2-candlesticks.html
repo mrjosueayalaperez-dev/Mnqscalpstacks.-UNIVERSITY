@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<title>Módulo 2: Estructura de las Velas y Acción del Precio — M&amp;Q University Fase I</title>
+<meta name="description" content="Fase I, Módulo 2: cómo leer los gráficos de velas — cuerpos, mechas, marcos temporales y los límites honestos de la lectura de velas. Educación gratuita de M&Q University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1428;--navy2:#0E1B33;--gold:#C9A227;--gold-lt:#E8C15A;--parch:#EDE6D6;--muted:#93A0B8;--line:rgba(201,162,39,.28)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--parch);line-height:1.8;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+::selection{background:var(--gold);color:var(--navy)}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.85rem}
+.topnav a{color:var(--gold-lt);text-decoration:none;letter-spacing:.06em}
+.topnav a:hover{color:var(--gold)}
+.topnav .crumb{color:var(--muted)}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+header.hero{padding:4rem 1.5rem 3rem;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(201,162,39,.14),transparent 60%),var(--navy)}
+.kicker{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.4rem}
+header.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:500;line-height:1.12;color:var(--parch);max-width:20ch;margin:0 auto}
+header.hero h1 em{color:var(--gold-lt);font-style:italic}
+section.block{padding:2.6rem 0}
+.block h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--parch);margin-bottom:1.2rem}
+.block h3{font-size:1.35rem;font-weight:600;color:var(--gold-lt);margin:2rem 0 .8rem}
+.block p{margin-bottom:1.1rem;color:#d8d0bc}
+.block ul,.block ol{margin:0 0 1.2rem 1.4rem;color:#d8d0bc}
+.block li{margin-bottom:.55rem}
+.block strong{color:var(--parch);font-weight:600}
+.objbox{background:var(--navy2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:1.6rem;margin:0 0 1rem}
+.objbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem}
+.objbox p{margin:0;color:var(--parch);font-size:1.05rem}
+.exbox{background:var(--navy2);border:1px dashed rgba(201,162,39,.5);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.exbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+.exbox .illus{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1rem}
+.exbox .candlediagram{font-family:ui-monospace,Menlo,Consolas,monospace;background:rgba(0,0,0,.35);border-radius:8px;padding:1.2rem;margin:1rem 0;font-size:.85rem;line-height:1.5;color:var(--parch);white-space:pre;overflow-x:auto;max-width:100%}
+.practice{background:rgba(201,162,39,.05);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.practice ol{margin-left:1.3rem}
+.practice li{margin-bottom:.8rem}
+details{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:8px;padding:1rem 1.2rem;margin-bottom:.8rem}
+details summary{cursor:pointer;font-weight:500;color:var(--parch)}
+details summary:hover{color:var(--gold-lt)}
+details p{margin:.8rem 0 0;color:#d8d0bc}
+details p strong{color:var(--gold-lt)}
+.riskbox{border:1px solid rgba(201,162,39,.45);border-radius:12px;padding:1.8rem;margin:2.4rem 0;background:linear-gradient(180deg,rgba(201,162,39,.08),transparent 60%),var(--navy2);text-align:center}
+.riskbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.9rem}
+.riskbox p{margin:0 0 .8rem;color:var(--parch)}
+.riskbox p:last-child{margin:0}
+.modnav{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 1rem;flex-wrap:wrap}
+.modnav a{flex:1;min-width:200px;background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.4rem;text-decoration:none;color:var(--parch)}
+.modnav a:hover{border-color:var(--gold)}
+.modnav .dir{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:.4rem}
+.modnav .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem}
+footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+footer b{color:var(--gold)}
+hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear-gradient(90deg,transparent,var(--line),transparent)}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html">← Inicio de la Fase I</a>
+  <span class="crumb">M&amp;Q University · Fase I</span>
+  <a href="../index.html">Inicio de la Universidad →</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Fase I — Fundamentos del Mercado · Módulo 2 de 8</div>
+    <h1 class="serif">Estructura de las Velas <em>y Acción del Precio</em></h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="block">
+  <div class="objbox">
+    <div class="lbl">Objetivo de Aprendizaje</div>
+    <p>Al final de este módulo, podrás leer un gráfico de velas con confianza: apertura, máximo, mínimo, cierre; cuerpo frente a mecha; lo que te dice el color; cómo el marco temporal cambia el panorama; y las historias básicas que cuentan las velas — impulso, indecisión, rechazo — sin memorizar ni un solo nombre de patrón.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Explicación</h2>
+
+  <h3 class="serif">Las velas son huellas</h3>
+  <p>Cada vela es una batalla completa entre compradores y vendedores, librada durante un periodo fijo de tiempo — un minuto, cinco minutos, un día. La vela no te dice quién ganará la próxima batalla. Te dice, con honestidad y por completo, quién ganó <em>esta</em> y cuánto tuvo que luchar. Un gráfico es un largo rastro de estas huellas. Tu trabajo como estudiante es aprender a leer el rastro.</p>
+
+  <h3 class="serif">Anatomía de una vela</h3>
+  <p>Cada vela registra cuatro precios: la <strong>apertura</strong> (donde empezó el periodo), el <strong>máximo</strong> (lo más lejos que empujaron los compradores), el <strong>mínimo</strong> (lo más lejos que empujaron los vendedores) y el <strong>cierre</strong> (donde terminó el periodo — el precio que más importó).</p>
+  <ul>
+    <li><strong>El cuerpo</strong> se extiende de la apertura al cierre. Un cuerpo largo significa que un lado dominó el periodo — convicción. Un cuerpo corto significa que el periodo terminó más o menos donde empezó — un empate.</li>
+    <li><strong>Las mechas</strong> (a veces llamadas sombras) se extienden desde el cuerpo hasta el máximo y el mínimo. Muestran el recorrido completo — cada extremo que se visitó, aunque fuera brevemente, antes del cierre.</li>
+    <li><strong>El color</strong> te dice la dirección: verde (o hueco/blanco en algunos gráficos) significa que el cierre estuvo por encima de la apertura — los compradores ganaron el periodo. Rojo (o relleno/negro) significa que el cierre estuvo por debajo de la apertura — lo ganaron los vendedores.</li>
+  </ul>
+  <div class="exbox" style="border-style:solid">
+    <div class="candlediagram">        │  ← upper wick: buyers pushed this high
+        │
+   ┌─────────┐
+   │         │  ← body: open → close
+   │  VERDE  │     (close above open)
+   │         │
+   └─────────┘
+        │
+        │  ← lower wick: sellers pushed this low</div>
+  </div>
+
+  <h3 class="serif">Leer la historia: tres personajes básicos</h3>
+  <p>No necesitas cincuenta nombres de patrones. Casi todas las velas que verás en tu vida cuentan una de tres historias:</p>
+  <ul>
+    <li><strong>Impulso</strong> — un cuerpo largo con mechas pequeñas. Un lado tomó el control pronto y nunca lo soltó. El mercado se movió con propósito en este periodo.</li>
+    <li><strong>Rechazo</strong> — una mecha larga en un lado con un cuerpo pequeño cerca del otro extremo. El precio viajó lejos en una dirección y fue empujado de vuelta. Algo — compradores, vendedores o ambos — dijo «aquí no».</li>
+    <li><strong>Indecisión</strong> — un cuerpo diminuto con mechas en ambos lados. Compradores y vendedores lucharon hasta quedar empatados. El mercado está pensando, y los mercados que piensan a menudo se mueven de lado hasta que se deciden.</li>
+  </ul>
+  <p>Aprende a ver estos tres personajes de un vistazo y habrás aprendido más que la mayoría de los que memorizan patrones.</p>
+
+  <h3 class="serif">Marcos temporales: el mismo mercado, otro zoom</h3>
+  <p>Un gráfico de 1 minuto y un gráfico de 15 minutos de la misma sesión muestran el <em>mismo</em> mercado — pero el de 1 minuto se ve frenético y el de 15 minutos se ve tranquilo. Ninguno miente; son simplemente zooms diferentes. Los principiantes deben elegir <strong>un</strong> marco temporal y quedarse con él durante semanas, hasta que se sienta familiar. Cambiar de marco temporal cada vez que te aburres es como cambiar el aumento de un microscopio en mitad de un experimento: dejas de ver con claridad y empiezas a ver lo que quieres ver.</p>
+
+  <h3 class="serif">El contexto vence a las formas — y el límite honesto</h3>
+  <p>Esta es la frase más importante de este módulo: <strong>una vela no significa nada por sí sola.</strong> Una vela verde larga de impulso en medio de la nada es solo ruido. La misma vela rebotando en una zona de soporte bien probada, después de un retroceso en una tendencia alcista, es una historia con contexto. Pregunta siempre <em>«¿dónde estamos?»</em> antes de preguntar <em>«¿qué es esta vela?»</em> — ¿cerca de un soporte, después de una subida larga, en medio de un rango?</p>
+  <p>Y el límite honesto, que esta universidad nunca te ocultará: las velas describen el <strong>pasado</strong>. No predicen el futuro. Ninguna vela, y ninguna combinación de velas, «funciona» por sí sola. Son un lenguaje para leer lo que pasó — dominarlo te ayuda a pensar con claridad, pero pensar con claridad no es lo mismo que saber lo que viene después. <strong>No prometemos ganancias</strong>, y cualquiera que te venda un patrón de velas como garantía te está vendiendo algo que nosotros nunca venderemos.</p>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Ejemplo Resuelto</h2>
+  <div class="exbox">
+    <div class="lbl">Ejemplo Resuelto — Leer Dos Velas</div>
+    <p><strong>Vela A</strong> (MNQ de 5 minutos): apertura 18,400.00 · máximo 18,412.50 · mínimo 18,398.25 · cierre 18,409.00.</p>
+    <p>Léela pieza por pieza. El cuerpo va de 18,400 a 18,409 — los compradores ganaron el periodo por 9 puntos. La mecha superior es de solo 3.50 puntos (18,409 → 18,412.50) y la mecha inferior es de 1.75 puntos — mechas pequeñas, cuerpo largo, verde. <strong>Historia: impulso.</strong> Los compradores controlaron estos cinco minutos y cerraron cerca de los máximos.</p>
+    <p><strong>Vela B</strong> (la vela siguiente): apertura 18,409.00 · máximo 18,410.00 · mínimo 18,396.00 · cierre 18,398.00.</p>
+    <p>Ahora los vendedores ganaron por 11 puntos, con una mecha inferior corta (18,398 → 18,396, solo 2 puntos) en un rango de 14 puntos con un cuerpo de 11 puntos. <strong>La vela B es un cierre bajista fuerte: un cuerpo rojo grande (11 de 14 puntos) con solo una mecha inferior corta, así que los compradores apenas aparecieron antes del cierre. Eso se lee como impulso en la dirección de los vendedores, no como rechazo.</strong></p>
+    <p><strong>La lección:</strong> dos velas, dos historias opuestas, una tras otra. Una vela es un párrafo, no el libro entero. Los estudiantes que operan cada vela verde — persiguiendo — quedan hechos pedazos por la siguiente vela roja. <em>No perseguimos velas encendidas.</em> Primero leemos la página completa.</p>
+    <div class="illus">Todos los precios de este ejemplo son números ilustrativos de enseñanza, no datos de mercado ni promesas de ningún resultado.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Ejercicio de Práctica</h2>
+  <div class="practice">
+    <ol>
+      <li><strong>Etiqueta diez velas.</strong> Abre cualquier gráfico del MNQ. En diez velas consecutivas, identifica el cuerpo, la mecha superior, la mecha inferior y la dirección. Di cada una en voz alta: «verde, cuerpo largo, mechas pequeñas — impulso para los compradores».</li>
+      <li><strong>Encuentra los personajes.</strong> Localiza una vela clara de rechazo (mecha larga, cuerpo pequeño) y una vela clara de indecisión (cuerpo diminuto, mechas en ambos lados). Escribe una frase para cada una describiendo cuál pudo haber sido la «historia».</li>
+      <li><strong>Cambia el zoom.</strong> Mira la misma sesión de operaciones en un gráfico de 1 minuto y luego en uno de 15 minutos. Escribe tres frases sobre cómo parece cambiar la «personalidad» del mercado — y recuérdate que es el mismo mercado.</li>
+      <li><strong>Haz las cuentas.</strong> Elige una vela de 15 minutos. Calcula su rango completo (máximo menos mínimo) en puntos y luego conviértelo a dólares del MNQ a $2 por punto (ilustrativo). Esto mantiene afiladas tus matemáticas del Módulo 1.</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Comprobación de Conocimientos</h2>
+  <details><summary>1. ¿Qué cuatro precios registra cada vela, y cuál importa más?</summary><p><strong>Respuesta:</strong> Apertura, máximo, mínimo y cierre. El cierre importa más porque es el veredicto final del periodo — donde realmente terminó la batalla después de todo el empuje de un lado a otro que muestran las mechas.</p></details>
+  <details><summary>2. ¿Cuál es la diferencia entre el cuerpo de una vela y sus mechas?</summary><p><strong>Respuesta:</strong> El cuerpo abarca de la apertura al cierre y muestra quién ganó y por cuánto (convicción). Las mechas abarcan desde los extremos del cuerpo hasta el máximo y el mínimo, y muestran el recorrido completo — extremos que se visitaron pero no se mantuvieron.</p></details>
+  <details><summary>3. ¿Qué sugiere una mecha superior muy larga con un cuerpo pequeño cerca del mínimo?</summary><p><strong>Respuesta:</strong> Rechazo: los compradores empujaron el precio mucho más arriba durante el periodo pero fueron empujados de vuelta, y los vendedores cerraron el periodo cerca de los mínimos. Sugiere que la presión de venta superó a la presión de compra <em>en este periodo</em> — una descripción del pasado, no una predicción.</p></details>
+  <details><summary>4. ¿Por qué la misma sesión se ve frenética en un gráfico de 1 minuto y tranquila en uno de 15 minutos?</summary><p><strong>Respuesta:</strong> Son zooms diferentes del mismo mercado. El gráfico de 1 minuto muestra cada pequeña escaramuza; el de 15 minutos las comprime en menos velas, más suaves. Ninguno es más verdadero — por eso los principiantes deben dominar un marco temporal antes de añadir otros.</p></details>
+  <details><summary>5. Un amigo dice que cierto patrón de velas «siempre funciona». ¿Cuál es la respuesta honesta?</summary><p><strong>Respuesta:</strong> Ninguna vela ni patrón funciona siempre. Las velas describen el pasado; el contexto (dónde aparece la vela) importa más que la forma; y nada en el trading está garantizado. De cualquiera que prometa certeza a partir de un patrón, lo mejor es alejarse.</p></details>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <div class="riskbox">
+    <div class="lbl">Recordatorio de Riesgo</div>
+    <p>Leer bien las velas te convierte en un mejor <em>observador</em> — no en un trader rentable. Observar es una habilidad; la ganancia es un resultado, y los resultados nunca se prometen.</p>
+    <p><strong>No prometemos ganancias.</strong> Practica la lectura de gráficos en simulación, registra en tu diario lo que ves y deja que la fluidez crezca antes de considerar arriesgar capital real. La paciencia aquí no es tiempo perdido — es la matrícula que no tienes que pagarle al mercado.</p>
+  </div>
+
+  <div class="modnav">
+    <a href="module-1-futures-fundamentals.html"><span class="dir">← Anterior</span><span class="t serif">Módulo 1: Fundamentos de Futuros</span></a>
+    <a href="module-3-ema.html"><span class="dir">Siguiente →</span><span class="t serif">Módulo 3: EMA 9, EMA 21 y EMA 200</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p class="risk-disclaimer" role="note" style="font-size:.78rem;color:#93a0b8;max-width:60ch;margin:0 auto 1rem;line-height:1.6">Operar futuros implica un riesgo sustancial de pérdida y no es adecuado para todos los inversionistas. Esto es educación y práctica estructurada, no asesoría financiera.</p>
+  <b>M&amp;Q University</b> · El conocimiento es el legado<br><br>
+  Una iniciativa educativa de MNQ Scalp Stacks · Educación · Disciplina · Práctica · Comunidad
+  <p><a href="../module-2-candlesticks.html">English version</a></p>
+</footer>
+<script src="progress.js" defer></script>
+</body>
+</html>

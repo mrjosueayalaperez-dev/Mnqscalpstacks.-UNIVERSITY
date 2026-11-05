@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<title>Módulo 7: Psicología del Trading y Disciplina — M&amp;Q University Fase I</title>
+<meta name="description" content="Fase I, Módulo 7: las trampas emocionales — FOMO, operar por venganza, exceso de confianza — y las rutinas disciplinadas que las vencen. Educación gratuita de M&Q University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A1428;--navy2:#0E1B33;--gold:#C9A227;--gold-lt:#E8C15A;--parch:#EDE6D6;--muted:#93A0B8;--line:rgba(201,162,39,.28)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--navy);color:var(--parch);line-height:1.8;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif}
+::selection{background:var(--gold);color:var(--navy)}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.85rem}
+.topnav a{color:var(--gold-lt);text-decoration:none;letter-spacing:.06em}
+.topnav a:hover{color:var(--gold)}
+.topnav .crumb{color:var(--muted)}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+header.hero{padding:4rem 1.5rem 3rem;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(201,162,39,.14),transparent 60%),var(--navy)}
+.kicker{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.4rem}
+header.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:500;line-height:1.12;color:var(--parch);max-width:20ch;margin:0 auto}
+header.hero h1 em{color:var(--gold-lt);font-style:italic}
+section.block{padding:2.6rem 0}
+.block h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:600;color:var(--parch);margin-bottom:1.2rem}
+.block h3{font-size:1.35rem;font-weight:600;color:var(--gold-lt);margin:2rem 0 .8rem}
+.block p{margin-bottom:1.1rem;color:#d8d0bc}
+.block ul,.block ol{margin:0 0 1.2rem 1.4rem;color:#d8d0bc}
+.block li{margin-bottom:.55rem}
+.block strong{color:var(--parch);font-weight:600}
+.objbox{background:var(--navy2);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:1.6rem;margin:0 0 1rem}
+.objbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem}
+.objbox p{margin:0;color:var(--parch);font-size:1.05rem}
+.exbox{background:var(--navy2);border:1px dashed rgba(201,162,39,.5);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.exbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin-bottom:1rem}
+.exbox .illus{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:1rem}
+.practice{background:rgba(201,162,39,.05);border:1px solid var(--line);border-radius:10px;padding:1.6rem;margin:1.6rem 0}
+.practice ol{margin-left:1.3rem}
+.practice li{margin-bottom:.8rem}
+details{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:8px;padding:1rem 1.2rem;margin-bottom:.8rem}
+details summary{cursor:pointer;font-weight:500;color:var(--parch)}
+details summary:hover{color:var(--gold-lt)}
+details p{margin:.8rem 0 0;color:#d8d0bc}
+details p strong{color:var(--gold-lt)}
+.riskbox{border:1px solid rgba(201,162,39,.45);border-radius:12px;padding:1.8rem;margin:2.4rem 0;background:linear-gradient(180deg,rgba(201,162,39,.08),transparent 60%),var(--navy2);text-align:center}
+.riskbox .lbl{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.9rem}
+.riskbox p{margin:0 0 .8rem;color:var(--parch)}
+.riskbox p:last-child{margin:0}
+.traps{display:grid;gap:.9rem;margin:1.4rem 0}
+.trap{background:var(--navy2);border:1px solid rgba(201,162,39,.18);border-radius:10px;padding:1.2rem 1.4rem}
+.trap b{color:var(--gold-lt);font-weight:600;display:block;margin-bottom:.3rem}
+.trap span{color:var(--muted);font-size:.95rem}
+.modnav{display:flex;justify-content:space-between;gap:1rem;padding:2.5rem 0 1rem;flex-wrap:wrap}
+.modnav a{flex:1;min-width:200px;background:var(--navy2);border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.4rem;text-decoration:none;color:var(--parch)}
+.modnav a:hover{border-color:var(--gold)}
+.modnav .dir{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;display:block;margin-bottom:.4rem}
+.modnav .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem}
+footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+footer b{color:var(--gold)}
+hr.div{border:0;height:1px;margin:0 auto;width:min(720px,86vw);background:linear-gradient(90deg,transparent,var(--line),transparent)}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a href="index.html">← Centro de la Fase I</a>
+  <span class="crumb">M&amp;Q University · Fase I</span>
+  <a href="../index.html">Inicio de la Universidad →</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Fase I — Fundamentos del Mercado · Módulo 7 de 8</div>
+    <h1 class="serif">Psicología del Trading <em>y Disciplina</em></h1>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="block">
+  <div class="objbox">
+    <div class="lbl">Objetivo de Aprendizaje</div>
+    <p>Al terminar este módulo, podrás nombrar las trampas emocionales comunes — el FOMO y perseguir el precio, operar por venganza, el exceso de confianza después de ganar, el miedo después de perder — describir una rutina previa a la sesión y un conjunto personal de reglas, y explicar por qué el <em>proceso</em>, no el resultado, es el único marcador honesto.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Explicación</h2>
+
+  <h3 class="serif">El verdadero oponente</h3>
+  <p>Esta es una verdad que la mayoría de los cursos esconde: <strong>tu verdadero oponente no es el mercado. Son los impulsos que el mercado provoca en ti.</strong> El gráfico es neutral — no tiene ninguna opinión sobre ti. Pero míralo moverse rápido con dinero en juego, y tu cerebro — hecho para sobrevivir en la sabana, no para la probabilidad — empieza a gritar. Cada trampa de este módulo es ese grito. La disciplina es la práctica silenciosa de no obedecerlo.</p>
+
+  <h3 class="serif">Nombra las trampas</h3>
+  <p>No puedes vencer lo que no puedes nombrar. Las trampas clásicas, dichas con claridad:</p>
+  <div class="traps">
+    <div class="trap"><b>Perseguir el precio / FOMO</b><span>El precio está corriendo y sientes que "lo vas a perder". Así que entras tarde, al peor precio, justo cuando el movimiento se agota. Nuestro lema existe para este momento exacto: <em>No perseguimos velas encendidas.</em></span></div>
+    <div class="trap"><b>Operar por venganza</b><span>Una pérdida duele, así que vuelves a entrar de inmediato — más grande, más rápido — para "recuperarla". El mercado no te debe nada, y cobra intereses sobre esta deuda en particular.</span></div>
+    <div class="trap"><b>Exceso de confianza después de ganar</b><span>Unas pocas buenas operaciones en simulación y de repente eres un genio: aumentas el tamaño, te saltas el diario de operaciones. Las ganancias son el maestro más peligroso porque se sienten como una prueba.</span></div>
+    <div class="trap"><b>Miedo y parálisis después de perder</b><span>La imagen en el espejo: después de perder te paralizas, te saltas buenas configuraciones o sales antes de tiempo — y dejas que una mala racha reescriba todo tu plan.</span></div>
+    <div class="trap"><b>Operar por aburrimiento</b><span>No está pasando nada, así que inventas acción. El mercado cobra entrada por el entretenimiento, y el precio siempre es más alto de lo que parece.</span></div>
+  </div>
+  <p>Fíjate: cada trampa es una <em>emoción tomando una decisión de operación</em>. El mercado no te hizo ninguna de estas cosas. Te las hiciste tú, con el mercado como escenario.</p>
+
+  <h3 class="serif">Disciplina, definida de forma operativa</h3>
+  <p>"Disciplina" suena a rasgo de personalidad. No lo es — es una <strong>práctica</strong>: <em>hacer lo que tu plan dice cuando tus sentimientos dicen lo contrario.</em> No necesitas <em>sentirte</em> disciplinado. Necesitas un plan lo bastante claro para seguirlo y una rutina lo bastante fuerte para sostenerte cuando los sentimientos gritan. La disciplina es infraestructura, no inspiración.</p>
+
+  <h3 class="serif">La rutina previa a la sesión</h3>
+  <p>Los profesionales de todos los campos calientan antes de empezar; quien opera también debería hacerlo. Antes de cada sesión de práctica:</p>
+  <ol>
+    <li><strong>Revisa el plan.</strong> Lee tus reglas (las escribirás en el ejercicio de abajo). Una página, en voz alta si te ayuda.</li>
+    <li><strong>Define los límites de riesgo del día.</strong> Pérdida máxima en simulación para la sesión, número máximo de configuraciones. Escríbelos.</li>
+    <li><strong>Define qué significa "terminar".</strong> Decide de antemano qué pone fin a tu sesión — un número de configuraciones, una hora, <em>o</em> alcanzar tu límite de pérdida. Un "terminar" decidido antes es un escudo; un "terminar" decidido a mitad de sesión es una negociación que vas a perder.</li>
+  </ol>
+  <p>Diez minutos. Cada sesión. Así se construye la disciplina — no en momentos heroicos, sino en la repetición aburrida.</p>
+
+  <h3 class="serif">El protocolo después de una pérdida</h3>
+  <p>Las pérdidas ocurrirán — en simulación se <em>supone</em> que ocurran; para eso está el laboratorio. Cuando ocurra una:</p>
+  <ol>
+    <li><strong>Haz una pausa.</strong> Manos fuera del teclado. Respira. Los próximos cinco minutos no pertenecen a ninguna operación.</li>
+    <li><strong>Regístrala en tu diario.</strong> Escribe qué pasó y si seguiste tu plan (el Módulo 8 te da la plantilla).</li>
+    <li><strong>Aléjate si lo necesitas.</strong> Una caminata corta vence a una operación de venganza todas y cada una de las veces.</li>
+  </ol>
+  <p>Nunca — <em>nunca</em> — operes en los próximos cinco minutos para "recuperarlo". Esa operación tiene nombre: venganza. Ya sabes cómo termina.</p>
+
+  <h3 class="serif">El único marcador honesto</h3>
+  <p>Este es el cambio de mirada que lo cambia todo: <strong>juzga el proceso, no el resultado.</strong> Una operación en simulación que siguió cada regla y perdió fue un <em>éxito</em> — ejecutaste tu proceso bajo incertidumbre, que es la habilidad completa. Una operación en simulación que rompió las reglas y ganó fue un <em>fracaso</em> — te pagaron por un mal comportamiento, lo que enseña exactamente la lección equivocada.</p>
+  <p>Este es nuestro principio <em>Disciplina Antes que Ganancias</em> en acción: una decisión exitosa es la que sigue un proceso sólido, sin importar un resultado individual. Pensar solo en resultados es la manera en que la suerte se confunde con la habilidad — y confundir la suerte con la habilidad es la manera en que se destruyen las cuentas. El marcador que importa tiene una sola columna: <em>¿seguí mis reglas?</em></p>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Ejemplo Resuelto</h2>
+  <div class="exbox">
+    <div class="lbl">Ejemplo Resuelto — La Tercera Configuración</div>
+    <p><strong>La mañana</strong> (ilustrativa): un estudiante opera en simulación la sesión matutina de MNQ. Dos configuraciones, ambas tomadas exactamente según el plan — ambas cerradas por el stop con pérdidas pequeñas y planificadas en simulación. El diario muestra: ¿seguí el plan? <em>Sí. Sí.</em></p>
+    <p><strong>El momento:</strong> aparece una tercera configuración — la misma calidad que las dos primeras, la misma estructura, el mismo tipo de retroceso que el estudiante ha estado practicando. Pero el estudiante tiene el pecho apretado. Dos pérdidas. El impulso grita dos cosas opuestas a la vez: <em>sáltala, hoy estás maldito</em> y <em>duplica el tamaño, recupéralo todo</em>.</p>
+    <p><strong>La versión sin disciplina:</strong> duplica el tamaño en simulación "para recuperarse". Si gana, el estudiante aprende que romper las reglas paga. Si pierde, el estudiante aprende desesperación. Las dos lecciones son veneno.</p>
+    <p><strong>La versión disciplinada:</strong> toma el <em>mismo</em> tamaño, el <em>mismo</em> stop, lo registra con honestidad en el diario — gane o pierda. El resultado no importa; el proceso es la calificación.</p>
+    <p><strong>La lección:</strong> la disciplina es invisible en los días ganadores y decisiva en los perdedores. Cualquiera puede seguir un plan cuando está funcionando. El estudiante se forja en los momentos en que no funciona.</p>
+    <div class="illus">Este escenario es una historia ilustrativa de enseñanza, no una sesión real de operaciones ni una promesa de ningún resultado.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Ejercicio de Práctica</h2>
+  <div class="practice">
+    <ol>
+      <li><strong>Escribe tu constitución.</strong> Redacta cinco reglas personales de operación con tus propias palabras — no copiadas de esta página. (Ejemplo para empezar: "Nunca entro sin un stop ya elegido".) Que quepa en una página; la leerás antes de cada sesión.</li>
+      <li><strong>Diseña tu calentamiento.</strong> Escribe una rutina previa a la sesión de 10 minutos: qué revisas, qué límites fijas y cuáles son tus condiciones para "terminar". Hazla tan específica que un extraño pueda seguirla.</li>
+      <li><strong>Aprende de tu vida.</strong> Recuerda una ocasión en que actuaste por impulso en <em>cualquier</em> área de la vida — al manejar, al discutir, al gastar. Escribe qué habría cambiado un protocolo de pausa. La psicología del trading es psicología humana; llevas toda la vida entrenando para esto.</li>
+      <li><strong>Califica el proceso.</strong> Opera en simulación una sesión completa <em>sin ninguna meta de ganancia</em>. Date 1 punto por cada regla que seguiste y 0 por cada regla que rompiste. Esa puntuación — no el resultado en simulación — es tu calificación del día.</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <h2 class="serif">Revisión de Conocimientos</h2>
+  <details><summary>1. Nombra tres trampas emocionales y qué hace cada una que haga quien opera.</summary><p><strong>Respuesta:</strong> Perseguir el precio / FOMO — entrar tarde a malos precios por miedo a quedarse fuera. Operar por venganza — volver a entrar más grande después de una pérdida para "recuperarla". Exceso de confianza — aumentar el tamaño y saltarse el diario después de ganar. (También son válidas: miedo/parálisis después de perder, operar por aburrimiento.) Cada una es una emoción tomando una decisión de operación.</p></details>
+  <details><summary>2. ¿Qué significa disciplina, en términos operativos — en la práctica, no como rasgo de personalidad?</summary><p><strong>Respuesta:</strong> Hacer lo que tu plan dice cuando tus sentimientos dicen lo contrario. Es infraestructura — un plan claro más una rutina — no inspiración ni fuerza de voluntad. No necesitas sentirte disciplinado; necesitas un plan lo bastante claro para seguirlo.</p></details>
+  <details><summary>3. ¿Cuál es el protocolo después de una pérdida?</summary><p><strong>Respuesta:</strong> Haz una pausa (manos fuera del teclado, respira — los próximos cinco minutos no pertenecen a ninguna operación), registra en el diario qué pasó y si seguiste tu plan, y aléjate si lo necesitas. Nunca operes de inmediato para recuperar la pérdida — eso es operar por venganza por definición.</p></details>
+  <details><summary>4. Una operación en simulación siguió cada regla y perdió. Otra rompió las reglas y ganó. ¿Cuál fue el éxito?</summary><p><strong>Respuesta:</strong> La primera. El proceso es el único marcador honesto: ejecutar tu plan bajo incertidumbre es la habilidad completa. La ganadora que rompió las reglas recibió pago por un mal comportamiento — la lección más peligrosa del trading, porque te enseña a confiar en la suerte y llamarla habilidad.</p></details>
+</section>
+
+<hr class="div">
+
+<section class="block">
+  <div class="riskbox">
+    <div class="lbl">Recordatorio de Riesgo</div>
+    <p>La psicología no elimina el riesgo — elimina el riesgo <em>extra</em> que te añades a ti mismo. El mercado ya es bastante incierto sin que tus impulsos también operen.</p>
+    <p><strong>No prometemos ganancias.</strong> Ninguna mentalidad, rutina ni afirmación garantiza resultados. Lo que la disciplina sí garantiza es más simple y más valioso: que tus resultados reflejarán tu proceso, de modo que tu diario de operaciones pueda realmente enseñarte algo.</p>
+  </div>
+
+  <div class="modnav">
+    <a href="module-6-risk-management.html"><span class="dir">← Anterior</span><span class="t serif">Módulo 6: Gestión del Riesgo y Tamaño de la Posición</span></a>
+    <a href="module-8-simulation.html"><span class="dir">Siguiente →</span><span class="t serif">Módulo 8: Práctica en Simulación y Cuestionarios</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p class="risk-disclaimer" role="note" style="font-size:.78rem;color:#93a0b8;max-width:60ch;margin:0 auto 1rem;line-height:1.6">Operar futuros implica un riesgo sustancial de pérdida y no es adecuado para todos los inversionistas. Esto es educación y práctica estructurada, no asesoría financiera.</p>
+  <b>M&amp;Q University</b> · El Conocimiento Es el Legado<br><br>
+  Una iniciativa educativa de MNQ Scalp Stacks · Educación · Disciplina · Práctica · Comunidad
+  <p><a href="../module-7-psychology.html">English version</a></p>
+</footer>
+<script src="progress.js" defer></script>
+</body>
+</html>
