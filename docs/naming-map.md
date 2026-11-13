@@ -16,7 +16,6 @@ Applied on draft PR #7 (`fix/university-es-presentation-readiness`) after rebasi
 | `phase-1/module-8-simulation.html` | "Teaching Avatar" link text → "MNQ Professor" |
 | `phase-1/es/index.html` | "Avatar Docente · Simulador" → "MNQ Professor · Simulador" |
 | `phase-1/es/module-8-simulation.html` | "Profesor Virtual" link text → "MNQ Professor" |
-| `M&Q University — Integrated Platform (single HTML file).html` | Redirect-stub `<title>` "Teaching Avatar (moved)" → "MNQ Professor (moved)" (body already had no persona name) |
 
 ## Judgment calls
 
@@ -34,6 +33,7 @@ Applied on draft PR #7 (`fix/university-es-presentation-readiness`) after rebasi
 
 | Location | Why left |
 |---|---|
+| `M&Q University — Integrated Platform (single HTML file).html` title | Bounce page (noindex, instant redirect to platform.html). Title left as "Teaching Avatar (moved)" so PR #6's favicon `<link>` on the adjacent line still merges cleanly in both orders. |
 | `*-candidate-*.html` (4 files) | Archived concept prototypes, not live nav targets |
 | `voice/README.txt` | Internal note about recordings |
 | `professor-greeting-v2-EN.mp4` / `professor-greeting-v2-ES.mp4` (filenames + spoken audio) | Asset names; audio still says Moose until re-recorded |
