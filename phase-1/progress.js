@@ -5,6 +5,25 @@
 (function () {
   "use strict";
   var KEY = "mqu.p1.v1";
+  /* UI strings follow the page language (<html lang="es"> on /es/ pages); English otherwise. */
+  var ES = (document.documentElement.lang || "").toLowerCase().indexOf("es") === 0 || location.pathname.indexOf("/es/") !== -1;
+  var T = ES ? {
+    knowledgeCheck: "Comprobación de conocimientos", markedCorrect: "marcadas como correctas",
+    moduleComplete: " \u2014 <b>módulo completo \u2713</b>", openEach: " \u2014 abre cada respuesta y luego márcate con honestidad",
+    reset: "Reiniciar",
+    selfGraded: "Autocalificado y guardado solo en este navegador. Si fallas una, vuelve a leer la sección: de eso se trata.",
+    didYou: "¿Lo respondiste bien?", gotIt: "\u2713 Lo acerté", reviewAgain: "\u21bb Revisar otra vez",
+    complete: "\u2713 Completo", correct: "correctas", started: "En curso", notStarted: "Sin empezar",
+    progress: "Tu progreso en la Fase I (este navegador): ", modulesComplete: "módulos completos"
+  } : {
+    knowledgeCheck: "Knowledge check", markedCorrect: "marked correct",
+    moduleComplete: " \u2014 <b>module complete \u2713</b>", openEach: " \u2014 open each answer, then mark yourself honestly",
+    reset: "Reset",
+    selfGraded: "Self-graded and saved in this browser only. If you miss one, re-read the section \u2014 that's the point.",
+    didYou: "Did you get it right?", gotIt: "\u2713 Got it", reviewAgain: "\u21bb Review again",
+    complete: "\u2713 Complete", correct: "correct", started: "Started", notStarted: "Not started",
+    progress: "Your Phase I progress (this browser): ", modulesComplete: "modules complete"
+  };
   function load() { try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { return {}; } }
   function save(d) { try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {} }
   function stats(m) {
@@ -38,10 +57,10 @@
     qs[0].parentNode.insertBefore(box, qs[0]);
     function render() {
       var s = stats(data[id]);
-      box.innerHTML = "Knowledge check: <b>" + s.right + " / " + s.total + "</b> marked correct" +
-        (s.complete ? " — <b>module complete ✓</b>" : (s.marked ? "" : " — open each answer, then mark yourself honestly")) +
-        ' <button type="button" data-reset>Reset</button>' +
-        '<div style="font-size:.75rem;color:#93A0B8;margin-top:.3rem">Self-graded and saved in this browser only. If you miss one, re-read the section — that\'s the point.</div>';
+      box.innerHTML = T.knowledgeCheck + ": <b>" + s.right + " / " + s.total + "</b> " + T.markedCorrect +
+        (s.complete ? T.moduleComplete : (s.marked ? "" : T.openEach)) +
+        ' <button type="button" data-reset>' + T.reset + '</button>' +
+        '<div style="font-size:.75rem;color:#93A0B8;margin-top:.3rem">' + T.selfGraded + '</div>';
       box.querySelector("[data-reset]").onclick = function () { data[id].answers = {}; save(data); render(); paint(); };
     }
     var groups = [];
@@ -55,7 +74,7 @@
     Array.prototype.forEach.call(qs, function (d, i) {
       var row = document.createElement("div");
       row.className = "mq-grade";
-      row.innerHTML = '<span>Did you get it right?</span><button type="button" aria-pressed="false">✓ Got it</button><button type="button" aria-pressed="false">↻ Review again</button>';
+      row.innerHTML = '<span>' + T.didYou + '</span><button type="button" aria-pressed="false">' + T.gotIt + '</button><button type="button" aria-pressed="false">' + T.reviewAgain + '</button>';
       var b = row.querySelectorAll("button");
       function mark(v) { data[id].answers[i] = v; save(data); render(); paint(); }
       b[0].onclick = function () { mark(true); };
@@ -74,14 +93,14 @@
       if (s.complete) done++;
       var t = document.createElement("span");
       t.className = "mq-badge" + (s.complete ? " done" : "");
-      t.textContent = s.complete ? "✓ Complete" : s.marked ? (s.right + " / " + s.total + " correct") : (data["module-" + k] ? "Started" : "Not started");
+      t.textContent = s.complete ? T.complete : s.marked ? (s.right + " / " + s.total + " " + T.correct) : (data["module-" + k] ? T.started : T.notStarted);
       a.appendChild(document.createElement("br")); a.appendChild(t);
     });
     var mods = document.querySelector(".modules");
     if (mods && links.length) {
       var sum = document.createElement("div");
       sum.className = "mq-score";
-      sum.innerHTML = "Your Phase I progress (this browser): <b>" + done + " / " + links.length + "</b> modules complete";
+      sum.innerHTML = T.progress + "<b>" + done + " / " + links.length + "</b> " + T.modulesComplete;
       mods.parentNode.insertBefore(sum, mods);
     }
   }
